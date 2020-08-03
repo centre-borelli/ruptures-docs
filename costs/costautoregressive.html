@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html >
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+      <title>Autoregressive model change</title>
+    
+      <link rel="stylesheet" href="../_static/pygments.css">
+      <link rel="stylesheet" href="../_static/theme.css">
+      <link rel="stylesheet" href="../_static/sphinx_press_theme.css">
+      
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+
+      <!-- sphinx script_files -->
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+      
+      <script src="../_static/theme-vendors.js"></script>
+      <script src="../_static/theme.js" defer></script>
+    
+  <link rel="index" title="Index" href="../genindex.html" />
+  <link rel="search" title="Search" href="../search.html" />
+  <link rel="next" title="Mahalanobis-type metric" href="costml.html" />
+  <link rel="prev" title="Linear model change" href="costlinear.html" /> 
+  </head>
+
+  <body>
+    <div id="app" class="theme-container" :class="pageClasses"><navbar @toggle-sidebar="toggleSidebar">
+  <router-link to="../index.html" class="home-link">
+    
+      <span class="site-name">ruptures</span>
+    
+  </router-link>
+
+  <div class="links">
+    <navlinks class="can-hide">
+
+  
+    <div class="nav-item">
+      <a href="../index.html#getting-started"
+         class="nav-link ">
+         getting started
+      </a>
+    </div>
+  
+    <div class="nav-item">
+      <a href="../index.html#documentation"
+         class="nav-link ">
+         documentation
+      </a>
+    </div>
+  
+
+
+
+  
+    <div class="nav-item">
+      <a href="https://github.com/deepcharles/ruptures/"
+        class="nav-link external">
+          Github <outboundlink/>
+      </a>
+    </div>
+  
+
+    </navlinks>
+  </div>
+</navbar>
+
+      
+      <div class="sidebar-mask" @click="toggleSidebar(false)">
+      </div>
+        <sidebar @toggle-sidebar="toggleSidebar">
+          
+          <navlinks>
+            
+
+  
+    <div class="nav-item">
+      <a href="../index.html#getting-started"
+         class="nav-link ">
+         getting started
+      </a>
+    </div>
+  
+    <div class="nav-item">
+      <a href="../index.html#documentation"
+         class="nav-link ">
+         documentation
+      </a>
+    </div>
+  
+
+
+
+  
+    <div class="nav-item">
+      <a href="https://github.com/deepcharles/ruptures/"
+        class="nav-link external">
+          Github <outboundlink/>
+      </a>
+    </div>
+  
+
+            
+          </navlinks><div id="searchbox" class="searchbox" role="search">
+  <div class="caption"><span class="caption-text">Quick search</span>
+    <div class="searchformwrapper">
+      <form class="search" action="../search.html" method="get">
+        <input type="text" name="q" />
+        <input type="submit" value="Search" />
+        <input type="hidden" name="check_keywords" value="yes" />
+        <input type="hidden" name="area" value="default" />
+      </form>
+    </div>
+  </div>
+</div><div class="sidebar-links" role="navigation" aria-label="main navigation">
+  
+    <div class="sidebar-group">
+      <p class="caption">
+        <span class="caption-text"><a href="../index.html#getting-started">getting started</a></span>
+      </p>
+      <ul class="">
+        
+          <li class="toctree-l1 "><a href="../general-info.html" class="reference internal ">License</a>
+
+            
+          </li>
+
+        
+      </ul>
+    </div>
+  
+    <div class="sidebar-group">
+      <p class="caption">
+        <span class="caption-text"><a href="../index.html#documentation">documentation</a></span>
+      </p>
+      <ul class="">
+        
+          <li class="toctree-l1 "><a href="../cpd.html" class="reference internal ">Change point detection: a general formulation</a>
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 "><a href="../detection/index.html" class="reference internal ">Search methods</a>
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 "><a href="index.html" class="reference internal ">Cost functions</a>
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 "><a href="../datasets/index.html" class="reference internal ">Synthetic signals</a>
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 "><a href="../metrics/index.html" class="reference internal ">Evaluation</a>
+
+            
+          </li>
+
+        
+      </ul>
+    </div>
+  
+</div>
+        </sidebar>
+
+      <page>
+          <div class="body-header" role="navigation" aria-label="navigation">
+  
+  <ul class="breadcrumbs">
+    <li><a href="../index.html">Docs</a> &raquo;</li>
+    
+      <li><a href="index.html">Cost functions</a> &raquo;</li>
+    
+    <li>Autoregressive model change</li>
+  </ul>
+  
+
+  <ul class="page-nav">
+  <li class="prev">
+    <a href="costlinear.html"
+       title="previous chapter">← Linear model change</a>
+  </li>
+  <li class="next">
+    <a href="costml.html"
+       title="next chapter">Mahalanobis-type metric →</a>
+  </li>
+</ul>
+  
+</div>
+<hr>
+          <div class="content" role="main">
+            
+  <span class="target" id="module-ruptures.costs.costautoregressive"></span><div class="section" id="autoregressive-model-change">
+<span id="sec-autoregressive"></span><h1>Autoregressive model change<a class="headerlink" href="#autoregressive-model-change" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="description">
+<h2>Description<a class="headerlink" href="#description" title="Permalink to this headline">¶</a></h2>
+<p>Let <span class="math notranslate nohighlight">\(0&lt;t_1&lt;t_2&lt;\dots&lt;n\)</span> be unknown change points indexes.
+Consider the following piecewise autoregressive model</p>
+<div class="math notranslate nohighlight">
+\[y_t = z_t' \delta_j + \varepsilon_t, \quad \forall t=t_j,\dots,t_{j+1}-1\]</div>
+<p>where <span class="math notranslate nohighlight">\(j&gt;1\)</span> is the segment number, <span class="math notranslate nohighlight">\(z_t=[y_{t-1}, y_{t-2},\dots,y_{t-p}]\)</span> is the lag vector,and <span class="math notranslate nohighlight">\(p&gt;0\)</span> is the order of the process.</p>
+<p>The least-squares estimates of the break dates is obtained by minimiming the sum of squared
+residuals <a class="bibtex reference internal" href="#ar-bai2000" id="id1">[ARBai00]</a>.
+Formally, the associated cost function on an interval <span class="math notranslate nohighlight">\(I\)</span> is</p>
+<blockquote>
+<div><div class="math notranslate nohighlight">
+\[c(y_{I}) = \min_{\delta\in\mathbb{R}^p} \sum_{t\in I} \|y_t - \delta' z_t \|_2^2\]</div>
+</div></blockquote>
+</div>
+<div class="section" id="usage">
+<h2>Usage<a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h2>
+<p>Start with the usual imports and create a signal with piecewise linear trends.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">itertools</span> <span class="kn">import</span> <span class="n">cycle</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pylab</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">ruptures</span> <span class="k">as</span> <span class="nn">rpt</span>
+<span class="c1"># creation of data</span>
+<span class="n">n</span> <span class="o">=</span> <span class="mi">2000</span>
+<span class="n">n_bkps</span><span class="p">,</span> <span class="n">sigma</span> <span class="o">=</span> <span class="mi">4</span><span class="p">,</span> <span class="mf">0.5</span>  <span class="c1"># number of change points, noise standart deviation</span>
+<span class="n">bkps</span> <span class="o">=</span> <span class="p">[</span><span class="mi">400</span><span class="p">,</span> <span class="mi">1000</span><span class="p">,</span> <span class="mi">1300</span><span class="p">,</span> <span class="mi">1800</span><span class="p">,</span> <span class="n">n</span><span class="p">]</span>
+<span class="n">f1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.075</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">])</span>
+<span class="n">f2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.125</span><span class="p">])</span>
+<span class="n">freqs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">n</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+<span class="k">for</span> <span class="n">sub</span><span class="p">,</span> <span class="n">val</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">freqs</span><span class="p">,</span> <span class="n">bkps</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]),</span> <span class="n">cycle</span><span class="p">([</span><span class="n">f1</span><span class="p">,</span> <span class="n">f2</span><span class="p">])):</span>
+    <span class="n">sub</span> <span class="o">+=</span> <span class="n">val</span>
+<span class="n">tt</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+<span class="n">signal</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">((</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">*</span><span class="n">tt</span><span class="o">*</span><span class="n">f</span><span class="p">)</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">freqs</span><span class="o">.</span><span class="n">T</span><span class="p">))</span>
+<span class="n">signal</span> <span class="o">+=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">scale</span><span class="o">=</span><span class="n">sigma</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">signal</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="c1"># display signal</span>
+<span class="n">rpt</span><span class="o">.</span><span class="n">show</span><span class="o">.</span><span class="n">display</span><span class="p">(</span><span class="n">signal</span><span class="p">,</span> <span class="n">bkps</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Then create a <code class="xref py py-class docutils literal notranslate"><span class="pre">CostAR</span></code> instance and print the cost of the sub-signal
+<code class="code docutils literal notranslate"><span class="pre">signal[50:150]</span></code>.
+The autoregressive order can be specified through the keyword <code class="docutils literal notranslate"><span class="pre">'order'</span></code>.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">c</span> <span class="o">=</span> <span class="n">rpt</span><span class="o">.</span><span class="n">costs</span><span class="o">.</span><span class="n">CostAR</span><span class="p">(</span><span class="n">order</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">signal</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">c</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="mi">50</span><span class="p">,</span> <span class="mi">150</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>You can also compute the sum of costs for a given list of change points.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">c</span><span class="o">.</span><span class="n">sum_of_costs</span><span class="p">(</span><span class="n">bkps</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">c</span><span class="o">.</span><span class="n">sum_of_costs</span><span class="p">([</span><span class="mi">10</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">200</span><span class="p">,</span> <span class="mi">250</span><span class="p">,</span> <span class="n">n</span><span class="p">]))</span>
+</pre></div>
+</div>
+<p>In order to use this cost class in a change point detection algorithm (inheriting from
+<code class="xref py py-class docutils literal notranslate"><span class="pre">BaseEstimator</span></code>), either pass a <code class="xref py py-class docutils literal notranslate"><span class="pre">CostAR</span></code> instance (through the argument
+<code class="docutils literal notranslate"><span class="pre">'custom_cost'</span></code>) or set <code class="code docutils literal notranslate"><span class="pre">model=&quot;ar&quot;</span></code>.
+Additional parameters can be passed to the cost instance through the keyword <code class="docutils literal notranslate"><span class="pre">'params'</span></code>.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">c</span> <span class="o">=</span> <span class="n">rpt</span><span class="o">.</span><span class="n">costs</span><span class="o">.</span><span class="n">CostAR</span><span class="p">(</span><span class="n">order</span><span class="o">=</span><span class="mi">10</span><span class="p">);</span> <span class="n">algo</span> <span class="o">=</span> <span class="n">rpt</span><span class="o">.</span><span class="n">Dynp</span><span class="p">(</span><span class="n">custom_cost</span><span class="o">=</span><span class="n">c</span><span class="p">)</span>
+<span class="c1"># is equivalent to</span>
+<span class="n">algo</span> <span class="o">=</span> <span class="n">rpt</span><span class="o">.</span><span class="n">Dynp</span><span class="p">(</span><span class="n">model</span><span class="o">=</span><span class="s2">&quot;ar&quot;</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;order&quot;</span><span class="p">:</span> <span class="mi">10</span><span class="p">})</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="code-explanation">
+<h2>Code explanation<a class="headerlink" href="#code-explanation" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt id="ruptures.costs.CostAR">
+<em class="property">class </em><code class="sig-prename descclassname">ruptures.costs.</code><code class="sig-name descname">CostAR</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">order</span><span class="o">=</span><span class="default_value">4</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ruptures/costs/costautoregressive.html#CostAR"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ruptures.costs.CostAR" title="Permalink to this definition">¶</a></dt>
+<dd><p>Least-squares estimate for changes in autoregressive coefficients.</p>
+<dl class="py method">
+<dt id="ruptures.costs.CostAR.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">order</span><span class="o">=</span><span class="default_value">4</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ruptures/costs/costautoregressive.html#CostAR.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ruptures.costs.CostAR.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initialize self.  See help(type(self)) for accurate signature.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="ruptures.costs.CostAR.error">
+<code class="sig-name descname">error</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">start</span></em>, <em class="sig-param"><span class="n">end</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ruptures/costs/costautoregressive.html#CostAR.error"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ruptures.costs.CostAR.error" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the approximation cost on the segment [start:end].</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>start</strong> (<em>int</em>) – start of the segment</p></li>
+<li><p><strong>end</strong> (<em>int</em>) – end of the segment</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>segment cost</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><strong>NotEnoughPoints</strong> – when the segment is too short (less than <code class="docutils literal notranslate"><span class="pre">'min_size'</span></code> samples).</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="ruptures.costs.CostAR.fit">
+<code class="sig-name descname">fit</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">signal</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ruptures/costs/costautoregressive.html#CostAR.fit"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ruptures.costs.CostAR.fit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set parameters of the instance.
+The signal must be 1D.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>signal</strong> (<em>array</em>) – 1d signal. Shape (n_samples, 1) or (n_samples,).</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>self</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<p class="rubric">References</p>
+<p id="bibtex-bibliography-costs/costautoregressive-0"><dl class="citation">
+<dt class="bibtex label" id="ar-bai2000"><span class="brackets"><a class="fn-backref" href="#id1">ARBai00</a></span></dt>
+<dd><p>J. Bai. Vector autoregressive models with structural changes in regression coefficients and in variance–covariance matrices. <em>Annals of Economics and Finance</em>, 1:303–339, 2000.</p>
+</dd>
+</dl>
+</p>
+</div>
+</div>
+
+
+          </div>
+          <div class="page-nav">
+            <div class="inner"><ul class="page-nav">
+  <li class="prev">
+    <a href="costlinear.html"
+       title="previous chapter">← Linear model change</a>
+  </li>
+  <li class="next">
+    <a href="costml.html"
+       title="next chapter">Mahalanobis-type metric →</a>
+  </li>
+</ul><div class="footer" role="contentinfo">
+      &#169; Copyright 2017, ENS Paris-Saclay, CNRS.
+    Last updated on Aug 03, 2020.
+    <br>
+    Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.1.2 with <a href="https://github.com/schettino72/sphinx_press_theme">Press Theme</a>.
+</div>
+            </div>
+          </div>
+      </page>
+    </div>
+    
+    
+  </body>
+</html>

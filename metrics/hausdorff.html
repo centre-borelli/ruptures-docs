@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html >
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+      <title>Hausdorff metric</title>
+    
+      <link rel="stylesheet" href="../_static/pygments.css">
+      <link rel="stylesheet" href="../_static/theme.css">
+      <link rel="stylesheet" href="../_static/sphinx_press_theme.css">
+      
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+
+      <!-- sphinx script_files -->
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+      
+      <script src="../_static/theme-vendors.js"></script>
+      <script src="../_static/theme.js" defer></script>
+    
+  <link rel="index" title="Index" href="../genindex.html" />
+  <link rel="search" title="Search" href="../search.html" />
+  <link rel="next" title="Rand index" href="randindex.html" />
+  <link rel="prev" title="Evaluation" href="index.html" /> 
+  </head>
+
+  <body>
+    <div id="app" class="theme-container" :class="pageClasses"><navbar @toggle-sidebar="toggleSidebar">
+  <router-link to="../index.html" class="home-link">
+    
+      <span class="site-name">ruptures</span>
+    
+  </router-link>
+
+  <div class="links">
+    <navlinks class="can-hide">
+
+  
+    <div class="nav-item">
+      <a href="../index.html#getting-started"
+         class="nav-link ">
+         getting started
+      </a>
+    </div>
+  
+    <div class="nav-item">
+      <a href="../index.html#documentation"
+         class="nav-link ">
+         documentation
+      </a>
+    </div>
+  
+
+
+
+  
+    <div class="nav-item">
+      <a href="https://github.com/deepcharles/ruptures/"
+        class="nav-link external">
+          Github <outboundlink/>
+      </a>
+    </div>
+  
+
+    </navlinks>
+  </div>
+</navbar>
+
+      
+      <div class="sidebar-mask" @click="toggleSidebar(false)">
+      </div>
+        <sidebar @toggle-sidebar="toggleSidebar">
+          
+          <navlinks>
+            
+
+  
+    <div class="nav-item">
+      <a href="../index.html#getting-started"
+         class="nav-link ">
+         getting started
+      </a>
+    </div>
+  
+    <div class="nav-item">
+      <a href="../index.html#documentation"
+         class="nav-link ">
+         documentation
+      </a>
+    </div>
+  
+
+
+
+  
+    <div class="nav-item">
+      <a href="https://github.com/deepcharles/ruptures/"
+        class="nav-link external">
+          Github <outboundlink/>
+      </a>
+    </div>
+  
+
+            
+          </navlinks><div id="searchbox" class="searchbox" role="search">
+  <div class="caption"><span class="caption-text">Quick search</span>
+    <div class="searchformwrapper">
+      <form class="search" action="../search.html" method="get">
+        <input type="text" name="q" />
+        <input type="submit" value="Search" />
+        <input type="hidden" name="check_keywords" value="yes" />
+        <input type="hidden" name="area" value="default" />
+      </form>
+    </div>
+  </div>
+</div><div class="sidebar-links" role="navigation" aria-label="main navigation">
+  
+    <div class="sidebar-group">
+      <p class="caption">
+        <span class="caption-text"><a href="../index.html#getting-started">getting started</a></span>
+      </p>
+      <ul class="">
+        
+          <li class="toctree-l1 "><a href="../general-info.html" class="reference internal ">License</a>
+
+            
+          </li>
+
+        
+      </ul>
+    </div>
+  
+    <div class="sidebar-group">
+      <p class="caption">
+        <span class="caption-text"><a href="../index.html#documentation">documentation</a></span>
+      </p>
+      <ul class="">
+        
+          <li class="toctree-l1 "><a href="../cpd.html" class="reference internal ">Change point detection: a general formulation</a>
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 "><a href="../detection/index.html" class="reference internal ">Search methods</a>
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 "><a href="../costs/index.html" class="reference internal ">Cost functions</a>
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 "><a href="../datasets/index.html" class="reference internal ">Synthetic signals</a>
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 "><a href="index.html" class="reference internal ">Evaluation</a>
+
+            
+          </li>
+
+        
+      </ul>
+    </div>
+  
+</div>
+        </sidebar>
+
+      <page>
+          <div class="body-header" role="navigation" aria-label="navigation">
+  
+  <ul class="breadcrumbs">
+    <li><a href="../index.html">Docs</a> &raquo;</li>
+    
+      <li><a href="index.html">Evaluation</a> &raquo;</li>
+    
+    <li>Hausdorff metric</li>
+  </ul>
+  
+
+  <ul class="page-nav">
+  <li class="prev">
+    <a href="index.html"
+       title="previous chapter">← Evaluation</a>
+  </li>
+  <li class="next">
+    <a href="randindex.html"
+       title="next chapter">Rand index →</a>
+  </li>
+</ul>
+  
+</div>
+<hr>
+          <div class="content" role="main">
+            
+  <span class="target" id="module-ruptures.metrics.hausdorff"></span><div class="section" id="hausdorff-metric">
+<span id="sec-hausdorff"></span><h1>Hausdorff metric<a class="headerlink" href="#hausdorff-metric" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="description">
+<h2>Description<a class="headerlink" href="#description" title="Permalink to this headline">¶</a></h2>
+<p>The Hausdorff metric measures the worst prediction error.
+Assume a set of change point indexes <span class="math notranslate nohighlight">\(t_1,t_2,\dots\)</span> and their estimates <span class="math notranslate nohighlight">\(\hat{t}_1, \hat{t}_2,\dots\)</span>.
+The Hausdorff metric is then equal to</p>
+<blockquote>
+<div><div class="math notranslate nohighlight">
+\[\text{Hausdorff}(\{t_k\}_k, \{\hat{t}_k\}_k) :=  \max \{ \max_k \min_l |t_k - \hat{t}_l| \, , \max_k \min_l |\hat{t}_k - t_l|\}.\]</div>
+</div></blockquote>
+<div class="figure align-default" id="id1">
+<a class="reference internal image-reference" href="../_images/hausdorff.png"><img alt="hausdorff metric" src="../_images/hausdorff.png" style="width: 624.5px; height: 266.5px;" /></a>
+<p class="caption"><span class="caption-text">Schematic example: true segmentation in gray, estimated segmentation in dashed lines. Here, Hausdorff is equal to <span class="math notranslate nohighlight">\(\max(\Delta t_1, \Delta t_2, \Delta t_3)\)</span>.</span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
+</div>
+</div>
+<div class="section" id="usage">
+<h2>Usage<a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h2>
+<p>Start with the usual imports and create two segmentations to compare.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">ruptures.metrics</span> <span class="kn">import</span> <span class="n">hausdorff</span>
+<span class="n">bkps1</span><span class="p">,</span> <span class="n">bkps2</span> <span class="o">=</span> <span class="p">[</span><span class="mi">100</span><span class="p">,</span> <span class="mi">200</span><span class="p">,</span> <span class="mi">500</span><span class="p">],</span> <span class="p">[</span><span class="mi">105</span><span class="p">,</span> <span class="mi">115</span><span class="p">,</span> <span class="mi">350</span><span class="p">,</span> <span class="mi">400</span><span class="p">,</span> <span class="mi">500</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">hausdorff</span><span class="p">(</span><span class="n">bkps1</span><span class="p">,</span> <span class="n">bkps2</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="code-explanation">
+<h2>Code explanation<a class="headerlink" href="#code-explanation" title="Permalink to this headline">¶</a></h2>
+<dl class="py function">
+<dt id="ruptures.metrics.hausdorff.hausdorff">
+<code class="sig-prename descclassname">ruptures.metrics.hausdorff.</code><code class="sig-name descname">hausdorff</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">bkps1</span></em>, <em class="sig-param"><span class="n">bkps2</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ruptures/metrics/hausdorff.html#hausdorff"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ruptures.metrics.hausdorff.hausdorff" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute the Hausdorff distance between changepoints.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>bkps1</strong> (<em>list</em>) – list of the last index of each regime.</p></li>
+<li><p><strong>bkps2</strong> (<em>list</em>) – list of the last index of each regime.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Hausdorff distance.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+</div>
+
+
+          </div>
+          <div class="page-nav">
+            <div class="inner"><ul class="page-nav">
+  <li class="prev">
+    <a href="index.html"
+       title="previous chapter">← Evaluation</a>
+  </li>
+  <li class="next">
+    <a href="randindex.html"
+       title="next chapter">Rand index →</a>
+  </li>
+</ul><div class="footer" role="contentinfo">
+      &#169; Copyright 2017, ENS Paris-Saclay, CNRS.
+    Last updated on Aug 03, 2020.
+    <br>
+    Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.1.2 with <a href="https://github.com/schettino72/sphinx_press_theme">Press Theme</a>.
+</div>
+            </div>
+          </div>
+      </page>
+    </div>
+    
+    
+  </body>
+</html>

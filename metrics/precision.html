@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html >
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+      <title>Precision and recall</title>
+    
+      <link rel="stylesheet" href="../_static/pygments.css">
+      <link rel="stylesheet" href="../_static/theme.css">
+      <link rel="stylesheet" href="../_static/sphinx_press_theme.css">
+      
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+
+      <!-- sphinx script_files -->
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+      
+      <script src="../_static/theme-vendors.js"></script>
+      <script src="../_static/theme.js" defer></script>
+    
+  <link rel="index" title="Index" href="../genindex.html" />
+  <link rel="search" title="Search" href="../search.html" />
+  <link rel="next" title="Display" href="display.html" />
+  <link rel="prev" title="Rand index" href="randindex.html" /> 
+  </head>
+
+  <body>
+    <div id="app" class="theme-container" :class="pageClasses"><navbar @toggle-sidebar="toggleSidebar">
+  <router-link to="../index.html" class="home-link">
+    
+      <span class="site-name">ruptures</span>
+    
+  </router-link>
+
+  <div class="links">
+    <navlinks class="can-hide">
+
+  
+    <div class="nav-item">
+      <a href="../index.html#getting-started"
+         class="nav-link ">
+         getting started
+      </a>
+    </div>
+  
+    <div class="nav-item">
+      <a href="../index.html#documentation"
+         class="nav-link ">
+         documentation
+      </a>
+    </div>
+  
+
+
+
+  
+    <div class="nav-item">
+      <a href="https://github.com/deepcharles/ruptures/"
+        class="nav-link external">
+          Github <outboundlink/>
+      </a>
+    </div>
+  
+
+    </navlinks>
+  </div>
+</navbar>
+
+      
+      <div class="sidebar-mask" @click="toggleSidebar(false)">
+      </div>
+        <sidebar @toggle-sidebar="toggleSidebar">
+          
+          <navlinks>
+            
+
+  
+    <div class="nav-item">
+      <a href="../index.html#getting-started"
+         class="nav-link ">
+         getting started
+      </a>
+    </div>
+  
+    <div class="nav-item">
+      <a href="../index.html#documentation"
+         class="nav-link ">
+         documentation
+      </a>
+    </div>
+  
+
+
+
+  
+    <div class="nav-item">
+      <a href="https://github.com/deepcharles/ruptures/"
+        class="nav-link external">
+          Github <outboundlink/>
+      </a>
+    </div>
+  
+
+            
+          </navlinks><div id="searchbox" class="searchbox" role="search">
+  <div class="caption"><span class="caption-text">Quick search</span>
+    <div class="searchformwrapper">
+      <form class="search" action="../search.html" method="get">
+        <input type="text" name="q" />
+        <input type="submit" value="Search" />
+        <input type="hidden" name="check_keywords" value="yes" />
+        <input type="hidden" name="area" value="default" />
+      </form>
+    </div>
+  </div>
+</div><div class="sidebar-links" role="navigation" aria-label="main navigation">
+  
+    <div class="sidebar-group">
+      <p class="caption">
+        <span class="caption-text"><a href="../index.html#getting-started">getting started</a></span>
+      </p>
+      <ul class="">
+        
+          <li class="toctree-l1 "><a href="../general-info.html" class="reference internal ">License</a>
+
+            
+          </li>
+
+        
+      </ul>
+    </div>
+  
+    <div class="sidebar-group">
+      <p class="caption">
+        <span class="caption-text"><a href="../index.html#documentation">documentation</a></span>
+      </p>
+      <ul class="">
+        
+          <li class="toctree-l1 "><a href="../cpd.html" class="reference internal ">Change point detection: a general formulation</a>
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 "><a href="../detection/index.html" class="reference internal ">Search methods</a>
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 "><a href="../costs/index.html" class="reference internal ">Cost functions</a>
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 "><a href="../datasets/index.html" class="reference internal ">Synthetic signals</a>
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 "><a href="index.html" class="reference internal ">Evaluation</a>
+
+            
+          </li>
+
+        
+      </ul>
+    </div>
+  
+</div>
+        </sidebar>
+
+      <page>
+          <div class="body-header" role="navigation" aria-label="navigation">
+  
+  <ul class="breadcrumbs">
+    <li><a href="../index.html">Docs</a> &raquo;</li>
+    
+      <li><a href="index.html">Evaluation</a> &raquo;</li>
+    
+    <li>Precision and recall</li>
+  </ul>
+  
+
+  <ul class="page-nav">
+  <li class="prev">
+    <a href="randindex.html"
+       title="previous chapter">← Rand index</a>
+  </li>
+  <li class="next">
+    <a href="display.html"
+       title="next chapter">Display →</a>
+  </li>
+</ul>
+  
+</div>
+<hr>
+          <div class="content" role="main">
+            
+  <span class="target" id="module-ruptures.metrics.precisionrecall"></span><div class="section" id="precision-and-recall">
+<span id="sec-precision"></span><h1>Precision and recall<a class="headerlink" href="#precision-and-recall" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="description">
+<h2>Description<a class="headerlink" href="#description" title="Permalink to this headline">¶</a></h2>
+<p>A true changepoint is declared “detected” (or positive) if there is at least one computed changepoint at less than “margin” points from it.
+Formally, assume a set of change point indexes <span class="math notranslate nohighlight">\(t_1,t_2,\dots\)</span> and their estimates <span class="math notranslate nohighlight">\(\hat{t}_1, \hat{t}_2,\dots\)</span>
+In the context of change point detection, precision and recall are defined as follows:</p>
+<blockquote>
+<div><div class="math notranslate nohighlight">
+\[\text{precision}:=|\text{TP}|/|\{\hat{t}_l\}_l| \quad \text{and}\quad\text{recall}:=|\text{TP}|/|\{t_k\}_k|\]</div>
+</div></blockquote>
+<p>where, for a given margin <span class="math notranslate nohighlight">\(M\)</span>, true positives <span class="math notranslate nohighlight">\(\text{TP}\)</span> are true change points for which there is an estimated one at less than <span class="math notranslate nohighlight">\(M\)</span> samples, <em>i.e</em></p>
+<blockquote>
+<div><div class="math notranslate nohighlight">
+\[\text{TP}:= \{t_k\,|\, \exists\, \hat{t}_l\,\, \text{s.t.}\, |\hat{t}_l - t_k|&lt;M \}.\]</div>
+</div></blockquote>
+<div class="figure align-default" id="id1">
+<a class="reference internal image-reference" href="../_images/precision_recall.png"><img alt="Schematic view of the precision and recall" src="../_images/precision_recall.png" style="width: 624.5px; height: 294.5px;" /></a>
+<p class="caption"><span class="caption-text">Schematic example: true segmentation in gray, estimated segmentation in dashed lines and margin in dashed areas. Here, precision is 2/3 and recall is 2/2.</span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
+</div>
+</div>
+<div class="section" id="usage">
+<h2>Usage<a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h2>
+<p>Start with the usual imports and create two segmentations to compare.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">ruptures.metrics</span> <span class="kn">import</span> <span class="n">precision_recall</span>
+<span class="n">bkps1</span><span class="p">,</span> <span class="n">bkps2</span> <span class="o">=</span> <span class="p">[</span><span class="mi">100</span><span class="p">,</span> <span class="mi">200</span><span class="p">,</span> <span class="mi">500</span><span class="p">],</span> <span class="p">[</span><span class="mi">105</span><span class="p">,</span> <span class="mi">115</span><span class="p">,</span> <span class="mi">350</span><span class="p">,</span> <span class="mi">400</span><span class="p">,</span> <span class="mi">500</span><span class="p">]</span>
+<span class="n">p</span><span class="p">,</span> <span class="n">r</span> <span class="o">=</span> <span class="n">precision_recall</span><span class="p">(</span><span class="n">bkps1</span><span class="p">,</span> <span class="n">bkps2</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">((</span><span class="n">p</span><span class="p">,</span> <span class="n">r</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>The margin paramater <span class="math notranslate nohighlight">\(M\)</span> can be changed through the keyword <code class="docutils literal notranslate"><span class="pre">'margin'</span></code> (default is 10 samples).</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">p</span><span class="p">,</span> <span class="n">r</span> <span class="o">=</span> <span class="n">precision_recall</span><span class="p">(</span><span class="n">bkps1</span><span class="p">,</span> <span class="n">bkps2</span><span class="p">,</span> <span class="n">margin</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">((</span><span class="n">p</span><span class="p">,</span> <span class="n">r</span><span class="p">))</span>
+<span class="n">p</span><span class="p">,</span> <span class="n">r</span> <span class="o">=</span> <span class="n">precision_recall</span><span class="p">(</span><span class="n">bkps1</span><span class="p">,</span> <span class="n">bkps2</span><span class="p">,</span> <span class="n">margin</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">((</span><span class="n">p</span><span class="p">,</span> <span class="n">r</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="code-explanation">
+<h2>Code explanation<a class="headerlink" href="#code-explanation" title="Permalink to this headline">¶</a></h2>
+<dl class="py function">
+<dt id="ruptures.metrics.precisionrecall.precision_recall">
+<code class="sig-prename descclassname">ruptures.metrics.precisionrecall.</code><code class="sig-name descname">precision_recall</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">true_bkps</span></em>, <em class="sig-param"><span class="n">my_bkps</span></em>, <em class="sig-param"><span class="n">margin</span><span class="o">=</span><span class="default_value">10</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ruptures/metrics/precisionrecall.html#precision_recall"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ruptures.metrics.precisionrecall.precision_recall" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculate the precision/recall of an estimated segmentation compared with the true segmentation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>true_bkps</strong> (<em>list</em>) – list of the last index of each regime (true
+partition).</p></li>
+<li><p><strong>my_bkps</strong> (<em>list</em>) – list of the last index of each regime (computed
+partition).</p></li>
+<li><p><strong>margin</strong> (<em>int</em><em>, </em><em>optional</em>) – allowed error (in points).</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>(precision, recall)</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>tuple</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+</div>
+
+
+          </div>
+          <div class="page-nav">
+            <div class="inner"><ul class="page-nav">
+  <li class="prev">
+    <a href="randindex.html"
+       title="previous chapter">← Rand index</a>
+  </li>
+  <li class="next">
+    <a href="display.html"
+       title="next chapter">Display →</a>
+  </li>
+</ul><div class="footer" role="contentinfo">
+      &#169; Copyright 2017, ENS Paris-Saclay, CNRS.
+    Last updated on Aug 03, 2020.
+    <br>
+    Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.1.2 with <a href="https://github.com/schettino72/sphinx_press_theme">Press Theme</a>.
+</div>
+            </div>
+          </div>
+      </page>
+    </div>
+    
+    
+  </body>
+</html>

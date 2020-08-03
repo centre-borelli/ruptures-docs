@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html >
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+      <title>ruptures.costs.costautoregressive</title>
+    
+      <link rel="stylesheet" href="../../../_static/pygments.css">
+      <link rel="stylesheet" href="../../../_static/theme.css">
+      <link rel="stylesheet" href="../../../_static/sphinx_press_theme.css">
+      
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+
+      <!-- sphinx script_files -->
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/language_data.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+      
+      <script src="../../../_static/theme-vendors.js"></script>
+      <script src="../../../_static/theme.js" defer></script>
+    
+  <link rel="index" title="Index" href="../../../genindex.html" />
+  <link rel="search" title="Search" href="../../../search.html" /> 
+  </head>
+
+  <body>
+    <div id="app" class="theme-container" :class="pageClasses"><navbar @toggle-sidebar="toggleSidebar">
+  <router-link to="../../../index.html" class="home-link">
+    
+      <span class="site-name">ruptures</span>
+    
+  </router-link>
+
+  <div class="links">
+    <navlinks class="can-hide">
+
+  
+    <div class="nav-item">
+      <a href="../../../index.html#getting-started"
+         class="nav-link ">
+         getting started
+      </a>
+    </div>
+  
+    <div class="nav-item">
+      <a href="../../../index.html#documentation"
+         class="nav-link ">
+         documentation
+      </a>
+    </div>
+  
+
+
+
+  
+    <div class="nav-item">
+      <a href="https://github.com/deepcharles/ruptures/"
+        class="nav-link external">
+          Github <outboundlink/>
+      </a>
+    </div>
+  
+
+    </navlinks>
+  </div>
+</navbar>
+
+      
+      <div class="sidebar-mask" @click="toggleSidebar(false)">
+      </div>
+        <sidebar @toggle-sidebar="toggleSidebar">
+          
+          <navlinks>
+            
+
+  
+    <div class="nav-item">
+      <a href="../../../index.html#getting-started"
+         class="nav-link ">
+         getting started
+      </a>
+    </div>
+  
+    <div class="nav-item">
+      <a href="../../../index.html#documentation"
+         class="nav-link ">
+         documentation
+      </a>
+    </div>
+  
+
+
+
+  
+    <div class="nav-item">
+      <a href="https://github.com/deepcharles/ruptures/"
+        class="nav-link external">
+          Github <outboundlink/>
+      </a>
+    </div>
+  
+
+            
+          </navlinks><div id="searchbox" class="searchbox" role="search">
+  <div class="caption"><span class="caption-text">Quick search</span>
+    <div class="searchformwrapper">
+      <form class="search" action="../../../search.html" method="get">
+        <input type="text" name="q" />
+        <input type="submit" value="Search" />
+        <input type="hidden" name="check_keywords" value="yes" />
+        <input type="hidden" name="area" value="default" />
+      </form>
+    </div>
+  </div>
+</div><div class="sidebar-links" role="navigation" aria-label="main navigation">
+  
+    <div class="sidebar-group">
+      <p class="caption">
+        <span class="caption-text"><a href="../../../index.html#getting-started">getting started</a></span>
+      </p>
+      <ul class="">
+        
+          <li class="toctree-l1 "><a href="../../../general-info.html" class="reference internal ">License</a>
+
+            
+          </li>
+
+        
+      </ul>
+    </div>
+  
+    <div class="sidebar-group">
+      <p class="caption">
+        <span class="caption-text"><a href="../../../index.html#documentation">documentation</a></span>
+      </p>
+      <ul class="">
+        
+          <li class="toctree-l1 "><a href="../../../cpd.html" class="reference internal ">Change point detection: a general formulation</a>
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 "><a href="../../../detection/index.html" class="reference internal ">Search methods</a>
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 "><a href="../../../costs/index.html" class="reference internal ">Cost functions</a>
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 "><a href="../../../datasets/index.html" class="reference internal ">Synthetic signals</a>
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 "><a href="../../../metrics/index.html" class="reference internal ">Evaluation</a>
+
+            
+          </li>
+
+        
+      </ul>
+    </div>
+  
+</div>
+        </sidebar>
+
+      <page>
+          <div class="body-header" role="navigation" aria-label="navigation">
+  
+  <ul class="breadcrumbs">
+    <li><a href="../../../index.html">Docs</a> &raquo;</li>
+    
+      <li><a href="../../index.html">Module code</a> &raquo;</li>
+    
+    <li>ruptures.costs.costautoregressive</li>
+  </ul>
+  
+
+  <ul class="page-nav">
+</ul>
+  
+</div>
+<hr>
+          <div class="content" role="main">
+            
+  <h1>Source code for ruptures.costs.costautoregressive</h1><div class="highlight"><pre>
+<span></span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
+
+<span class="sd">.. _sec-autoregressive:</span>
+
+<span class="sd">Autoregressive model change</span>
+<span class="sd">====================================================================================================</span>
+
+<span class="sd">Description</span>
+<span class="sd">----------------------------------------------------------------------------------------------------</span>
+
+<span class="sd">Let :math:`0&lt;t_1&lt;t_2&lt;\dots&lt;n` be unknown change points indexes.</span>
+<span class="sd">Consider the following piecewise autoregressive model</span>
+
+<span class="sd">.. math::</span>
+
+<span class="sd">    y_t = z_t&#39; \delta_j + \varepsilon_t, \quad \forall t=t_j,\dots,t_{j+1}-1</span>
+
+<span class="sd">where :math:`j&gt;1` is the segment number, :math:`z_t=[y_{t-1}, y_{t-2},\dots,y_{t-p}]` is the lag vector,and :math:`p&gt;0` is the order of the process.</span>
+
+<span class="sd">The least-squares estimates of the break dates is obtained by minimiming the sum of squared</span>
+<span class="sd">residuals :cite:`ar-Bai2000`.</span>
+<span class="sd">Formally, the associated cost function on an interval :math:`I` is</span>
+
+<span class="sd">    .. math:: c(y_{I}) = \min_{\delta\in\mathbb{R}^p} \sum_{t\in I} \|y_t - \delta&#39; z_t \|_2^2</span>
+
+
+<span class="sd">Usage</span>
+<span class="sd">----------------------------------------------------------------------------------------------------</span>
+
+<span class="sd">Start with the usual imports and create a signal with piecewise linear trends.</span>
+
+<span class="sd">.. code-block:: python</span>
+
+<span class="sd">    from itertools import cycle</span>
+<span class="sd">    import numpy as np</span>
+<span class="sd">    import matplotlib.pylab as plt</span>
+<span class="sd">    import ruptures as rpt</span>
+<span class="sd">    # creation of data</span>
+<span class="sd">    n = 2000</span>
+<span class="sd">    n_bkps, sigma = 4, 0.5  # number of change points, noise standart deviation</span>
+<span class="sd">    bkps = [400, 1000, 1300, 1800, n]</span>
+<span class="sd">    f1 = np.array([0.075, 0.1])</span>
+<span class="sd">    f2 = np.array([0.1, 0.125])</span>
+<span class="sd">    freqs = np.zeros((n, 2))</span>
+<span class="sd">    for sub, val in zip(np.split(freqs, bkps[:-1]), cycle([f1, f2])):</span>
+<span class="sd">        sub += val</span>
+<span class="sd">    tt = np.arange(n)</span>
+<span class="sd">    signal = np.sum((np.sin(2*np.pi*tt*f) for f in freqs.T))</span>
+<span class="sd">    signal += np.random.normal(scale=sigma, size=signal.shape)</span>
+<span class="sd">    # display signal</span>
+<span class="sd">    rpt.show.display(signal, bkps, figsize=(10, 6))</span>
+<span class="sd">    plt.show()</span>
+
+<span class="sd">Then create a :class:`CostAR` instance and print the cost of the sub-signal</span>
+<span class="sd">:code:`signal[50:150]`.</span>
+<span class="sd">The autoregressive order can be specified through the keyword ``&#39;order&#39;``.</span>
+
+<span class="sd">.. code-block:: python</span>
+
+<span class="sd">    c = rpt.costs.CostAR(order=10).fit(signal)</span>
+<span class="sd">    print(c.error(50, 150))</span>
+
+
+<span class="sd">You can also compute the sum of costs for a given list of change points.</span>
+
+<span class="sd">.. code-block:: python</span>
+
+<span class="sd">    print(c.sum_of_costs(bkps))</span>
+<span class="sd">    print(c.sum_of_costs([10, 100, 200, 250, n]))</span>
+
+
+<span class="sd">In order to use this cost class in a change point detection algorithm (inheriting from</span>
+<span class="sd">:class:`BaseEstimator`), either pass a :class:`CostAR` instance (through the argument</span>
+<span class="sd">``&#39;custom_cost&#39;``) or set :code:`model=&quot;ar&quot;`.</span>
+<span class="sd">Additional parameters can be passed to the cost instance through the keyword ``&#39;params&#39;``.</span>
+
+<span class="sd">.. code-block:: python</span>
+
+<span class="sd">    c = rpt.costs.CostAR(order=10); algo = rpt.Dynp(custom_cost=c)</span>
+<span class="sd">    # is equivalent to</span>
+<span class="sd">    algo = rpt.Dynp(model=&quot;ar&quot;, params={&quot;order&quot;: 10})</span>
+
+
+<span class="sd">Code explanation</span>
+<span class="sd">----------------------------------------------------------------------------------------------------</span>
+
+<span class="sd">.. autoclass:: ruptures.costs.CostAR</span>
+<span class="sd">    :members:</span>
+<span class="sd">    :special-members: __init__</span>
+
+
+<span class="sd">.. rubric:: References</span>
+
+<span class="sd">.. bibliography:: ../biblio.bib</span>
+<span class="sd">    :style: alpha</span>
+<span class="sd">    :cited:</span>
+<span class="sd">    :labelprefix: AR</span>
+<span class="sd">    :keyprefix: ar-</span>
+
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">numpy.lib.stride_tricks</span> <span class="kn">import</span> <span class="n">as_strided</span>
+<span class="kn">from</span> <span class="nn">numpy.linalg</span> <span class="kn">import</span> <span class="n">lstsq</span>
+
+<span class="kn">from</span> <span class="nn">ruptures.base</span> <span class="kn">import</span> <span class="n">BaseCost</span>
+<span class="kn">from</span> <span class="nn">ruptures.costs</span> <span class="kn">import</span> <span class="n">NotEnoughPoints</span>
+
+
+<div class="viewcode-block" id="CostAR"><a class="viewcode-back" href="../../../costs/costautoregressive.html#ruptures.costs.CostAR">[docs]</a><span class="k">class</span> <span class="nc">CostAR</span><span class="p">(</span><span class="n">BaseCost</span><span class="p">):</span>
+
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Least-squares estimate for changes in autoregressive coefficients.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">model</span> <span class="o">=</span> <span class="s2">&quot;ar&quot;</span>
+
+<div class="viewcode-block" id="CostAR.__init__"><a class="viewcode-back" href="../../../costs/costautoregressive.html#ruptures.costs.CostAR.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="mi">4</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">signal</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">covar</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">min_size</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="n">order</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">order</span> <span class="o">=</span> <span class="n">order</span></div>
+
+<div class="viewcode-block" id="CostAR.fit"><a class="viewcode-back" href="../../../costs/costautoregressive.html#ruptures.costs.CostAR.fit">[docs]</a>    <span class="k">def</span> <span class="nf">fit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">signal</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Set parameters of the instance.</span>
+<span class="sd">        The signal must be 1D.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            signal (array): 1d signal. Shape (n_samples, 1) or (n_samples,).</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            self</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">signal</span><span class="o">.</span><span class="n">ndim</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">signal</span> <span class="o">=</span> <span class="n">signal</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">signal</span> <span class="o">=</span> <span class="n">signal</span>
+
+        <span class="c1"># lagged covariates</span>
+        <span class="n">n_samples</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">signal</span><span class="o">.</span><span class="n">shape</span>
+        <span class="n">strides</span> <span class="o">=</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">signal</span><span class="o">.</span><span class="n">itemsize</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">signal</span><span class="o">.</span><span class="n">itemsize</span><span class="p">)</span>
+        <span class="n">shape</span> <span class="o">=</span> <span class="p">(</span><span class="n">n_samples</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">order</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">order</span><span class="p">)</span>
+        <span class="n">lagged</span> <span class="o">=</span> <span class="n">as_strided</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">signal</span><span class="p">,</span> <span class="n">shape</span><span class="o">=</span><span class="n">shape</span><span class="p">,</span> <span class="n">strides</span><span class="o">=</span><span class="n">strides</span><span class="p">)</span>
+        <span class="c1"># pad the first columns</span>
+        <span class="n">lagged_after_padding</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">pad</span><span class="p">(</span><span class="n">lagged</span><span class="p">,</span>
+                                      <span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">order</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)),</span>
+                                      <span class="n">mode</span><span class="o">=</span><span class="s2">&quot;edge&quot;</span><span class="p">)</span>
+        <span class="c1"># add intercept</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">covar</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">c_</span><span class="p">[</span><span class="n">lagged_after_padding</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">n_samples</span><span class="p">)]</span>
+        <span class="c1"># pad signal on the edges</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">signal</span><span class="p">[:</span><span class="bp">self</span><span class="o">.</span><span class="n">order</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">signal</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">order</span><span class="p">]</span>
+        <span class="k">return</span> <span class="bp">self</span></div>
+
+<div class="viewcode-block" id="CostAR.error"><a class="viewcode-back" href="../../../costs/costautoregressive.html#ruptures.costs.CostAR.error">[docs]</a>    <span class="k">def</span> <span class="nf">error</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">start</span><span class="p">,</span> <span class="n">end</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Return the approximation cost on the segment [start:end].</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            start (int): start of the segment</span>
+<span class="sd">            end (int): end of the segment</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            float: segment cost</span>
+
+<span class="sd">        Raises:</span>
+<span class="sd">            NotEnoughPoints: when the segment is too short (less than ``&#39;min_size&#39;`` samples).</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">end</span> <span class="o">-</span> <span class="n">start</span> <span class="o">&lt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">min_size</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">NotEnoughPoints</span>
+        <span class="n">y</span><span class="p">,</span> <span class="n">X</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">signal</span><span class="p">[</span><span class="n">start</span><span class="p">:</span><span class="n">end</span><span class="p">],</span> <span class="bp">self</span><span class="o">.</span><span class="n">covar</span><span class="p">[</span><span class="n">start</span><span class="p">:</span><span class="n">end</span><span class="p">]</span>
+        <span class="n">_</span><span class="p">,</span> <span class="n">residual</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">lstsq</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">rcond</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">residual</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span></div></div>
+</pre></div>
+
+          </div>
+          <div class="page-nav">
+            <div class="inner"><ul class="page-nav">
+</ul><div class="footer" role="contentinfo">
+      &#169; Copyright 2017, ENS Paris-Saclay, CNRS.
+    Last updated on Aug 03, 2020.
+    <br>
+    Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.1.2 with <a href="https://github.com/schettino72/sphinx_press_theme">Press Theme</a>.
+</div>
+            </div>
+          </div>
+      </page>
+    </div>
+    
+    
+  </body>
+</html>

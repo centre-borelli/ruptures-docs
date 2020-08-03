@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html >
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+      <title>ruptures.costs.costnormal</title>
+    
+      <link rel="stylesheet" href="../../../_static/pygments.css">
+      <link rel="stylesheet" href="../../../_static/theme.css">
+      <link rel="stylesheet" href="../../../_static/sphinx_press_theme.css">
+      
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+
+      <!-- sphinx script_files -->
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/language_data.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+      
+      <script src="../../../_static/theme-vendors.js"></script>
+      <script src="../../../_static/theme.js" defer></script>
+    
+  <link rel="index" title="Index" href="../../../genindex.html" />
+  <link rel="search" title="Search" href="../../../search.html" /> 
+  </head>
+
+  <body>
+    <div id="app" class="theme-container" :class="pageClasses"><navbar @toggle-sidebar="toggleSidebar">
+  <router-link to="../../../index.html" class="home-link">
+    
+      <span class="site-name">ruptures</span>
+    
+  </router-link>
+
+  <div class="links">
+    <navlinks class="can-hide">
+
+  
+    <div class="nav-item">
+      <a href="../../../index.html#getting-started"
+         class="nav-link ">
+         getting started
+      </a>
+    </div>
+  
+    <div class="nav-item">
+      <a href="../../../index.html#documentation"
+         class="nav-link ">
+         documentation
+      </a>
+    </div>
+  
+
+
+
+  
+    <div class="nav-item">
+      <a href="https://github.com/deepcharles/ruptures/"
+        class="nav-link external">
+          Github <outboundlink/>
+      </a>
+    </div>
+  
+
+    </navlinks>
+  </div>
+</navbar>
+
+      
+      <div class="sidebar-mask" @click="toggleSidebar(false)">
+      </div>
+        <sidebar @toggle-sidebar="toggleSidebar">
+          
+          <navlinks>
+            
+
+  
+    <div class="nav-item">
+      <a href="../../../index.html#getting-started"
+         class="nav-link ">
+         getting started
+      </a>
+    </div>
+  
+    <div class="nav-item">
+      <a href="../../../index.html#documentation"
+         class="nav-link ">
+         documentation
+      </a>
+    </div>
+  
+
+
+
+  
+    <div class="nav-item">
+      <a href="https://github.com/deepcharles/ruptures/"
+        class="nav-link external">
+          Github <outboundlink/>
+      </a>
+    </div>
+  
+
+            
+          </navlinks><div id="searchbox" class="searchbox" role="search">
+  <div class="caption"><span class="caption-text">Quick search</span>
+    <div class="searchformwrapper">
+      <form class="search" action="../../../search.html" method="get">
+        <input type="text" name="q" />
+        <input type="submit" value="Search" />
+        <input type="hidden" name="check_keywords" value="yes" />
+        <input type="hidden" name="area" value="default" />
+      </form>
+    </div>
+  </div>
+</div><div class="sidebar-links" role="navigation" aria-label="main navigation">
+  
+    <div class="sidebar-group">
+      <p class="caption">
+        <span class="caption-text"><a href="../../../index.html#getting-started">getting started</a></span>
+      </p>
+      <ul class="">
+        
+          <li class="toctree-l1 "><a href="../../../general-info.html" class="reference internal ">License</a>
+
+            
+          </li>
+
+        
+      </ul>
+    </div>
+  
+    <div class="sidebar-group">
+      <p class="caption">
+        <span class="caption-text"><a href="../../../index.html#documentation">documentation</a></span>
+      </p>
+      <ul class="">
+        
+          <li class="toctree-l1 "><a href="../../../cpd.html" class="reference internal ">Change point detection: a general formulation</a>
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 "><a href="../../../detection/index.html" class="reference internal ">Search methods</a>
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 "><a href="../../../costs/index.html" class="reference internal ">Cost functions</a>
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 "><a href="../../../datasets/index.html" class="reference internal ">Synthetic signals</a>
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 "><a href="../../../metrics/index.html" class="reference internal ">Evaluation</a>
+
+            
+          </li>
+
+        
+      </ul>
+    </div>
+  
+</div>
+        </sidebar>
+
+      <page>
+          <div class="body-header" role="navigation" aria-label="navigation">
+  
+  <ul class="breadcrumbs">
+    <li><a href="../../../index.html">Docs</a> &raquo;</li>
+    
+      <li><a href="../../index.html">Module code</a> &raquo;</li>
+    
+    <li>ruptures.costs.costnormal</li>
+  </ul>
+  
+
+  <ul class="page-nav">
+</ul>
+  
+</div>
+<hr>
+          <div class="content" role="main">
+            
+  <h1>Source code for ruptures.costs.costnormal</h1><div class="highlight"><pre>
+<span></span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">.. _sec-normal:</span>
+
+<span class="sd">Gaussian process change</span>
+<span class="sd">====================================================================================================</span>
+
+<span class="sd">Description</span>
+<span class="sd">----------------------------------------------------------------------------------------------------</span>
+
+<span class="sd">This cost function detects changes in the mean and scale of a Gaussian time series.</span>
+<span class="sd">Formally, for a signal :math:`\{y_t\}_t` on an interval :math:`I`,</span>
+
+<span class="sd">    .. math:: c(y_{I}) = |I| \log\det\widehat{\Sigma}_I</span>
+
+<span class="sd">where :math:`\widehat{\Sigma}_I` is the empirical covariance matrix of the sub-signal :math:`\{y_t\}_{t\in I}`.</span>
+
+
+<span class="sd">Usage</span>
+<span class="sd">----------------------------------------------------------------------------------------------------</span>
+
+<span class="sd">Start with the usual imports and create a signal.</span>
+
+<span class="sd">.. code-block:: python</span>
+
+<span class="sd">    import numpy as np</span>
+<span class="sd">    import matplotlib.pylab as plt</span>
+<span class="sd">    import ruptures as rpt</span>
+<span class="sd">    # creation of data</span>
+<span class="sd">    n, dim = 500, 3  # number of samples, dimension</span>
+<span class="sd">    n_bkps, sigma = 3, 5  # number of change points, noise standart deviation</span>
+<span class="sd">    signal, bkps = rpt.pw_constant(n, dim, n_bkps, noise_std=sigma)</span>
+
+<span class="sd">Then create a :class:`CostNormal` instance and print the cost of the sub-signal :code:`signal[50:150]`.</span>
+
+<span class="sd">.. code-block:: python</span>
+
+<span class="sd">    c = rpt.costs.CostNormal().fit(signal)</span>
+<span class="sd">    print(c.error(50, 150))</span>
+
+<span class="sd">You can also compute the sum of costs for a given list of change points.</span>
+
+<span class="sd">.. code-block:: python</span>
+
+<span class="sd">    print(c.sum_of_costs(bkps))</span>
+<span class="sd">    print(c.sum_of_costs([10, 100, 200, 250, n]))</span>
+
+
+<span class="sd">In order to use this cost class in a change point detection algorithm (inheriting from :class:`BaseEstimator`), either pass a :class:`CostNormal` instance (through the argument ``&#39;custom_cost&#39;``) or set :code:`model=&quot;normal&quot;`.</span>
+
+<span class="sd">.. code-block:: python</span>
+
+<span class="sd">    c = rpt.costs.CostNormal(); algo = rpt.Dynp(custom_cost=c)</span>
+<span class="sd">    # is equivalent to</span>
+<span class="sd">    algo = rpt.Dynp(model=&quot;normal&quot;)</span>
+
+
+<span class="sd">Code explanation</span>
+<span class="sd">----------------------------------------------------------------------------------------------------</span>
+
+<span class="sd">.. autoclass:: ruptures.costs.CostNormal</span>
+<span class="sd">    :members:</span>
+<span class="sd">    :special-members: __init__</span>
+
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">numpy.linalg</span> <span class="kn">import</span> <span class="n">slogdet</span>
+
+<span class="kn">from</span> <span class="nn">ruptures.base</span> <span class="kn">import</span> <span class="n">BaseCost</span>
+<span class="kn">from</span> <span class="nn">ruptures.costs</span> <span class="kn">import</span> <span class="n">NotEnoughPoints</span>
+
+
+<div class="viewcode-block" id="CostNormal"><a class="viewcode-back" href="../../../costs/costnormal.html#ruptures.costs.CostNormal">[docs]</a><span class="k">class</span> <span class="nc">CostNormal</span><span class="p">(</span><span class="n">BaseCost</span><span class="p">):</span>
+
+    <span class="sd">&quot;&quot;&quot;Maximum Gaussian likelihood.&quot;&quot;&quot;</span>
+
+    <span class="n">model</span> <span class="o">=</span> <span class="s2">&quot;normal&quot;</span>
+
+<div class="viewcode-block" id="CostNormal.__init__"><a class="viewcode-back" href="../../../costs/costnormal.html#ruptures.costs.CostNormal.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">signal</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">min_size</span> <span class="o">=</span> <span class="mi">2</span></div>
+
+<div class="viewcode-block" id="CostNormal.fit"><a class="viewcode-back" href="../../../costs/costnormal.html#ruptures.costs.CostNormal.fit">[docs]</a>    <span class="k">def</span> <span class="nf">fit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">signal</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Set parameters of the instance.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            signal (array): signal. Shape (n_samples,) or (n_samples, n_features)</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            self</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">signal</span><span class="o">.</span><span class="n">ndim</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">signal</span> <span class="o">=</span> <span class="n">signal</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">signal</span> <span class="o">=</span> <span class="n">signal</span>
+
+        <span class="k">return</span> <span class="bp">self</span></div>
+
+<div class="viewcode-block" id="CostNormal.error"><a class="viewcode-back" href="../../../costs/costnormal.html#ruptures.costs.CostNormal.error">[docs]</a>    <span class="k">def</span> <span class="nf">error</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">start</span><span class="p">,</span> <span class="n">end</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Return the approximation cost on the segment [start:end].</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            start (int): start of the segment</span>
+<span class="sd">            end (int): end of the segment</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            float: segment cost</span>
+
+<span class="sd">        Raises:</span>
+<span class="sd">            NotEnoughPoints: when the segment is too short (less than ``&#39;min_size&#39;`` samples).</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">end</span> <span class="o">-</span> <span class="n">start</span> <span class="o">&lt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">min_size</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">NotEnoughPoints</span>
+        <span class="n">sub</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">signal</span><span class="p">[</span><span class="n">start</span><span class="p">:</span><span class="n">end</span><span class="p">]</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">signal</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="n">cov</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cov</span><span class="p">(</span><span class="n">sub</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">cov</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="n">sub</span><span class="o">.</span><span class="n">var</span><span class="p">()]])</span>
+        <span class="n">_</span><span class="p">,</span> <span class="n">val</span> <span class="o">=</span> <span class="n">slogdet</span><span class="p">(</span><span class="n">cov</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">val</span> <span class="o">*</span> <span class="p">(</span><span class="n">end</span> <span class="o">-</span> <span class="n">start</span><span class="p">)</span></div></div>
+</pre></div>
+
+          </div>
+          <div class="page-nav">
+            <div class="inner"><ul class="page-nav">
+</ul><div class="footer" role="contentinfo">
+      &#169; Copyright 2017, ENS Paris-Saclay, CNRS.
+    Last updated on Aug 03, 2020.
+    <br>
+    Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.1.2 with <a href="https://github.com/schettino72/sphinx_press_theme">Press Theme</a>.
+</div>
+            </div>
+          </div>
+      </page>
+    </div>
+    
+    
+  </body>
+</html>
