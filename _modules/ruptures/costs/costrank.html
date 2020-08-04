@@ -305,11 +305,10 @@
         <span class="c1"># Convert signal data into ranks in the range [1, n]</span>
         <span class="n">ranks</span> <span class="o">=</span> <span class="n">rankdata</span><span class="p">(</span><span class="n">signal</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
         <span class="c1"># Center the ranks into the range [-(n+1)/2, (n+1)/2]</span>
-        <span class="n">centered_ranks</span> <span class="o">=</span> <span class="p">(</span><span class="n">ranks</span> <span class="o">-</span> <span class="p">((</span><span class="n">obs</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span><span class="p">))</span>
+        <span class="n">centered_ranks</span> <span class="o">=</span> <span class="n">ranks</span> <span class="o">-</span> <span class="p">((</span><span class="n">obs</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span>
         <span class="c1"># Sigma is the covariance of these ranks.</span>
         <span class="c1"># If it&#39;s a scalar, reshape it into a 1x1 matrix</span>
-        <span class="n">cov</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cov</span><span class="p">(</span><span class="n">centered_ranks</span><span class="p">,</span> <span class="n">rowvar</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-                     <span class="n">bias</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="nb">vars</span><span class="p">,</span> <span class="nb">vars</span><span class="p">)</span>
+        <span class="n">cov</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cov</span><span class="p">(</span><span class="n">centered_ranks</span><span class="p">,</span> <span class="n">rowvar</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">bias</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="nb">vars</span><span class="p">,</span> <span class="nb">vars</span><span class="p">)</span>
 
         <span class="c1"># Use the pseudoinverse to handle linear dependencies</span>
         <span class="c1"># see Lung-Yut-Fong, A., Lévy-Leduc, C., &amp; Cappé, O. (2015)</span>
@@ -350,7 +349,7 @@
             <div class="inner"><ul class="page-nav">
 </ul><div class="footer" role="contentinfo">
       &#169; Copyright 2017, ENS Paris-Saclay, CNRS.
-    Last updated on Aug 03, 2020.
+    Last updated on Aug 04, 2020.
     <br>
     Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.1.2 with <a href="https://github.com/schettino72/sphinx_press_theme">Press Theme</a>.
 </div>

@@ -303,9 +303,9 @@
             <span class="n">K</span> <span class="o">=</span> <span class="n">pdist</span><span class="p">(</span><span class="n">signal</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">metric</span><span class="o">=</span><span class="s2">&quot;sqeuclidean&quot;</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="n">K</span> <span class="o">=</span> <span class="n">pdist</span><span class="p">(</span><span class="n">signal</span><span class="p">,</span> <span class="n">metric</span><span class="o">=</span><span class="s2">&quot;sqeuclidean&quot;</span><span class="p">)</span>
-        <span class="n">K_median</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">median</span><span class="p">(</span><span class="n">K</span><span class="p">)</span> 
+        <span class="n">K_median</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">median</span><span class="p">(</span><span class="n">K</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">K_median</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
-             <span class="n">K</span><span class="o">/=</span> <span class="n">K_median</span>
+            <span class="n">K</span> <span class="o">/=</span> <span class="n">K_median</span>
         <span class="n">np</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="n">K</span><span class="p">,</span> <span class="mf">1e-2</span><span class="p">,</span> <span class="mf">1e2</span><span class="p">,</span> <span class="n">K</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">gram</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">squareform</span><span class="p">(</span><span class="o">-</span><span class="n">K</span><span class="p">))</span>
         <span class="k">return</span> <span class="bp">self</span></div>
@@ -336,7 +336,7 @@
             <div class="inner"><ul class="page-nav">
 </ul><div class="footer" role="contentinfo">
       &#169; Copyright 2017, ENS Paris-Saclay, CNRS.
-    Last updated on Aug 03, 2020.
+    Last updated on Aug 04, 2020.
     <br>
     Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.1.2 with <a href="https://github.com/schettino72/sphinx_press_theme">Press Theme</a>.
 </div>

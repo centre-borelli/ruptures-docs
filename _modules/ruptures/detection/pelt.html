@@ -310,8 +310,7 @@
         <span class="n">admissible</span> <span class="o">=</span> <span class="p">[]</span>
 
         <span class="c1"># Recursion</span>
-        <span class="n">ind</span> <span class="o">=</span> <span class="p">[</span>
-            <span class="n">k</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">n_samples</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">jump</span><span class="p">)</span> <span class="k">if</span> <span class="n">k</span> <span class="o">&gt;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">min_size</span><span class="p">]</span>
+        <span class="n">ind</span> <span class="o">=</span> <span class="p">[</span><span class="n">k</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">n_samples</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">jump</span><span class="p">)</span> <span class="k">if</span> <span class="n">k</span> <span class="o">&gt;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">min_size</span><span class="p">]</span>
         <span class="n">ind</span> <span class="o">+=</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">n_samples</span><span class="p">]</span>
         <span class="k">for</span> <span class="n">bkp</span> <span class="ow">in</span> <span class="n">ind</span><span class="p">:</span>
             <span class="c1"># adding a point to the admissible set from the previous loop.</span>
@@ -331,13 +330,13 @@
                 <span class="n">subproblems</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">tmp_partition</span><span class="p">)</span>
 
             <span class="c1"># finding the optimal partition</span>
-            <span class="n">partitions</span><span class="p">[</span><span class="n">bkp</span><span class="p">]</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span>
-                <span class="n">subproblems</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">d</span><span class="p">:</span> <span class="nb">sum</span><span class="p">(</span><span class="n">d</span><span class="o">.</span><span class="n">values</span><span class="p">()))</span>
+            <span class="n">partitions</span><span class="p">[</span><span class="n">bkp</span><span class="p">]</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">subproblems</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">d</span><span class="p">:</span> <span class="nb">sum</span><span class="p">(</span><span class="n">d</span><span class="o">.</span><span class="n">values</span><span class="p">()))</span>
             <span class="c1"># trimming the admissible set</span>
-            <span class="n">admissible</span> <span class="o">=</span> <span class="p">[</span><span class="n">t</span> <span class="k">for</span> <span class="n">t</span><span class="p">,</span> <span class="n">partition</span> <span class="ow">in</span>
-                          <span class="nb">zip</span><span class="p">(</span><span class="n">admissible</span><span class="p">,</span> <span class="n">subproblems</span><span class="p">)</span> <span class="k">if</span>
-                          <span class="nb">sum</span><span class="p">(</span><span class="n">partition</span><span class="o">.</span><span class="n">values</span><span class="p">())</span> <span class="o">&lt;=</span>
-                          <span class="nb">sum</span><span class="p">(</span><span class="n">partitions</span><span class="p">[</span><span class="n">bkp</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">())</span> <span class="o">+</span> <span class="n">pen</span><span class="p">]</span>
+            <span class="n">admissible</span> <span class="o">=</span> <span class="p">[</span>
+                <span class="n">t</span>
+                <span class="k">for</span> <span class="n">t</span><span class="p">,</span> <span class="n">partition</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">admissible</span><span class="p">,</span> <span class="n">subproblems</span><span class="p">)</span>
+                <span class="k">if</span> <span class="nb">sum</span><span class="p">(</span><span class="n">partition</span><span class="o">.</span><span class="n">values</span><span class="p">())</span> <span class="o">&lt;=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">partitions</span><span class="p">[</span><span class="n">bkp</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">())</span> <span class="o">+</span> <span class="n">pen</span>
+            <span class="p">]</span>
 
         <span class="n">best_partition</span> <span class="o">=</span> <span class="n">partitions</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">n_samples</span><span class="p">]</span>
         <span class="k">del</span> <span class="n">best_partition</span><span class="p">[(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)]</span>
@@ -355,7 +354,7 @@
         <span class="c1"># update params</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">cost</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">signal</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">signal</span><span class="o">.</span><span class="n">ndim</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
-            <span class="n">n_samples</span><span class="p">,</span> <span class="o">=</span> <span class="n">signal</span><span class="o">.</span><span class="n">shape</span>
+            <span class="p">(</span><span class="n">n_samples</span><span class="p">,)</span> <span class="o">=</span> <span class="n">signal</span><span class="o">.</span><span class="n">shape</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="n">n_samples</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">signal</span><span class="o">.</span><span class="n">shape</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">n_samples</span> <span class="o">=</span> <span class="n">n_samples</span>
@@ -398,7 +397,7 @@
             <div class="inner"><ul class="page-nav">
 </ul><div class="footer" role="contentinfo">
       &#169; Copyright 2017, ENS Paris-Saclay, CNRS.
-    Last updated on Aug 03, 2020.
+    Last updated on Aug 04, 2020.
     <br>
     Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.1.2 with <a href="https://github.com/schettino72/sphinx_press_theme">Press Theme</a>.
 </div>

@@ -316,7 +316,9 @@
 
     <span class="sd">&quot;&quot;&quot;Window sliding method.&quot;&quot;&quot;</span>
 
-<div class="viewcode-block" id="Window.__init__"><a class="viewcode-back" href="../../../detection/window.html#ruptures.detection.Window.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">model</span><span class="o">=</span><span class="s2">&quot;l2&quot;</span><span class="p">,</span> <span class="n">custom_cost</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">min_size</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">jump</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="Window.__init__"><a class="viewcode-back" href="../../../detection/window.html#ruptures.detection.Window.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">model</span><span class="o">=</span><span class="s2">&quot;l2&quot;</span><span class="p">,</span> <span class="n">custom_cost</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">min_size</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">jump</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="kc">None</span>
+    <span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Instanciate with window length.</span>
 
 <span class="sd">        Args:</span>
@@ -366,10 +368,8 @@
         <span class="n">error</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">cost</span><span class="o">.</span><span class="n">sum_of_costs</span><span class="p">(</span><span class="n">bkps</span><span class="p">)</span>
         <span class="c1"># peak search</span>
         <span class="c1"># forcing order to be above one in case jump is too large (issue #16)</span>
-        <span class="n">order</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="nb">max</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">width</span><span class="p">,</span> <span class="mi">2</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">min_size</span><span class="p">)</span> <span class="o">//</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">jump</span><span class="p">),</span> <span class="mi">1</span><span class="p">)</span>
-        <span class="n">peak_inds_shifted</span><span class="p">,</span> <span class="o">=</span> <span class="n">argrelmax</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">score</span><span class="p">,</span>
-                                       <span class="n">order</span><span class="o">=</span><span class="n">order</span><span class="p">,</span>
-                                       <span class="n">mode</span><span class="o">=</span><span class="s2">&quot;wrap&quot;</span><span class="p">)</span>
+        <span class="n">order</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="nb">max</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">width</span><span class="p">,</span> <span class="mi">2</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">min_size</span><span class="p">)</span> <span class="o">//</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">jump</span><span class="p">),</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="p">(</span><span class="n">peak_inds_shifted</span><span class="p">,)</span> <span class="o">=</span> <span class="n">argrelmax</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">score</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="n">order</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s2">&quot;wrap&quot;</span><span class="p">)</span>
 
         <span class="k">if</span> <span class="n">peak_inds_shifted</span><span class="o">.</span><span class="n">size</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>  <span class="c1"># no peaks if the score is constant</span>
             <span class="k">return</span> <span class="n">bkps</span>
@@ -424,11 +424,11 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">signal</span> <span class="o">=</span> <span class="n">signal</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">n_samples</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">signal</span><span class="o">.</span><span class="n">shape</span>
         <span class="c1"># indexes</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">inds</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">n_samples</span><span class="p">,</span>
-                              <span class="n">step</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">jump</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">inds</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">n_samples</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">jump</span><span class="p">)</span>
         <span class="c1"># delete borders</span>
         <span class="n">keep</span> <span class="o">=</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">inds</span> <span class="o">&gt;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">width</span> <span class="o">//</span> <span class="mi">2</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">inds</span> <span class="o">&lt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">n_samples</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">width</span> <span class="o">//</span> <span class="mi">2</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">inds</span> <span class="o">&lt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">n_samples</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">width</span> <span class="o">//</span> <span class="mi">2</span>
+        <span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">inds</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">inds</span><span class="p">[</span><span class="n">keep</span><span class="p">]</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">cost</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">signal</span><span class="p">)</span>
         <span class="c1"># compute score</span>
@@ -473,7 +473,7 @@
             <div class="inner"><ul class="page-nav">
 </ul><div class="footer" role="contentinfo">
       &#169; Copyright 2017, ENS Paris-Saclay, CNRS.
-    Last updated on Aug 03, 2020.
+    Last updated on Aug 04, 2020.
     <br>
     Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.1.2 with <a href="https://github.com/schettino72/sphinx_press_theme">Press Theme</a>.
 </div>

@@ -213,7 +213,7 @@
 
 <span class="sd">where :math:`j&gt;1` is the segment number, :math:`z_t=[y_{t-1}, y_{t-2},\dots,y_{t-p}]` is the lag vector,and :math:`p&gt;0` is the order of the process.</span>
 
-<span class="sd">The least-squares estimates of the break dates is obtained by minimiming the sum of squared</span>
+<span class="sd">The least-squares estimates of the break dates is obtained by minimizing the sum of squared</span>
 <span class="sd">residuals :cite:`ar-Bai2000`.</span>
 <span class="sd">Formally, the associated cost function on an interval :math:`I` is</span>
 
@@ -337,13 +337,11 @@
         <span class="n">shape</span> <span class="o">=</span> <span class="p">(</span><span class="n">n_samples</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">order</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">order</span><span class="p">)</span>
         <span class="n">lagged</span> <span class="o">=</span> <span class="n">as_strided</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">signal</span><span class="p">,</span> <span class="n">shape</span><span class="o">=</span><span class="n">shape</span><span class="p">,</span> <span class="n">strides</span><span class="o">=</span><span class="n">strides</span><span class="p">)</span>
         <span class="c1"># pad the first columns</span>
-        <span class="n">lagged_after_padding</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">pad</span><span class="p">(</span><span class="n">lagged</span><span class="p">,</span>
-                                      <span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">order</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)),</span>
-                                      <span class="n">mode</span><span class="o">=</span><span class="s2">&quot;edge&quot;</span><span class="p">)</span>
+        <span class="n">lagged_after_padding</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">pad</span><span class="p">(</span><span class="n">lagged</span><span class="p">,</span> <span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">order</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)),</span> <span class="n">mode</span><span class="o">=</span><span class="s2">&quot;edge&quot;</span><span class="p">)</span>
         <span class="c1"># add intercept</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">covar</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">c_</span><span class="p">[</span><span class="n">lagged_after_padding</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">n_samples</span><span class="p">)]</span>
         <span class="c1"># pad signal on the edges</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">signal</span><span class="p">[:</span><span class="bp">self</span><span class="o">.</span><span class="n">order</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">signal</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">order</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">signal</span><span class="p">[:</span> <span class="bp">self</span><span class="o">.</span><span class="n">order</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">signal</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">order</span><span class="p">]</span>
         <span class="k">return</span> <span class="bp">self</span></div>
 
 <div class="viewcode-block" id="CostAR.error"><a class="viewcode-back" href="../../../costs/costautoregressive.html#ruptures.costs.CostAR.error">[docs]</a>    <span class="k">def</span> <span class="nf">error</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">start</span><span class="p">,</span> <span class="n">end</span><span class="p">):</span>
@@ -371,7 +369,7 @@
             <div class="inner"><ul class="page-nav">
 </ul><div class="footer" role="contentinfo">
       &#169; Copyright 2017, ENS Paris-Saclay, CNRS.
-    Last updated on Aug 03, 2020.
+    Last updated on Aug 04, 2020.
     <br>
     Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.1.2 with <a href="https://github.com/schettino72/sphinx_press_theme">Press Theme</a>.
 </div>

@@ -319,9 +319,12 @@
                     <span class="k">if</span> <span class="n">end</span> <span class="o">-</span> <span class="n">bkp</span> <span class="o">&gt;=</span> <span class="n">min_size</span><span class="p">:</span>
                         <span class="n">admissible_bkps</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">bkp</span><span class="p">)</span>
 
-            <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span>
-                <span class="n">admissible_bkps</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;No admissible last breakpoints found.</span><span class="se">\</span>
-<span class="s2">             start, end: (</span><span class="si">{}</span><span class="s2">,</span><span class="si">{}</span><span class="s2">), n_bkps: </span><span class="si">{}</span><span class="s2">.&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="n">end</span><span class="p">,</span> <span class="n">n_bkps</span><span class="p">)</span>
+            <span class="k">assert</span> <span class="p">(</span>
+                <span class="nb">len</span><span class="p">(</span><span class="n">admissible_bkps</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span>
+            <span class="p">),</span> <span class="s2">&quot;No admissible last breakpoints found.</span><span class="se">\</span>
+<span class="s2">             start, end: (</span><span class="si">{}</span><span class="s2">,</span><span class="si">{}</span><span class="s2">), n_bkps: </span><span class="si">{}</span><span class="s2">.&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+                <span class="n">start</span><span class="p">,</span> <span class="n">end</span><span class="p">,</span> <span class="n">n_bkps</span>
+            <span class="p">)</span>
 
             <span class="c1"># Compute the subproblems</span>
             <span class="n">sub_problems</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
@@ -391,7 +394,7 @@
             <div class="inner"><ul class="page-nav">
 </ul><div class="footer" role="contentinfo">
       &#169; Copyright 2017, ENS Paris-Saclay, CNRS.
-    Last updated on Aug 03, 2020.
+    Last updated on Aug 04, 2020.
     <br>
     Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.1.2 with <a href="https://github.com/schettino72/sphinx_press_theme">Press Theme</a>.
 </div>

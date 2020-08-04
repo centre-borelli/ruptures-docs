@@ -252,10 +252,9 @@
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="n">covar</span> <span class="o">=</span> <span class="n">normal</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="n">n_samples</span><span class="p">,</span> <span class="n">n_features</span><span class="p">))</span>
-    <span class="n">linear_coeff</span><span class="p">,</span> <span class="n">bkps</span> <span class="o">=</span> <span class="n">pw_constant</span><span class="p">(</span><span class="n">n_samples</span><span class="o">=</span><span class="n">n_samples</span><span class="p">,</span>
-                                     <span class="n">n_bkps</span><span class="o">=</span><span class="n">n_bkps</span><span class="p">,</span>
-                                     <span class="n">n_features</span><span class="o">=</span><span class="n">n_features</span><span class="p">,</span>
-                                     <span class="n">noise_std</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+    <span class="n">linear_coeff</span><span class="p">,</span> <span class="n">bkps</span> <span class="o">=</span> <span class="n">pw_constant</span><span class="p">(</span>
+        <span class="n">n_samples</span><span class="o">=</span><span class="n">n_samples</span><span class="p">,</span> <span class="n">n_bkps</span><span class="o">=</span><span class="n">n_bkps</span><span class="p">,</span> <span class="n">n_features</span><span class="o">=</span><span class="n">n_features</span><span class="p">,</span> <span class="n">noise_std</span><span class="o">=</span><span class="kc">None</span>
+    <span class="p">)</span>
     <span class="n">var</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">linear_coeff</span> <span class="o">*</span> <span class="n">covar</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">noise_std</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
         <span class="n">var</span> <span class="o">+=</span> <span class="n">normal</span><span class="p">(</span><span class="n">scale</span><span class="o">=</span><span class="n">noise_std</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">var</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
@@ -268,7 +267,7 @@
             <div class="inner"><ul class="page-nav">
 </ul><div class="footer" role="contentinfo">
       &#169; Copyright 2017, ENS Paris-Saclay, CNRS.
-    Last updated on Aug 03, 2020.
+    Last updated on Aug 04, 2020.
     <br>
     Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.1.2 with <a href="https://github.com/schettino72/sphinx_press_theme">Press Theme</a>.
 </div>

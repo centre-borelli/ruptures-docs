@@ -272,17 +272,18 @@
 <span class="sd">        tuple: (precision, recall)</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">sanity_check</span><span class="p">(</span><span class="n">true_bkps</span><span class="p">,</span> <span class="n">my_bkps</span><span class="p">)</span>
-    <span class="k">assert</span> <span class="n">margin</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;Margin of error must be positive (margin = </span><span class="si">{}</span><span class="s2">)&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
-        <span class="n">margin</span><span class="p">)</span>
+    <span class="k">assert</span> <span class="n">margin</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;Margin of error must be positive (margin = </span><span class="si">{}</span><span class="s2">)&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">margin</span><span class="p">)</span>
 
     <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">my_bkps</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
         <span class="k">return</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span>
 
     <span class="n">used</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
-    <span class="n">true_pos</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">true_b</span>
-                   <span class="k">for</span> <span class="n">true_b</span><span class="p">,</span> <span class="n">my_b</span> <span class="ow">in</span> <span class="n">product</span><span class="p">(</span><span class="n">true_bkps</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">my_bkps</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
-                   <span class="k">if</span> <span class="n">my_b</span> <span class="o">-</span> <span class="n">margin</span> <span class="o">&lt;</span> <span class="n">true_b</span> <span class="o">&lt;</span> <span class="n">my_b</span> <span class="o">+</span> <span class="n">margin</span> <span class="ow">and</span>
-                   <span class="ow">not</span> <span class="p">(</span><span class="n">my_b</span> <span class="ow">in</span> <span class="n">used</span> <span class="ow">or</span> <span class="n">used</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">my_b</span><span class="p">)))</span>
+    <span class="n">true_pos</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span>
+        <span class="n">true_b</span>
+        <span class="k">for</span> <span class="n">true_b</span><span class="p">,</span> <span class="n">my_b</span> <span class="ow">in</span> <span class="n">product</span><span class="p">(</span><span class="n">true_bkps</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">my_bkps</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+        <span class="k">if</span> <span class="n">my_b</span> <span class="o">-</span> <span class="n">margin</span> <span class="o">&lt;</span> <span class="n">true_b</span> <span class="o">&lt;</span> <span class="n">my_b</span> <span class="o">+</span> <span class="n">margin</span>
+        <span class="ow">and</span> <span class="ow">not</span> <span class="p">(</span><span class="n">my_b</span> <span class="ow">in</span> <span class="n">used</span> <span class="ow">or</span> <span class="n">used</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">my_b</span><span class="p">))</span>
+    <span class="p">)</span>
 
     <span class="n">tp_</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">true_pos</span><span class="p">)</span>
     <span class="n">precision</span> <span class="o">=</span> <span class="n">tp_</span> <span class="o">/</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">my_bkps</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
@@ -295,7 +296,7 @@
             <div class="inner"><ul class="page-nav">
 </ul><div class="footer" role="contentinfo">
       &#169; Copyright 2017, ENS Paris-Saclay, CNRS.
-    Last updated on Aug 03, 2020.
+    Last updated on Aug 04, 2020.
     <br>
     Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.1.2 with <a href="https://github.com/schettino72/sphinx_press_theme">Press Theme</a>.
 </div>
