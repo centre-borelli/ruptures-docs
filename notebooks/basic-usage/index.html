@@ -210,7 +210,7 @@
     <li class="md-tabs__item">
       
         <a href="../../code-reference/" class="md-tabs__link">
-          Code Reference
+          Code reference
         </a>
       
     </li>
@@ -885,13 +885,13 @@
       <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5">
     
     <label class="md-nav__link" for="nav-5">
-      Code Reference
+      Code reference
       <span class="md-nav__icon md-icon"></span>
     </label>
-    <nav class="md-nav" aria-label="Code Reference" data-md-level="1">
+    <nav class="md-nav" aria-label="Code reference" data-md-level="1">
       <label class="md-nav__title" for="nav-5">
         <span class="md-nav__icon md-icon"></span>
-        Code Reference
+        Code reference
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
         
@@ -1415,7 +1415,7 @@
 <p>The true change points of this synthetic signal are available in the <code>bkps</code> variable.</p>
 <div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">bkps</span><span class="p">)</span>
 </code></pre></div>
-<pre><code>[194, 406, 608, 798, 1000]
+<pre><code>[211, 405, 601, 810, 1000]
 </code></pre>
 <p>Note that the first four element are change point indexes while the last is simply the number of samples.
 (This is a technical convention so that functions in <code>ruptures</code> always know the length of the signal at hand.)</p>
@@ -1433,7 +1433,7 @@ To that end, we use a well-known method called Pelt with a <span class="arithmat
 
 <span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
 </code></pre></div>
-<pre><code>[195, 405, 610, 800, 1000]
+<pre><code>[210, 405, 605, 810, 1000]
 </code></pre>
 <p>Again the first elements are change point indexes and the last is the number of samples.</p>
 <p>To visualy compare the true segmentation (<code>bkps</code>) and the estimated one (<code>result</code>), we can resort to <code>rpt.display</code> a second time.
