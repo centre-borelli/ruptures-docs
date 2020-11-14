@@ -8,8 +8,9 @@
       
       
       
+      
       <link rel="shortcut icon" href="../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-6.1.0">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-6.1.4">
     
     
       
@@ -17,10 +18,10 @@
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.bc7e593a.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.358818c7.min.css">
       
         
-        <link rel="stylesheet" href="../assets/stylesheets/palette.ab28b872.min.css">
+        <link rel="stylesheet" href="../assets/stylesheets/palette.f0267088.min.css">
         
       
     
@@ -1694,15 +1695,18 @@ They are listed in <code>requirements-dev.txt</code> and can be installed with t
 <h4 id="with-conda">With conda<a class="headerlink" href="#with-conda" title="Permanent link">#</a></h4>
 <div class="highlight"><pre><span></span><code>conda --file requirements-dev.txt
 </code></pre></div>
+<p>Then run the following command to install the <code>pre-commit</code> hooks.
+<div class="highlight"><pre><span></span><code>pre-commit install
+</code></pre></div></p>
 <h3 id="pre-commit-hooks">Pre-commit hooks<a class="headerlink" href="#pre-commit-hooks" title="Permanent link">#</a></h3>
 <p>We use <code>pre-commit</code> to run Git hooks before submitting the code to review.
-These hook scripts perform simple tasks before each commit (code formatting
-mostly).
-Once it is installed (it is part of the <a href="CONTRIBUTING.md#install-the-requirements">requirements</a>), run the following command.</p>
-<div class="highlight"><pre><span></span><code>pre-commit install
-</code></pre></div>
+These hook scripts perform simple tasks before each commit (code formatting mostly).</p>
+<p>Note that if you try to commit a non-compliant (i.e. badly formatted) file, <code>pre-commit</code> will modify this file and make the commit fail.
+However you need to stage the new changes <strong>yourself</strong> as <code>pre-commit</code> will not do that for you (this is by design; see <a href="https://github.com/pre-commit/pre-commit/issues/806">here</a> or <a href="https://github.com/pre-commit/pre-commit/issues/747">here</a>).
+Fortunately, <code>pre-commit</code> outputs useful messages.</p>
 <p>The list of hooks (and their options) can be found in <a href="https://github.com/deepcharles/ruptures/blob/master/.pre-commit-config.yaml"><code>.pre-commit-config.yaml</code></a>.
-For more information, see <a href="https://pre-commit.com/">their website</a>.</p>
+For more information, see <a href="https://pre-commit.com/">their website</a>.
+If you want to manually run all pre-commit hooks on a repository, run <code>pre-commit run --all-files</code>. To run individual hooks use <code>pre-commit run &lt;hook_id&gt;</code>.</p>
 <h2 id="contribute-to-the-code">Contribute to the code<a class="headerlink" href="#contribute-to-the-code" title="Permanent link">#</a></h2>
 <h3 id="write-tests">Write tests<a class="headerlink" href="#write-tests" title="Permanent link">#</a></h3>
 <p>The following command executes the test suite.</p>
@@ -1792,8 +1796,8 @@ When in doubt, you can refer to the <a href="https://www.python.org/dev/peps/pep
       
     </div>
     
-      <script src="../assets/javascripts/vendor.6a3d08fc.min.js"></script>
-      <script src="../assets/javascripts/bundle.71201edf.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}</script>
+      <script src="../assets/javascripts/vendor.7e0ee788.min.js"></script>
+      <script src="../assets/javascripts/bundle.b3a72adc.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}</script>
       
       <script>
         app = initialize({

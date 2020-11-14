@@ -8,8 +8,9 @@
       
       
       
+      
       <link rel="shortcut icon" href="../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-6.1.0">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-6.1.4">
     
     
       
@@ -17,10 +18,10 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.bc7e593a.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.358818c7.min.css">
       
         
-        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab28b872.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.f0267088.min.css">
         
       
     
@@ -1415,7 +1416,7 @@
 <p>The true change points of this synthetic signal are available in the <code>bkps</code> variable.</p>
 <div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">bkps</span><span class="p">)</span>
 </code></pre></div>
-<pre><code>[205, 407, 609, 803, 1000]
+<pre><code>[199, 390, 592, 797, 1000]
 </code></pre>
 <p>Note that the first four element are change point indexes while the last is simply the number of samples.
 (This is a technical convention so that functions in <code>ruptures</code> always know the length of the signal at hand.)</p>
@@ -1433,7 +1434,7 @@ To that end, we use a well-known method called Pelt with a <span class="arithmat
 
 <span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
 </code></pre></div>
-<pre><code>[205, 405, 610, 805, 1000]
+<pre><code>[200, 390, 590, 795, 1000]
 </code></pre>
 <p>Again the first elements are change point indexes and the last is the number of samples.</p>
 <p>To visualy compare the true segmentation (<code>bkps</code>) and the estimated ones (<code>result</code>), we can resort to <code>rpt.display</code> a second time.
@@ -1510,8 +1511,8 @@ In the following image, the alternating colors indicate the true breakpoints and
       
     </div>
     
-      <script src="../../assets/javascripts/vendor.6a3d08fc.min.js"></script>
-      <script src="../../assets/javascripts/bundle.71201edf.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}</script>
+      <script src="../../assets/javascripts/vendor.7e0ee788.min.js"></script>
+      <script src="../../assets/javascripts/bundle.b3a72adc.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}</script>
       
       <script>
         app = initialize({
