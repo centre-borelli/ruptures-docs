@@ -1504,7 +1504,7 @@
 <p>The true change points of this synthetic signal are available in the <code>bkps</code> variable.</p>
 <div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">bkps</span><span class="p">)</span>
 </code></pre></div>
-<pre><code>[204, 404, 615, 809, 1000]
+<pre><code>[203, 406, 599, 807, 1000]
 </code></pre>
 <p>Note that the first four element are change point indexes while the last is simply the number of samples.
 (This is a technical convention so that functions in <code>ruptures</code> always know the length of the signal at hand.)</p>
@@ -1533,17 +1533,17 @@ V(t_1,t_2,\dots,t_K) := \sum_{k=0}^K\sum_{t=t_k}^{t_{k+1}-1} \|y_t-\bar{y}_{t_k.
 
 <span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
 </code></pre></div>
-<pre><code>[205, 405, 615, 810, 1000]
+<pre><code>[205, 405, 600, 805, 1000]
 </code></pre>
-<h2 id="display-the-results">Display the results<a class="headerlink" href="#display-the-results" title="Permanent link">#</a></h2>
 <p>Again the first elements are change point indexes and the last is the number of samples.</p>
+<h2 id="display-the-results">Display the results<a class="headerlink" href="#display-the-results" title="Permanent link">#</a></h2>
 <p>To visualy compare the true segmentation (<code>bkps</code>) and the estimated one (<code>result</code>), we can resort to <code>rpt.display</code> a second time.
 In the following image, the alternating colors indicate the true breakpoints and the dashed vertical lines, the estimated breakpoints.</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># display</span>
 <span class="n">rpt</span><span class="o">.</span><span class="n">display</span><span class="p">(</span><span class="n">signal</span><span class="p">,</span> <span class="n">bkps</span><span class="p">,</span> <span class="n">result</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </code></pre></div>
-<p><img alt="png" src="output_12_0.png" /></p>
+<p><img alt="png" src="output_13_0.png" /></p>
 <p>In this simple example, both are quite similar and almost undistinguishable.</p>
                 
               
