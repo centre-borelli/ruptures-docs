@@ -1,0 +1,1977 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      <link rel="shortcut icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-6.1.6">
+    
+    
+      
+        <title>Kernel change point detection: a performance comparison - ruptures</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.6910b76c.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.196e0c26.min.css">
+        
+      
+    
+    
+    
+      
+        
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono",SFMono-Regular,Consolas,Menlo,monospace}</style>
+      
+    
+    
+    
+    
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="none" data-md-color-accent="none">
+      
+  
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#kernel-change-point-detection-a-performance-comparison" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid" aria-label="Header">
+    <a href="../.." title="ruptures" class="md-header-nav__button md-logo" aria-label="ruptures">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 003-3 3 3 0 00-3-3 3 3 0 00-3 3 3 3 0 003 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header-nav__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header-nav__title" data-md-component="header-title">
+      
+        <div class="md-header-nav__ellipsis">
+          <span class="md-header-nav__topic md-ellipsis">
+            ruptures
+          </span>
+          <span class="md-header-nav__topic md-ellipsis">
+            
+              Kernel change point detection: a performance comparison
+            
+          </span>
+        </div>
+      
+    </div>
+    
+      <label class="md-header-nav__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" data-md-component="search-reset" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header-nav__source">
+        
+<a href="https://github.com/deepcharles/ruptures/" title="Go to repository" class="md-source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05L244 40.45a28.87 28.87 0 00-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 01-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 000 40.81l195.61 195.6a28.86 28.86 0 0040.8 0l194.69-194.69a28.86 28.86 0 000-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+
+  
+
+<nav class="md-tabs md-tabs--active" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+      
+      <a href="../.." class="md-tabs__link">
+        Home
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+      
+      <a href="../../what-is-cpd/" class="md-tabs__link">
+        Getting started
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+      
+      <a href="../../user-guide/" class="md-tabs__link">
+        User guide
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+      
+        
+      
+      <a href="../../examples/introduction/" class="md-tabs__link md-tabs__link--active">
+        Gallery of examples
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+      
+      <a href="../../code-reference/" class="md-tabs__link">
+        Code reference
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+      
+      <a href="../../release-notes/" class="md-tabs__link">
+        About
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="ruptures" class="md-nav__button md-logo" aria-label="ruptures">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 003-3 3 3 0 00-3-3 3 3 0 00-3 3 3 3 0 003 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    ruptures
+  </label>
+  
+    <div class="md-nav__source">
+      
+<a href="https://github.com/deepcharles/ruptures/" title="Go to repository" class="md-source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05L244 40.45a28.87 28.87 0 00-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 01-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 000 40.81l195.61 195.6a28.86 28.86 0 0040.8 0l194.69-194.69a28.86 28.86 0 000-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="nav-1" type="checkbox" id="nav-1" >
+    <label class="md-nav__link" for="nav-1">
+      Home
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Home" data-md-level="1">
+      <label class="md-nav__title" for="nav-1">
+        <span class="md-nav__icon md-icon"></span>
+        Home
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../.." class="md-nav__link">
+      Welcome to ruptures
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2" >
+    <label class="md-nav__link" for="nav-2">
+      Getting started
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Getting started" data-md-level="1">
+      <label class="md-nav__title" for="nav-2">
+        <span class="md-nav__icon md-icon"></span>
+        Getting started
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../what-is-cpd/" class="md-nav__link">
+      Change point detection?
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../install/" class="md-nav__link">
+      Installation
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../basic-usage/" class="md-nav__link">
+      Basic usage
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../fit-and-predict/" class="md-nav__link">
+      Fitting and predicting
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../custom-cost-function/" class="md-nav__link">
+      Custom cost function
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3" >
+    <label class="md-nav__link" for="nav-3">
+      User guide
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="User guide" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        <span class="md-nav__icon md-icon"></span>
+        User guide
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../user-guide/" class="md-nav__link">
+      Introduction
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3-2" type="checkbox" id="nav-3-2" >
+    <label class="md-nav__link" for="nav-3-2">
+      Search methods
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Search methods" data-md-level="2">
+      <label class="md-nav__title" for="nav-3-2">
+        <span class="md-nav__icon md-icon"></span>
+        Search methods
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../user-guide/detection/dynp/" class="md-nav__link">
+      Dynamic programming
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../user-guide/detection/pelt/" class="md-nav__link">
+      Pelt
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../user-guide/detection/kernelcpd/" class="md-nav__link">
+      Kernel change detection
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../user-guide/detection/binseg/" class="md-nav__link">
+      Binary segmentation
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../user-guide/detection/bottomup/" class="md-nav__link">
+      Bottom-up segmentation
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../user-guide/detection/window/" class="md-nav__link">
+      Window sliding segmentation
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3-3" type="checkbox" id="nav-3-3" >
+    <label class="md-nav__link" for="nav-3-3">
+      Cost functions
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Cost functions" data-md-level="2">
+      <label class="md-nav__title" for="nav-3-3">
+        <span class="md-nav__icon md-icon"></span>
+        Cost functions
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../user-guide/costs/costl1/" class="md-nav__link">
+      CostL1
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../user-guide/costs/costl2/" class="md-nav__link">
+      CostL2
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../user-guide/costs/costnormal/" class="md-nav__link">
+      CostNormal
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../user-guide/costs/costrbf/" class="md-nav__link">
+      CostRbf
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../user-guide/costs/costlinear/" class="md-nav__link">
+      CostLinear
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../user-guide/costs/costrank/" class="md-nav__link">
+      CostRank
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../user-guide/costs/costml/" class="md-nav__link">
+      CostMl
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../user-guide/costs/costautoregressive/" class="md-nav__link">
+      CostAR
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../user-guide/costs/costcustom/" class="md-nav__link">
+      Custom cost
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3-4" type="checkbox" id="nav-3-4" >
+    <label class="md-nav__link" for="nav-3-4">
+      Generate signals
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Generate signals" data-md-level="2">
+      <label class="md-nav__title" for="nav-3-4">
+        <span class="md-nav__icon md-icon"></span>
+        Generate signals
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../user-guide/datasets/pw_constant/" class="md-nav__link">
+      Piecewise constant
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../user-guide/datasets/pw_linear/" class="md-nav__link">
+      Piecewise linear
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../user-guide/datasets/pw_normal/" class="md-nav__link">
+      Piecewise Gaussian
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../user-guide/datasets/pw_wavy/" class="md-nav__link">
+      Piecewise sinusoidal
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3-5" type="checkbox" id="nav-3-5" >
+    <label class="md-nav__link" for="nav-3-5">
+      Evaluation metrics
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Evaluation metrics" data-md-level="2">
+      <label class="md-nav__title" for="nav-3-5">
+        <span class="md-nav__icon md-icon"></span>
+        Evaluation metrics
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../user-guide/metrics/precisionrecall/" class="md-nav__link">
+      Precision and recall
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../user-guide/metrics/hausdorff/" class="md-nav__link">
+      Hausdorff metric
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../user-guide/metrics/randindex/" class="md-nav__link">
+      Rand index
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3-6" type="checkbox" id="nav-3-6" >
+    <label class="md-nav__link" for="nav-3-6">
+      Display
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Display" data-md-level="2">
+      <label class="md-nav__title" for="nav-3-6">
+        <span class="md-nav__icon md-icon"></span>
+        Display
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../user-guide/show/display/" class="md-nav__link">
+      Display
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4" checked>
+    <label class="md-nav__link" for="nav-4">
+      Gallery of examples
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Gallery of examples" data-md-level="1">
+      <label class="md-nav__title" for="nav-4">
+        <span class="md-nav__icon md-icon"></span>
+        Gallery of examples
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../examples/introduction/" class="md-nav__link">
+      Introduction
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-2" type="checkbox" id="nav-4-2" >
+    <label class="md-nav__link" for="nav-4-2">
+      Simple usages
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Simple usages" data-md-level="2">
+      <label class="md-nav__title" for="nav-4-2">
+        <span class="md-nav__icon md-icon"></span>
+        Simple usages
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../examples/simple-usages-introduction/" class="md-nav__link">
+      Introduction
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../basic-usage/" class="md-nav__link">
+      Basic usage
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-3" type="checkbox" id="nav-4-3" checked>
+    <label class="md-nav__link" for="nav-4-3">
+      Advanced usages
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Advanced usages" data-md-level="2">
+      <label class="md-nav__title" for="nav-4-3">
+        <span class="md-nav__icon md-icon"></span>
+        Advanced usages
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../examples/advanced-usages-introduction/" class="md-nav__link">
+      Introduction
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Kernel change point detection: a performance comparison
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+    
+    <a href="./" class="md-nav__link md-nav__link--active">
+      Kernel change point detection: a performance comparison
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    Introduction
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#setup" class="md-nav__link">
+    Setup
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#linear-kernel" class="md-nav__link">
+    Linear kernel
+  </a>
+  
+    <nav class="md-nav" aria-label="Linear kernel">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#dynamic-programming" class="md-nav__link">
+    Dynamic programming
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pelt" class="md-nav__link">
+    PELT
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#gaussian-kernel" class="md-nav__link">
+    Gaussian kernel
+  </a>
+  
+    <nav class="md-nav" aria-label="Gaussian kernel">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#dynamic-programming_1" class="md-nav__link">
+    Dynamic programming
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pelt_1" class="md-nav__link">
+    PELT
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    References
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5" >
+    <label class="md-nav__link" for="nav-5">
+      Code reference
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Code reference" data-md-level="1">
+      <label class="md-nav__title" for="nav-5">
+        <span class="md-nav__icon md-icon"></span>
+        Code reference
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../code-reference/" class="md-nav__link">
+      Introduction
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../code-reference/base-reference/" class="md-nav__link">
+      Base classes
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5-3" type="checkbox" id="nav-5-3" >
+    <label class="md-nav__link" for="nav-5-3">
+      Search methods
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Search methods" data-md-level="2">
+      <label class="md-nav__title" for="nav-5-3">
+        <span class="md-nav__icon md-icon"></span>
+        Search methods
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../code-reference/detection/dynp-reference/" class="md-nav__link">
+      Dynp
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../code-reference/detection/kernelcpd-reference/" class="md-nav__link">
+      KernelCPD
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../code-reference/detection/pelt-reference/" class="md-nav__link">
+      Pelt
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../code-reference/detection/binseg-reference/" class="md-nav__link">
+      Binseg
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../code-reference/detection/bottomup-reference/" class="md-nav__link">
+      BottomUp
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../code-reference/detection/window-reference/" class="md-nav__link">
+      Window
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5-4" type="checkbox" id="nav-5-4" >
+    <label class="md-nav__link" for="nav-5-4">
+      Cost functions
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Cost functions" data-md-level="2">
+      <label class="md-nav__title" for="nav-5-4">
+        <span class="md-nav__icon md-icon"></span>
+        Cost functions
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../code-reference/costs/costl1-reference/" class="md-nav__link">
+      CostL1
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../code-reference/costs/costl2-reference/" class="md-nav__link">
+      CostL2
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../code-reference/costs/costnormal-reference/" class="md-nav__link">
+      CostNormal
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../code-reference/costs/costrbf-reference/" class="md-nav__link">
+      CostRbf
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../code-reference/costs/costlinear-reference/" class="md-nav__link">
+      CostLinear
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../code-reference/costs/costrank-reference/" class="md-nav__link">
+      CostRank
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../code-reference/costs/costml-reference/" class="md-nav__link">
+      CostMl
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../code-reference/costs/costautoregressive-reference/" class="md-nav__link">
+      CostAR
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5-5" type="checkbox" id="nav-5-5" >
+    <label class="md-nav__link" for="nav-5-5">
+      Data sets
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Data sets" data-md-level="2">
+      <label class="md-nav__title" for="nav-5-5">
+        <span class="md-nav__icon md-icon"></span>
+        Data sets
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../code-reference/datasets/pw_constant-reference/" class="md-nav__link">
+      Piecewise constant
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../code-reference/datasets/pw_linear-reference/" class="md-nav__link">
+      Piecewise linear
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../code-reference/datasets/pw_normal-reference/" class="md-nav__link">
+      Piecewise normal
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../code-reference/datasets/pw_wavy-reference/" class="md-nav__link">
+      Piecewise wavy
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5-6" type="checkbox" id="nav-5-6" >
+    <label class="md-nav__link" for="nav-5-6">
+      Metrics
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Metrics" data-md-level="2">
+      <label class="md-nav__title" for="nav-5-6">
+        <span class="md-nav__icon md-icon"></span>
+        Metrics
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../code-reference/metrics/precisionrecall/" class="md-nav__link">
+      Precision and recall
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../code-reference/metrics/hausdorff/" class="md-nav__link">
+      Hausdorff metric
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../code-reference/metrics/randindex/" class="md-nav__link">
+      Rand index
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5-7" type="checkbox" id="nav-5-7" >
+    <label class="md-nav__link" for="nav-5-7">
+      Display
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Display" data-md-level="2">
+      <label class="md-nav__title" for="nav-5-7">
+        <span class="md-nav__icon md-icon"></span>
+        Display
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../code-reference/show/display/" class="md-nav__link">
+      Display function
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6" >
+    <label class="md-nav__link" for="nav-6">
+      About
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="About" data-md-level="1">
+      <label class="md-nav__title" for="nav-6">
+        <span class="md-nav__icon md-icon"></span>
+        About
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../release-notes/" class="md-nav__link">
+      Release notes
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../contributing/" class="md-nav__link">
+      Contributing
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../license/" class="md-nav__link">
+      License
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    Introduction
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#setup" class="md-nav__link">
+    Setup
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#linear-kernel" class="md-nav__link">
+    Linear kernel
+  </a>
+  
+    <nav class="md-nav" aria-label="Linear kernel">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#dynamic-programming" class="md-nav__link">
+    Dynamic programming
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pelt" class="md-nav__link">
+    PELT
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#gaussian-kernel" class="md-nav__link">
+    Gaussian kernel
+  </a>
+  
+    <nav class="md-nav" aria-label="Gaussian kernel">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#dynamic-programming_1" class="md-nav__link">
+    Dynamic programming
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pelt_1" class="md-nav__link">
+    PELT
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    References
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/deepcharles/ruptures/edit/master/docs/notebooks/kernel-cpd-performance-comparison.md" title="Edit this page" class="md-content__button md-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
+                  </a>
+                
+                
+                <h1 id="kernel-change-point-detection-a-performance-comparison">Kernel change point detection: a performance comparison<a class="headerlink" href="#kernel-change-point-detection-a-performance-comparison" title="Permanent link">#</a></h1>
+<h2 id="introduction">Introduction<a class="headerlink" href="#introduction" title="Permanent link">#</a></h2>
+<p>In <code>ruptures</code>, there are two ways to perform kernel change point detection:</p>
+<ul>
+<li>
+<p>by using the pure Python classes <a href="../../user-guide/detection/dynp/">Dynp</a> (known number of change points) and <a href="../../user-guide/detection/pelt/">Pelt</a> (unknown number of change points),</p>
+</li>
+<li>
+<p>by using the faster class (implemented in C) <a href="../../user-guide/detection/kernelcpd">KernelCPD</a>  which contains both the dynamic programming approach and the penalized approach (PELT).</p>
+</li>
+</ul>
+<p>This example illustrates the performance of the fast C implementation compared to the pure Python one.</p>
+<p>The kernel change point detection setting is briefly described in the <a href="../../user-guide/detection/kernelcpd">user guide</a>.
+The interested reader can refer to [<a href="#Celisse2018">Celisse2018</a>, <a href="#Arlot2019">Arlot2019</a>] for a more complete introduction.<br></p>
+<p>The list of available kernels is available <a href="../../user-guide/detection/kernelcpd#available-kernels">here</a>, but in this example we only consider two:</p>
+<ul>
+<li>the linear kernel, <span class="arithmatex">\(k_{\text{linear}}(x, y) = x^T y\)</span> (Euclidean scalar product) and the induced norm is the Euclidean norm;</li>
+<li>the Gaussian kernel (also known as radial basis function, rbf), <span class="arithmatex">\(k_{\text{Gaussian}}(x,y)=\exp(-\gamma \|x-y\|^2)\)</span> where <span class="arithmatex">\(\|\cdot\|\)</span> is the Euclidean norm and <span class="arithmatex">\(\gamma&gt;0\)</span> is a user-defined parameter.</li>
+</ul>
+<h2 id="setup">Setup<a class="headerlink" href="#setup" title="Permanent link">#</a></h2>
+<p>First, we make the necessary imports and generate a toy signal</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>  <span class="c1"># for display purposes</span>
+<span class="kn">import</span> <span class="nn">time</span>  <span class="c1"># for execution time comparison</span>
+<span class="kn">import</span> <span class="nn">ruptures</span> <span class="k">as</span> <span class="nn">rpt</span>  <span class="c1"># our package</span>
+<span class="kn">from</span> <span class="nn">ruptures.metrics</span> <span class="kn">import</span> <span class="n">hausdorff</span>
+
+
+<span class="c1"># generate signal</span>
+<span class="n">n_samples</span><span class="p">,</span> <span class="n">dim</span><span class="p">,</span> <span class="n">sigma</span> <span class="o">=</span> <span class="mi">500</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span>
+<span class="n">n_bkps</span> <span class="o">=</span> <span class="mi">6</span>  <span class="c1"># number of breakpoints</span>
+<span class="n">signal</span><span class="p">,</span> <span class="n">bkps</span> <span class="o">=</span> <span class="n">rpt</span><span class="o">.</span><span class="n">pw_constant</span><span class="p">(</span><span class="n">n_samples</span><span class="p">,</span> <span class="n">dim</span><span class="p">,</span> <span class="n">n_bkps</span><span class="p">,</span> <span class="n">noise_std</span><span class="o">=</span><span class="n">sigma</span><span class="p">)</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax_array</span> <span class="o">=</span> <span class="n">rpt</span><span class="o">.</span><span class="n">display</span><span class="p">(</span><span class="n">signal</span><span class="p">,</span> <span class="n">bkps</span><span class="p">)</span>
+</code></pre></div>
+<p><img alt="png" src="output_3_0.png" /></p>
+<h2 id="linear-kernel">Linear kernel<a class="headerlink" href="#linear-kernel" title="Permanent link">#</a></h2>
+<p>The linear kernel (see above) <span class="arithmatex">\(k_{\text{linear}}\)</span> can detect changes in the mean of a signal.
+It also corresponds to the cost function <a href="../../user-guide/costs/costl2"><code>CostL2</code></a>.</p>
+<h3 id="dynamic-programming">Dynamic programming<a class="headerlink" href="#dynamic-programming" title="Permanent link">#</a></h3>
+<p>When the number of changes to detect is known beforehand, we use dynamic programming.</p>
+<div class="highlight"><pre><span></span><code><span class="n">algo_python</span> <span class="o">=</span> <span class="n">rpt</span><span class="o">.</span><span class="n">Dynp</span><span class="p">(</span><span class="n">model</span><span class="o">=</span><span class="s2">&quot;l2&quot;</span><span class="p">,</span> <span class="n">jump</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">min_size</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span>
+    <span class="n">signal</span>
+<span class="p">)</span>  <span class="c1"># written in pure python</span>
+<span class="n">algo_c</span> <span class="o">=</span> <span class="n">rpt</span><span class="o">.</span><span class="n">KernelCPD</span><span class="p">(</span><span class="n">kernel</span><span class="o">=</span><span class="s2">&quot;linear&quot;</span><span class="p">,</span> <span class="n">min_size</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">signal</span><span class="p">)</span>  <span class="c1"># written in C</span>
+
+<span class="k">for</span> <span class="p">(</span><span class="n">label</span><span class="p">,</span> <span class="n">algo</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span>
+    <span class="p">(</span><span class="s2">&quot;Python implementation&quot;</span><span class="p">,</span> <span class="s2">&quot;C implementation&quot;</span><span class="p">),</span> <span class="p">(</span><span class="n">algo_python</span><span class="p">,</span> <span class="n">algo_c</span><span class="p">)</span>
+<span class="p">):</span>
+    <span class="n">start_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">algo</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">n_bkps</span><span class="o">=</span><span class="n">n_bkps</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">label</span><span class="si">}</span><span class="s2">:</span><span class="se">\t</span><span class="si">{</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">start_time</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2"> s&quot;</span><span class="p">)</span>
+</code></pre></div>
+<pre><code>Python implementation:  7.441 s
+C implementation:   0.008 s
+</code></pre>
+<p>The speed-up is quite significant and depends on the signal size (number <span class="arithmatex">\(T\)</span> of samples and dimension <span class="arithmatex">\(d\)</span>) and the number <span class="arithmatex">\(K\)</span> of change points to detect.
+The C implementation has a time complexity of the order <span class="arithmatex">\(\mathcal{O}(KdT^2)\)</span> and space complexity of the order <span class="arithmatex">\(\mathcal{O}(T)\)</span>.
+As to the Python implementation, the complexities in time and space are of the order <span class="arithmatex">\(\mathcal{O}(KdT^3)\)</span> and <span class="arithmatex">\(\mathcal{O}(T^2)\)</span> respectively.</p>
+<p>We can also check that both methods return the same set of change points.</p>
+<div class="highlight"><pre><span></span><code><span class="n">bkps_python</span> <span class="o">=</span> <span class="n">algo_python</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">n_bkps</span><span class="o">=</span><span class="n">n_bkps</span><span class="p">)</span>
+<span class="n">bkps_c</span> <span class="o">=</span> <span class="n">algo_c</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">n_bkps</span><span class="o">=</span><span class="n">n_bkps</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Python implementation:</span><span class="se">\t</span><span class="si">{</span><span class="n">bkps_python</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;C implementation:</span><span class="se">\t</span><span class="si">{</span><span class="n">bkps_python</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;(Hausdorff distance: </span><span class="si">{</span><span class="n">hausdorff</span><span class="p">(</span><span class="n">bkps_python</span><span class="p">,</span> <span class="n">bkps_c</span><span class="p">)</span><span class="si">:</span><span class="s2">.0f</span><span class="si">}</span><span class="s2"> samples)&quot;</span><span class="p">)</span>
+</code></pre></div>
+<pre><code>Python implementation:  [70, 146, 215, 286, 355, 430, 500]
+C implementation:   [70, 146, 215, 286, 355, 430, 500]
+(Hausdorff distance: 0 samples)
+</code></pre>
+<h3 id="pelt">PELT<a class="headerlink" href="#pelt" title="Permanent link">#</a></h3>
+<p>When the number of changes to detect is unknown, we resort to PELT <a href="#Killick2012">[Killick2012]</a> to solve the penalized detection problem.</p>
+<div class="highlight"><pre><span></span><code><span class="n">algo_python</span> <span class="o">=</span> <span class="n">rpt</span><span class="o">.</span><span class="n">Pelt</span><span class="p">(</span><span class="n">model</span><span class="o">=</span><span class="s2">&quot;l2&quot;</span><span class="p">,</span> <span class="n">jump</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">min_size</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span>
+    <span class="n">signal</span>
+<span class="p">)</span>  <span class="c1"># written in pure python</span>
+<span class="n">algo_c</span> <span class="o">=</span> <span class="n">rpt</span><span class="o">.</span><span class="n">KernelCPD</span><span class="p">(</span><span class="n">kernel</span><span class="o">=</span><span class="s2">&quot;linear&quot;</span><span class="p">,</span> <span class="n">min_size</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span>
+    <span class="n">signal</span>
+<span class="p">)</span>  <span class="c1"># written in C, same class as before</span>
+
+
+<span class="n">penalty_value</span> <span class="o">=</span> <span class="mi">100</span>  <span class="c1"># beta</span>
+
+<span class="k">for</span> <span class="p">(</span><span class="n">label</span><span class="p">,</span> <span class="n">algo</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span>
+    <span class="p">(</span><span class="s2">&quot;Python implementation&quot;</span><span class="p">,</span> <span class="s2">&quot;C implementation&quot;</span><span class="p">),</span> <span class="p">(</span><span class="n">algo_python</span><span class="p">,</span> <span class="n">algo_c</span><span class="p">)</span>
+<span class="p">):</span>
+    <span class="n">start_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">algo</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">pen</span><span class="o">=</span><span class="n">penalty_value</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">label</span><span class="si">}</span><span class="s2">:</span><span class="se">\t</span><span class="si">{</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">start_time</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2"> s&quot;</span><span class="p">)</span>
+</code></pre></div>
+<pre><code>Python implementation:  0.545 s
+C implementation:   0.001 s
+</code></pre>
+<p>Again, the speed-up is quite significant and depends on the signal size (number <span class="arithmatex">\(T\)</span> of samples and dimension <span class="arithmatex">\(d\)</span>) and the penalty value <span class="arithmatex">\(\beta\)</span>.
+We remark that, for both Python and C implementations, PELT is more efficient then dynamic programming.</p>
+<p>We can also check that both methods return the same set of change points.</p>
+<div class="highlight"><pre><span></span><code><span class="n">bkps_python</span> <span class="o">=</span> <span class="n">algo_python</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">pen</span><span class="o">=</span><span class="n">penalty_value</span><span class="p">)</span>
+<span class="n">bkps_c</span> <span class="o">=</span> <span class="n">algo_c</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">pen</span><span class="o">=</span><span class="n">penalty_value</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Python implementation:</span><span class="se">\t</span><span class="si">{</span><span class="n">bkps_python</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;C implementation:</span><span class="se">\t</span><span class="si">{</span><span class="n">bkps_python</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;(Hausdorff distance: </span><span class="si">{</span><span class="n">hausdorff</span><span class="p">(</span><span class="n">bkps_python</span><span class="p">,</span> <span class="n">bkps_c</span><span class="p">)</span><span class="si">:</span><span class="s2">.0f</span><span class="si">}</span><span class="s2"> samples)&quot;</span><span class="p">)</span>
+</code></pre></div>
+<pre><code>Python implementation:  [70, 146, 215, 268, 286, 289, 355, 370, 374, 430, 500]
+C implementation:   [70, 146, 215, 268, 286, 289, 355, 370, 374, 430, 500]
+(Hausdorff distance: 0 samples)
+</code></pre>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>By default, <code>Dynp</code> and <code>Pelt</code> has <code>jump=5</code>.
+In <code>KernelCPD</code>, <code>jump=1</code> and cannot be changed.
+This is because, in the C implementation, changing the <code>jump</code> does not improve the running time significatively, while it does in the Python implementation.</p>
+</div>
+<h2 id="gaussian-kernel">Gaussian kernel<a class="headerlink" href="#gaussian-kernel" title="Permanent link">#</a></h2>
+<p>The Gaussian kernel (see above) <span class="arithmatex">\(k_{\text{Gaussian}}\)</span> can detect changes in the distribution of an i.i.d. process.
+This is a feature of several kernel functions (in particular <em>characteristics</em> kernels; see <a href="#Gretton2012">[Gretton2012]</a> for more information).
+It also corresponds to the cost function <a href="../../user-guide/costs/costrbf"><code>CostRbf</code></a>.</p>
+<h3 id="dynamic-programming_1">Dynamic programming<a class="headerlink" href="#dynamic-programming_1" title="Permanent link">#</a></h3>
+<p>When the number of changes to detect is known beforehand, we use dynamic programming.</p>
+<div class="highlight"><pre><span></span><code><span class="n">params</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;gamma&quot;</span><span class="p">:</span> <span class="mf">1e-2</span><span class="p">}</span>
+<span class="n">algo_python</span> <span class="o">=</span> <span class="n">rpt</span><span class="o">.</span><span class="n">Dynp</span><span class="p">(</span><span class="n">model</span><span class="o">=</span><span class="s2">&quot;rbf&quot;</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="n">params</span><span class="p">,</span> <span class="n">jump</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">min_size</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span>
+    <span class="n">signal</span>
+<span class="p">)</span>  <span class="c1"># written in pure python</span>
+<span class="n">algo_c</span> <span class="o">=</span> <span class="n">rpt</span><span class="o">.</span><span class="n">KernelCPD</span><span class="p">(</span><span class="n">kernel</span><span class="o">=</span><span class="s2">&quot;rbf&quot;</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="n">params</span><span class="p">,</span> <span class="n">min_size</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span>
+    <span class="n">signal</span>
+<span class="p">)</span>  <span class="c1"># written in C</span>
+
+<span class="k">for</span> <span class="p">(</span><span class="n">label</span><span class="p">,</span> <span class="n">algo</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span>
+    <span class="p">(</span><span class="s2">&quot;Python implementation&quot;</span><span class="p">,</span> <span class="s2">&quot;C implementation&quot;</span><span class="p">),</span> <span class="p">(</span><span class="n">algo_python</span><span class="p">,</span> <span class="n">algo_c</span><span class="p">)</span>
+<span class="p">):</span>
+    <span class="n">start_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">algo</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">n_bkps</span><span class="o">=</span><span class="n">n_bkps</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">label</span><span class="si">}</span><span class="s2">:</span><span class="se">\t</span><span class="si">{</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">start_time</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2"> s&quot;</span><span class="p">)</span>
+</code></pre></div>
+<pre><code>Python implementation:  9.033 s
+C implementation:   0.016 s
+</code></pre>
+<p>Again, the speed-up is quite significant.
+The C implementation has a time complexity of the order <span class="arithmatex">\(\mathcal{O}(CKT^2)\)</span> and space complexity of the order <span class="arithmatex">\(\mathcal{O}(T)\)</span>, where <span class="arithmatex">\(C\)</span> is the complexity of computing <span class="arithmatex">\(k(y_s, y_t)\)</span> once.
+As to the Python implementation, the complexities in time and space are of the order <span class="arithmatex">\(\mathcal{O}(CKT^4)\)</span> and <span class="arithmatex">\(\mathcal{O}(T^2)\)</span> respectively.</p>
+<p>We can also check that both methods return the same set of change points.</p>
+<div class="highlight"><pre><span></span><code><span class="n">bkps_python</span> <span class="o">=</span> <span class="n">algo_python</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">n_bkps</span><span class="o">=</span><span class="n">n_bkps</span><span class="p">)</span>
+<span class="n">bkps_c</span> <span class="o">=</span> <span class="n">algo_c</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">n_bkps</span><span class="o">=</span><span class="n">n_bkps</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Python implementation:</span><span class="se">\t</span><span class="si">{</span><span class="n">bkps_python</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;C implementation:</span><span class="se">\t</span><span class="si">{</span><span class="n">bkps_python</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;(Hausdorff distance: </span><span class="si">{</span><span class="n">hausdorff</span><span class="p">(</span><span class="n">bkps_python</span><span class="p">,</span> <span class="n">bkps_c</span><span class="p">)</span><span class="si">:</span><span class="s2">.0f</span><span class="si">}</span><span class="s2"> samples)&quot;</span><span class="p">)</span>
+</code></pre></div>
+<pre><code>Python implementation:  [70, 146, 215, 286, 355, 430, 500]
+C implementation:   [70, 146, 215, 286, 355, 430, 500]
+(Hausdorff distance: 0 samples)
+</code></pre>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If not provided by the user, the <code>gamma</code> parameter is chosen using the median heuristics, meaning that it is set to inverse of the median of all pairwise products <span class="arithmatex">\(k(y_s, y_t)\)</span>.</p>
+</div>
+<h3 id="pelt_1">PELT<a class="headerlink" href="#pelt_1" title="Permanent link">#</a></h3>
+<p>When the number of changes to detect is unknown, we resort to PELT to solve the penalized detection problem.</p>
+<div class="highlight"><pre><span></span><code><span class="n">algo_python</span> <span class="o">=</span> <span class="n">rpt</span><span class="o">.</span><span class="n">Pelt</span><span class="p">(</span><span class="n">model</span><span class="o">=</span><span class="s2">&quot;rbf&quot;</span><span class="p">,</span> <span class="n">jump</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">min_size</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span>
+    <span class="n">signal</span>
+<span class="p">)</span>  <span class="c1"># written in pure python</span>
+<span class="n">algo_c</span> <span class="o">=</span> <span class="n">rpt</span><span class="o">.</span><span class="n">KernelCPD</span><span class="p">(</span><span class="n">kernel</span><span class="o">=</span><span class="s2">&quot;rbf&quot;</span><span class="p">,</span> <span class="n">min_size</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span>
+    <span class="n">signal</span>
+<span class="p">)</span>  <span class="c1"># written in C, same class as before</span>
+
+
+<span class="n">penalty_value</span> <span class="o">=</span> <span class="mi">1</span>  <span class="c1"># beta</span>
+
+<span class="k">for</span> <span class="p">(</span><span class="n">label</span><span class="p">,</span> <span class="n">algo</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span>
+    <span class="p">(</span><span class="s2">&quot;Python implementation&quot;</span><span class="p">,</span> <span class="s2">&quot;C implementation&quot;</span><span class="p">),</span> <span class="p">(</span><span class="n">algo_python</span><span class="p">,</span> <span class="n">algo_c</span><span class="p">)</span>
+<span class="p">):</span>
+    <span class="n">start_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">algo</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">pen</span><span class="o">=</span><span class="n">penalty_value</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">label</span><span class="si">}</span><span class="s2">:</span><span class="se">\t</span><span class="si">{</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">start_time</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2"> s&quot;</span><span class="p">)</span>
+</code></pre></div>
+<pre><code>Python implementation:  0.361 s
+C implementation:   0.003 s
+</code></pre>
+<p>Again, the speed-up is quite significant and depends on the signal size (number <span class="arithmatex">\(T\)</span> of samples and dimension <span class="arithmatex">\(d\)</span>) and the penalty value <span class="arithmatex">\(\beta\)</span>.
+We remark that, for both Python and C implementations, PELT is more efficient then dynamic programming.</p>
+<p>We can also check that both methods return the same set of change points.</p>
+<div class="highlight"><pre><span></span><code><span class="n">bkps_python</span> <span class="o">=</span> <span class="n">algo_python</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">pen</span><span class="o">=</span><span class="n">penalty_value</span><span class="p">)</span>
+<span class="n">bkps_c</span> <span class="o">=</span> <span class="n">algo_c</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">pen</span><span class="o">=</span><span class="n">penalty_value</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Python implementation:</span><span class="se">\t</span><span class="si">{</span><span class="n">bkps_python</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;C implementation:</span><span class="se">\t</span><span class="si">{</span><span class="n">bkps_python</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;(Hausdorff distance: </span><span class="si">{</span><span class="n">hausdorff</span><span class="p">(</span><span class="n">bkps_python</span><span class="p">,</span> <span class="n">bkps_c</span><span class="p">)</span><span class="si">:</span><span class="s2">.0f</span><span class="si">}</span><span class="s2"> samples)&quot;</span><span class="p">)</span>
+</code></pre></div>
+<pre><code>Python implementation:  [70, 146, 215, 286, 355, 430, 500]
+C implementation:   [70, 146, 215, 286, 355, 430, 500]
+(Hausdorff distance: 0 samples)
+</code></pre>
+<h2 id="references">References<a class="headerlink" href="#references" title="Permanent link">#</a></h2>
+<p><a id="Gretton2012">[Gretton2012]</a>
+Gretton, A., Borgwardt, K. M., Rasch, M. J., Schölkopf, B., &amp; Smola, A. (2012). A kernel two-sample test. The Journal of Machine Learning Research, 13, 723–773.</p>
+<p><a id="Killick2012">[Killick2012]</a>
+Killick, R., Fearnhead, P., &amp; Eckley, I. (2012). Optimal detection of changepoints with a linear computational cost. Journal of the American Statistical Association, 107(500), 1590–1598.</p>
+<p><a id="Celisse2018">[Celisse2018]</a>
+Celisse, A., Marot, G., Pierre-Jean, M., &amp; Rigaill, G. (2018). New efficient algorithms for multiple change-point detection with reproducing kernels. Computational Statistics and Data Analysis, 128, 200–220.</p>
+<p><a id="Arlot2019">[Arlot2019]</a>
+Arlot, S., Celisse, A., &amp; Harchaoui, Z. (2019). A kernel multiple change-point algorithm via model selection. Journal of Machine Learning Research, 20(162), 1–56.</p>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid" aria-label="Footer">
+        
+          <a href="../../examples/advanced-usages-introduction/" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+            </div>
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                Introduction
+              </div>
+            </div>
+          </a>
+        
+        
+          <a href="../../code-reference/" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                Introduction
+              </div>
+            </div>
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../../assets/javascripts/vendor.fd16492e.min.js"></script>
+      <script src="../../assets/javascripts/bundle.7836ba4d.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}</script>
+      
+      <script>
+        app = initialize({
+          base: "../..",
+          features: ['navigation.tabs', 'search.highlight'],
+          search: Object.assign({
+            worker: "../../assets/javascripts/worker/search.4ac00218.min.js"
+          }, typeof search !== "undefined" && search)
+        })
+      </script>
+      
+        <script src="../../javascripts/config.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>
