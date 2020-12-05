@@ -598,6 +598,18 @@
 
 
   <li class="md-nav__item">
+    <a href="../../user-guide/costs/costcosine/" class="md-nav__link">
+      CostCosine
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
     <a href="../../user-guide/costs/costlinear/" class="md-nav__link">
       CostLinear
     </a>
@@ -1293,6 +1305,18 @@
 
 
   <li class="md-nav__item">
+    <a href="../../code-reference/costs/costcosine-reference/" class="md-nav__link">
+      CostCosine
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
     <a href="../../code-reference/costs/costlinear-reference/" class="md-nav__link">
       CostLinear
     </a>
@@ -1743,7 +1767,7 @@ It also corresponds to the cost function <a href="../../user-guide/costs/costl2"
     <span class="n">result</span> <span class="o">=</span> <span class="n">algo</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">n_bkps</span><span class="o">=</span><span class="n">n_bkps</span><span class="p">)</span>
     <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">label</span><span class="si">}</span><span class="s2">:</span><span class="se">\t</span><span class="si">{</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">start_time</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2"> s&quot;</span><span class="p">)</span>
 </code></pre></div>
-<pre><code>Python implementation:  7.441 s
+<pre><code>Python implementation:  6.301 s
 C implementation:   0.008 s
 </code></pre>
 <p>The speed-up is quite significant and depends on the signal size (number <span class="arithmatex">\(T\)</span> of samples and dimension <span class="arithmatex">\(d\)</span>) and the number <span class="arithmatex">\(K\)</span> of change points to detect.
@@ -1756,8 +1780,8 @@ As to the Python implementation, the complexities in time and space are of the o
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;C implementation:</span><span class="se">\t</span><span class="si">{</span><span class="n">bkps_python</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;(Hausdorff distance: </span><span class="si">{</span><span class="n">hausdorff</span><span class="p">(</span><span class="n">bkps_python</span><span class="p">,</span> <span class="n">bkps_c</span><span class="p">)</span><span class="si">:</span><span class="s2">.0f</span><span class="si">}</span><span class="s2"> samples)&quot;</span><span class="p">)</span>
 </code></pre></div>
-<pre><code>Python implementation:  [70, 146, 215, 286, 355, 430, 500]
-C implementation:   [70, 146, 215, 286, 355, 430, 500]
+<pre><code>Python implementation:  [68, 135, 207, 278, 352, 428, 500]
+C implementation:   [68, 135, 207, 278, 352, 428, 500]
 (Hausdorff distance: 0 samples)
 </code></pre>
 <h3 id="pelt">PELT<a class="headerlink" href="#pelt" title="Permanent link">#</a></h3>
@@ -1779,7 +1803,7 @@ C implementation:   [70, 146, 215, 286, 355, 430, 500]
     <span class="n">result</span> <span class="o">=</span> <span class="n">algo</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">pen</span><span class="o">=</span><span class="n">penalty_value</span><span class="p">)</span>
     <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">label</span><span class="si">}</span><span class="s2">:</span><span class="se">\t</span><span class="si">{</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">start_time</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2"> s&quot;</span><span class="p">)</span>
 </code></pre></div>
-<pre><code>Python implementation:  0.545 s
+<pre><code>Python implementation:  0.474 s
 C implementation:   0.001 s
 </code></pre>
 <p>Again, the speed-up is quite significant and depends on the signal size (number <span class="arithmatex">\(T\)</span> of samples and dimension <span class="arithmatex">\(d\)</span>) and the penalty value <span class="arithmatex">\(\beta\)</span>.
@@ -1791,8 +1815,8 @@ We remark that, for both Python and C implementations, PELT is more efficient th
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;C implementation:</span><span class="se">\t</span><span class="si">{</span><span class="n">bkps_python</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;(Hausdorff distance: </span><span class="si">{</span><span class="n">hausdorff</span><span class="p">(</span><span class="n">bkps_python</span><span class="p">,</span> <span class="n">bkps_c</span><span class="p">)</span><span class="si">:</span><span class="s2">.0f</span><span class="si">}</span><span class="s2"> samples)&quot;</span><span class="p">)</span>
 </code></pre></div>
-<pre><code>Python implementation:  [70, 146, 215, 268, 286, 289, 355, 370, 374, 430, 500]
-C implementation:   [70, 146, 215, 268, 286, 289, 355, 370, 374, 430, 500]
+<pre><code>Python implementation:  [68, 135, 207, 278, 352, 428, 500]
+C implementation:   [68, 135, 207, 278, 352, 428, 500]
 (Hausdorff distance: 0 samples)
 </code></pre>
 <div class="admonition note">
@@ -1822,8 +1846,8 @@ It also corresponds to the cost function <a href="../../user-guide/costs/costrbf
     <span class="n">result</span> <span class="o">=</span> <span class="n">algo</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">n_bkps</span><span class="o">=</span><span class="n">n_bkps</span><span class="p">)</span>
     <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">label</span><span class="si">}</span><span class="s2">:</span><span class="se">\t</span><span class="si">{</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">start_time</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2"> s&quot;</span><span class="p">)</span>
 </code></pre></div>
-<pre><code>Python implementation:  9.033 s
-C implementation:   0.016 s
+<pre><code>Python implementation:  7.695 s
+C implementation:   0.012 s
 </code></pre>
 <p>Again, the speed-up is quite significant.
 The C implementation has a time complexity of the order <span class="arithmatex">\(\mathcal{O}(CKT^2)\)</span> and space complexity of the order <span class="arithmatex">\(\mathcal{O}(T)\)</span>, where <span class="arithmatex">\(C\)</span> is the complexity of computing <span class="arithmatex">\(k(y_s, y_t)\)</span> once.
@@ -1835,8 +1859,8 @@ As to the Python implementation, the complexities in time and space are of the o
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;C implementation:</span><span class="se">\t</span><span class="si">{</span><span class="n">bkps_python</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;(Hausdorff distance: </span><span class="si">{</span><span class="n">hausdorff</span><span class="p">(</span><span class="n">bkps_python</span><span class="p">,</span> <span class="n">bkps_c</span><span class="p">)</span><span class="si">:</span><span class="s2">.0f</span><span class="si">}</span><span class="s2"> samples)&quot;</span><span class="p">)</span>
 </code></pre></div>
-<pre><code>Python implementation:  [70, 146, 215, 286, 355, 430, 500]
-C implementation:   [70, 146, 215, 286, 355, 430, 500]
+<pre><code>Python implementation:  [68, 135, 207, 278, 352, 428, 500]
+C implementation:   [68, 135, 207, 278, 352, 428, 500]
 (Hausdorff distance: 0 samples)
 </code></pre>
 <div class="admonition note">
@@ -1862,8 +1886,8 @@ C implementation:   [70, 146, 215, 286, 355, 430, 500]
     <span class="n">result</span> <span class="o">=</span> <span class="n">algo</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">pen</span><span class="o">=</span><span class="n">penalty_value</span><span class="p">)</span>
     <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">label</span><span class="si">}</span><span class="s2">:</span><span class="se">\t</span><span class="si">{</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">start_time</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2"> s&quot;</span><span class="p">)</span>
 </code></pre></div>
-<pre><code>Python implementation:  0.361 s
-C implementation:   0.003 s
+<pre><code>Python implementation:  0.306 s
+C implementation:   0.002 s
 </code></pre>
 <p>Again, the speed-up is quite significant and depends on the signal size (number <span class="arithmatex">\(T\)</span> of samples and dimension <span class="arithmatex">\(d\)</span>) and the penalty value <span class="arithmatex">\(\beta\)</span>.
 We remark that, for both Python and C implementations, PELT is more efficient then dynamic programming.</p>
@@ -1874,8 +1898,8 @@ We remark that, for both Python and C implementations, PELT is more efficient th
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;C implementation:</span><span class="se">\t</span><span class="si">{</span><span class="n">bkps_python</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;(Hausdorff distance: </span><span class="si">{</span><span class="n">hausdorff</span><span class="p">(</span><span class="n">bkps_python</span><span class="p">,</span> <span class="n">bkps_c</span><span class="p">)</span><span class="si">:</span><span class="s2">.0f</span><span class="si">}</span><span class="s2"> samples)&quot;</span><span class="p">)</span>
 </code></pre></div>
-<pre><code>Python implementation:  [70, 146, 215, 286, 355, 430, 500]
-C implementation:   [70, 146, 215, 286, 355, 430, 500]
+<pre><code>Python implementation:  [68, 135, 207, 278, 352, 428, 500]
+C implementation:   [68, 135, 207, 278, 352, 428, 500]
 (Hausdorff distance: 0 samples)
 </code></pre>
 <h2 id="references">References<a class="headerlink" href="#references" title="Permanent link">#</a></h2>

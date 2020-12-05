@@ -594,6 +594,18 @@
 
 
   <li class="md-nav__item">
+    <a href="../../user-guide/costs/costcosine/" class="md-nav__link">
+      CostCosine
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
     <a href="../../user-guide/costs/costlinear/" class="md-nav__link">
       CostLinear
     </a>
@@ -1179,6 +1191,18 @@
 
 
   <li class="md-nav__item">
+    <a href="../../code-reference/costs/costcosine-reference/" class="md-nav__link">
+      CostCosine
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
     <a href="../../code-reference/costs/costlinear-reference/" class="md-nav__link">
       CostLinear
     </a>
@@ -1509,7 +1533,7 @@
 <p>The true change points of this synthetic signal are available in the <code>bkps</code> variable.</p>
 <div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">bkps</span><span class="p">)</span>
 </code></pre></div>
-<pre><code>[195, 385, 588, 785, 1000]
+<pre><code>[202, 402, 610, 813, 1000]
 </code></pre>
 <p>Note that the first four element are change point indexes while the last is simply the number of samples.
 (This is a technical convention so that functions in <code>ruptures</code> always know the length of the signal at hand.)</p>
@@ -1527,7 +1551,7 @@ To that end, we use a well-known method called Pelt with a <span class="arithmat
 
 <span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
 </code></pre></div>
-<pre><code>[195, 385, 590, 785, 1000]
+<pre><code>[200, 400, 610, 815, 1000]
 </code></pre>
 <p>Again the first elements are change point indexes and the last is the number of samples.</p>
 <p>To visualy compare the true segmentation (<code>bkps</code>) and the estimated ones (<code>result</code>), we can resort to <code>rpt.display</code> a second time.

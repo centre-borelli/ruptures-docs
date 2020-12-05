@@ -7,7 +7,7 @@
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
 <link href="../../../assets/images/favicon.png" rel="shortcut icon"/>
 <meta content="mkdocs-1.1.2, mkdocs-material-6.1.6" name="generator"/>
-<title>CostL2 - ruptures</title>
+<title>CostCosine - ruptures</title>
 <link href="../../../assets/stylesheets/main.6910b76c.min.css" rel="stylesheet"/>
 <link href="../../../assets/stylesheets/palette.196e0c26.min.css" rel="stylesheet"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
@@ -19,7 +19,7 @@
 <input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
 <label class="md-overlay" for="__drawer"></label>
 <div data-md-component="skip">
-<a class="md-skip" href="#least-squared-deviation-costl2">
+<a class="md-skip" href="#kernelized-mean-change-costcosine">
           Skip to content
         </a>
 </div>
@@ -40,7 +40,7 @@
           </span>
 <span class="md-header-nav__topic md-ellipsis">
             
-              CostL2
+              CostCosine
             
           </span>
 </div>
@@ -284,14 +284,29 @@
       CostL1
     </a>
 </li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../costl2/">
+      CostL2
+    </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../costnormal/">
+      CostNormal
+    </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../costrbf/">
+      CostRbf
+    </a>
+</li>
 <li class="md-nav__item md-nav__item--active">
 <input class="md-nav__toggle md-toggle" data-md-toggle="toc" id="__toc" type="checkbox"/>
 <label class="md-nav__link md-nav__link--active" for="__toc">
-        CostL2
+        CostCosine
         <span class="md-nav__icon md-icon"></span>
 </label>
 <a class="md-nav__link md-nav__link--active" href="./">
-      CostL2
+      CostCosine
     </a>
 <nav aria-label="Table of contents" class="md-nav md-nav--secondary">
 <label class="md-nav__title" for="__toc">
@@ -309,23 +324,13 @@
     Usage
   </a>
 </li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#references">
+    References
+  </a>
+</li>
 </ul>
 </nav>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../costnormal/">
-      CostNormal
-    </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../costrbf/">
-      CostRbf
-    </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../costcosine/">
-      CostCosine
-    </a>
 </li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="../costlinear/">
@@ -782,6 +787,11 @@
     Usage
   </a>
 </li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#references">
+    References
+  </a>
+</li>
 </ul>
 </nav>
 </div>
@@ -789,17 +799,24 @@
 </div>
 <div class="md-content">
 <article class="md-content__inner md-typeset">
-<a class="md-content__button md-icon" href="https://github.com/deepcharles/ruptures/edit/master/docs/user-guide/costs/costl2.md" title="Edit this page">
+<a class="md-content__button md-icon" href="https://github.com/deepcharles/ruptures/edit/master/docs/user-guide/costs/costcosine.md" title="Edit this page">
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"></path></svg>
 </a>
-<h1 id="least-squared-deviation-costl2">Least squared deviation (<code>CostL2</code>)<a class="headerlink" href="#least-squared-deviation-costl2" title="Permanent link">#</a></h1>
+<h1 id="kernelized-mean-change-costcosine">Kernelized mean change (<code>CostCosine</code>)<a class="headerlink" href="#kernelized-mean-change-costcosine" title="Permanent link">#</a></h1>
 <h2 id="description">Description<a class="headerlink" href="#description" title="Permanent link">#</a></h2>
-<p>This cost function detects mean-shifts in a signal.
+<p>Given a positive semi-definite kernel <span class="arithmatex">\(k(\cdot, \cdot) : \mathbb{R}^d\times \mathbb{R}^d \mapsto \mathbb{R}\)</span> and its associated feature map <span class="arithmatex">\(\Phi:\mathbb{R}^d \mapsto \mathcal{H}\)</span> (where <span class="arithmatex">\(\mathcal{H}\)</span> is an appropriate Hilbert space), this cost function detects changes in the mean of the embedded signal <span class="arithmatex">\(\{\Phi(y_t)\}_t\)</span> [<a href="#Arlot2019">Arlot2019</a>].
 Formally, for a signal <span class="arithmatex">\(\{y_t\}_t\)</span> on an interval <span class="arithmatex">\(I\)</span>,</p>
 <div class="arithmatex">\[
-c(y_{I}) = \sum_{t\in I} \|y_t - \bar{y}\|_2^2
+c(y_{a..b}) = \sum_{t=a}^{b-1} \| \Phi(y_t) - \bar{\mu} \|_{\mathcal{H}}^2
 \]</div>
-<p>where <span class="arithmatex">\(\bar{y}\)</span> is the mean of <span class="arithmatex">\(\{y_t\}_{t\in I}\)</span>.</p>
+<p>where <span class="arithmatex">\(\bar{\mu}_{a..b}\)</span> is the empirical mean of the embedded sub-signal <span class="arithmatex">\(\{\Phi(y_t)\}_{a\leq t &lt; b-1}\)</span>.
+Here the kernel is the cosine similarity:</p>
+<div class="arithmatex">\[
+k(x, y) = \frac{\langle x\mid y\rangle}{\|x\|\|y\|}
+\]</div>
+<p>where <span class="arithmatex">\(\langle \cdot\mid\cdot \rangle\)</span> and <span class="arithmatex">\(\| \cdot \|\)</span> are the Euclidean scalar product and norm respectively.
+In other words, it is equal to the L2-normalized dot product of vectors.
+This cost function has been used for music segmentation tasks [<a href="#Cooper2002">Cooper2002</a>] and topic segmentation of text [<a href="#Hearst1994">Hearst1994</a>].</p>
 <h2 id="usage">Usage<a class="headerlink" href="#usage" title="Permanent link">#</a></h2>
 <p>Start with the usual imports and create a signal.</p>
 <div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -811,20 +828,27 @@ c(y_{I}) = \sum_{t\in I} \|y_t - \bar{y}\|_2^2
 <span class="n">n_bkps</span><span class="p">,</span> <span class="n">sigma</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span>  <span class="c1"># number of change points, noise standart deviation</span>
 <span class="n">signal</span><span class="p">,</span> <span class="n">bkps</span> <span class="o">=</span> <span class="n">rpt</span><span class="o">.</span><span class="n">pw_constant</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">dim</span><span class="p">,</span> <span class="n">n_bkps</span><span class="p">,</span> <span class="n">noise_std</span><span class="o">=</span><span class="n">sigma</span><span class="p">)</span>
 </code></pre></div>
-<p>Then create a <a href="../../../code-reference/costs/costl2-reference/#ruptures.costs.costl2.CostL2"><code>CostL2</code></a> instance and print the cost of the sub-signal <code>signal[50:150]</code>.</p>
-<div class="highlight"><pre><span></span><code><span class="n">c</span> <span class="o">=</span> <span class="n">rpt</span><span class="o">.</span><span class="n">costs</span><span class="o">.</span><span class="n">CostL2</span><span class="p">()</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">signal</span><span class="p">)</span>
+<p>Then create a <a href="../../../code-reference/costs/costcosine-reference/#ruptures.costs.costcosine.CostCosine"><code>CostCosine</code></a> instance and print the cost of the sub-signal <code>signal[50:150]</code>.</p>
+<div class="highlight"><pre><span></span><code><span class="n">c</span> <span class="o">=</span> <span class="n">rpt</span><span class="o">.</span><span class="n">costs</span><span class="o">.</span><span class="n">CostCosine</span><span class="p">()</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">signal</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">c</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="mi">50</span><span class="p">,</span> <span class="mi">150</span><span class="p">))</span>
 </code></pre></div>
 <p>You can also compute the sum of costs for a given list of change points.</p>
 <div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">c</span><span class="o">.</span><span class="n">sum_of_costs</span><span class="p">(</span><span class="n">bkps</span><span class="p">))</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">c</span><span class="o">.</span><span class="n">sum_of_costs</span><span class="p">([</span><span class="mi">10</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">200</span><span class="p">,</span> <span class="mi">250</span><span class="p">,</span> <span class="n">n</span><span class="p">]))</span>
 </code></pre></div>
-<p>In order to use this cost class in a change point detection algorithm (inheriting from <a href="../../../code-reference/base-reference/#ruptures.base.BaseEstimator"><code>BaseEstimator</code></a>), either pass a <a href="../../../code-reference/costs/costl2-reference/#ruptures.costs.costl2.CostL2"><code>CostL2</code></a> instance (through the argument <code>custom_cost</code>) or set <code>model="l2"</code>.</p>
-<div class="highlight"><pre><span></span><code><span class="n">c</span> <span class="o">=</span> <span class="n">rpt</span><span class="o">.</span><span class="n">costs</span><span class="o">.</span><span class="n">CostL2</span><span class="p">()</span>
+<p>In order to use this cost class in a change point detection algorithm (inheriting from <a href="../../../code-reference/base-reference/#ruptures.base.BaseEstimator"><code>BaseEstimator</code></a>), either pass a <a href="../../../code-reference/costs/costcosine-reference/#ruptures.costs.costcosine.CostCosine"><code>CostCosine</code></a> instance (through the argument <code>custom_cost</code>) or set <code>model="cosine"</code>.</p>
+<div class="highlight"><pre><span></span><code><span class="n">c</span> <span class="o">=</span> <span class="n">rpt</span><span class="o">.</span><span class="n">costs</span><span class="o">.</span><span class="n">CostCosine</span><span class="p">()</span>
 <span class="n">algo</span> <span class="o">=</span> <span class="n">rpt</span><span class="o">.</span><span class="n">Dynp</span><span class="p">(</span><span class="n">custom_cost</span><span class="o">=</span><span class="n">c</span><span class="p">)</span>
 <span class="c1"># is equivalent to</span>
-<span class="n">algo</span> <span class="o">=</span> <span class="n">rpt</span><span class="o">.</span><span class="n">Dynp</span><span class="p">(</span><span class="n">model</span><span class="o">=</span><span class="s2">"l2"</span><span class="p">)</span>
+<span class="n">algo</span> <span class="o">=</span> <span class="n">rpt</span><span class="o">.</span><span class="n">Dynp</span><span class="p">(</span><span class="n">model</span><span class="o">=</span><span class="s2">"cosine"</span><span class="p">)</span>
 </code></pre></div>
+<h2 id="references">References<a class="headerlink" href="#references" title="Permanent link">#</a></h2>
+<p><a id="Hearst1994">[Hearst1994]</a>
+Hearst, M. A. (1994). Multi-paragraph segmentation of expository text. In Proceedings of the Annual Meeting of the Association for Computational Linguistics (pp. 9–16). Las Cruces, New Mexico, USA.</p>
+<p><a id="Cooper2002">[Cooper2002]</a>
+Cooper, M., &amp; Foote, J. (2002). Automatic music summarization via similarity analysis. In Proceedings of the International Conference on Music Information Retrieval (ISMIR) (pp. 81–85). Paris, France.</p>
+<p><a id="Arlot2019">[Arlot2019]</a>
+Arlot, S., Celisse, A., &amp; Harchaoui, Z. (2019). A kernel multiple change-point algorithm via model selection. Journal of Machine Learning Research, 20(162), 1–56.</p>
 </article>
 </div>
 </div>
@@ -832,7 +856,7 @@ c(y_{I}) = \sum_{t\in I} \|y_t - \bar{y}\|_2^2
 <footer class="md-footer">
 <div class="md-footer-nav">
 <nav aria-label="Footer" class="md-footer-nav__inner md-grid">
-<a class="md-footer-nav__link md-footer-nav__link--prev" href="../costl1/" rel="prev">
+<a class="md-footer-nav__link md-footer-nav__link--prev" href="../costrbf/" rel="prev">
 <div class="md-footer-nav__button md-icon">
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"></path></svg>
 </div>
@@ -841,17 +865,17 @@ c(y_{I}) = \sum_{t\in I} \|y_t - \bar{y}\|_2^2
 <span class="md-footer-nav__direction">
                   Previous
                 </span>
-                CostL1
+                CostRbf
               </div>
 </div>
 </a>
-<a class="md-footer-nav__link md-footer-nav__link--next" href="../costnormal/" rel="next">
+<a class="md-footer-nav__link md-footer-nav__link--next" href="../costlinear/" rel="next">
 <div class="md-footer-nav__title">
 <div class="md-ellipsis">
 <span class="md-footer-nav__direction">
                   Next
                 </span>
-                CostNormal
+                CostLinear
               </div>
 </div>
 <div class="md-footer-nav__button md-icon">

@@ -333,6 +333,11 @@
     </a>
 </li>
 <li class="md-nav__item">
+<a class="md-nav__link" href="../../costs/costcosine/">
+      CostCosine
+    </a>
+</li>
+<li class="md-nav__item">
 <a class="md-nav__link" href="../../costs/costlinear/">
       CostLinear
     </a>
@@ -618,6 +623,11 @@
     </a>
 </li>
 <li class="md-nav__item">
+<a class="md-nav__link" href="../../../code-reference/costs/costcosine-reference/">
+      CostCosine
+    </a>
+</li>
+<li class="md-nav__item">
 <a class="md-nav__link" href="../../../code-reference/costs/costlinear-reference/">
       CostLinear
     </a>
@@ -837,12 +847,33 @@ Higher values of <span class="arithmatex">\(\beta\)</span> produce lower <span c
 The exact optimization procedure is described in <a href="#Killick2012">[Killick2012]</a>.</p>
 <h2 id="available-kernels">Available kernels<a class="headerlink" href="#available-kernels" title="Permanent link">#</a></h2>
 <p>We list below a number of kernels that are already implemented in <code>ruptures</code>.
-In the following, <span class="arithmatex">\(u\)</span> and <span class="arithmatex">\(v\)</span> are two d-dimensional vectors.</p>
-<ul>
-<li><strong>Linear kernel:</strong> <span class="arithmatex">\(k_{\text{linear}}(u, v) = u^T v\)</span> and the induced norm is the Euclidean norm.</li>
-<li><strong>Gaussian kernel:</strong> (also known as radial basis function, rbf), <span class="arithmatex">\(k_{\text{Gaussian}}(u,v)=\exp(-\gamma \|u-v\|^2)\)</span> where <span class="arithmatex">\(\|\cdot\|\)</span> is the Euclidean norm and <span class="arithmatex">\(\gamma&gt;0\)</span> is a user-defined parameter.</li>
-<li><strong>Cosine similarity:</strong> <span class="arithmatex">\(k_{\text{cosine}}(u, v) = (u^T v)/(\|u\|\|v\|)\)</span> (scaled version of the linear kernel).</li>
-</ul>
+In the following, <span class="arithmatex">\(u\)</span> and <span class="arithmatex">\(v\)</span> are two d-dimensional vectors and <span class="arithmatex">\(\|\cdot\|\)</span> is the Euclidean norm.</p>
+<table>
+<thead>
+<tr>
+<th>Kernel</th>
+<th>Description</th>
+<th>Cost function</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Linear<br/><code>model="linear"</code></td>
+<td><span class="arithmatex">\(k_{\text{linear}}(u, v) = u^T v\)</span>.</td>
+<td><a href="../../costs/costl2/"><code>CostL2</code></a></td>
+</tr>
+<tr>
+<td>Gaussian<br/><code>model="rbf"</code></td>
+<td><span class="arithmatex">\(k_{\text{Gaussian}}(u,v)=\exp(-\gamma \|u-v\|^2)\)</span><br/>where <span class="arithmatex">\(\gamma&gt;0\)</span> is a user-defined parameter.</td>
+<td><a href="../../costs/costrbf/"><code>CostRbf</code></a></td>
+</tr>
+<tr>
+<td>Cosine<br/><code>model="cosine"</code></td>
+<td><span class="arithmatex">\(k_{\text{cosine}}(u, v) = (u^T v)/(\|u\|\|v\|)\)</span></td>
+<td><a href="../../costs/costcosine/"><code>CostCosine</code></a></td>
+</tr>
+</tbody>
+</table>
 <h2 id="implementation-and-usage">Implementation and usage<a class="headerlink" href="#implementation-and-usage" title="Permanent link">#</a></h2>
 <p>Kernel change point detection is implemented in the class <a href="../../../code-reference/detection/kernelcpd-reference/#ruptures.detection.kernelcpd.KernelCPD"><code>KernelCPD</code></a>, which is a C implementation of dynamic programming and PELT.
 To see it in action, please look at the gallery of examples, in particular:</p>
