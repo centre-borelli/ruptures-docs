@@ -6,10 +6,10 @@
 <meta charset="utf-8"/>
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
 <link href="../../../assets/images/favicon.png" rel="shortcut icon"/>
-<meta content="mkdocs-1.1.2, mkdocs-material-6.1.7" name="generator"/>
-<title>Kernel orthogonal matching pursuit for changepoint detection - ruptures</title>
-<link href="../../../assets/stylesheets/main.19753c6b.min.css" rel="stylesheet"/>
-<link href="../../../assets/stylesheets/palette.196e0c26.min.css" rel="stylesheet"/>
+<meta content="mkdocs-1.1.2, mkdocs-material-6.2.3" name="generator"/>
+<title>CostCLinear - ruptures</title>
+<link href="../../../assets/stylesheets/main.3b61ea93.min.css" rel="stylesheet"/>
+<link href="../../../assets/stylesheets/palette.39b8e14a.min.css" rel="stylesheet"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&amp;display=fallback" rel="stylesheet"/>
 <style>body,input{font-family:"Roboto",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono",SFMono-Regular,Consolas,Menlo,monospace}</style>
@@ -22,7 +22,7 @@
 <input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
 <label class="md-overlay" for="__drawer"></label>
 <div data-md-component="skip">
-<a class="md-skip" href="#kernel-orthogonal-matching-pursuit-for-changepoint-detection">
+<a class="md-skip" href="#continuous-linear-change-costclinear">
           Skip to content
         </a>
 </div>
@@ -38,14 +38,18 @@
 </label>
 <div class="md-header-nav__title" data-md-component="header-title">
 <div class="md-header-nav__ellipsis">
-<span class="md-header-nav__topic md-ellipsis">
+<div class="md-header-nav__topic">
+<span class="md-ellipsis">
             ruptures
           </span>
-<span class="md-header-nav__topic md-ellipsis">
+</div>
+<div class="md-header-nav__topic">
+<span class="md-ellipsis">
             
-              Kernel orthogonal matching pursuit for changepoint detection
+              CostCLinear
             
           </span>
+</div>
 </div>
 </div>
 <label class="md-header-nav__button md-icon" for="__search">
@@ -103,7 +107,7 @@
       </a>
 </li>
 <li class="md-tabs__item">
-<a class="md-tabs__link" href="../../../user-guide/">
+<a class="md-tabs__link md-tabs__link--active" href="../../">
         User guide
       </a>
 </li>
@@ -113,7 +117,7 @@
       </a>
 </li>
 <li class="md-tabs__item">
-<a class="md-tabs__link" href="../../">
+<a class="md-tabs__link" href="../../../code-reference/">
         Code reference
       </a>
 </li>
@@ -130,7 +134,7 @@
 <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
 <div class="md-sidebar__scrollwrap">
 <div class="md-sidebar__inner">
-<nav aria-label="Navigation" class="md-nav md-nav--primary" data-md-level="0">
+<nav aria-label="Navigation" class="md-nav md-nav--primary md-nav--lifted" data-md-level="0">
 <label class="md-nav__title" for="__drawer">
 <a aria-label="ruptures" class="md-nav__button md-logo" href="../../.." title="ruptures">
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a3 3 0 003-3 3 3 0 00-3-3 3 3 0 00-3 3 3 3 0 003 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"></path></svg>
@@ -208,8 +212,8 @@
 </ul>
 </nav>
 </li>
-<li class="md-nav__item md-nav__item--nested">
-<input class="md-nav__toggle md-toggle" data-md-toggle="nav-3" id="nav-3" type="checkbox"/>
+<li class="md-nav__item md-nav__item--active md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" data-md-toggle="nav-3" id="nav-3" type="checkbox"/>
 <label class="md-nav__link" for="nav-3">
       User guide
       <span class="md-nav__icon md-icon"></span>
@@ -221,7 +225,7 @@
       </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../../user-guide/">
+<a class="md-nav__link" href="../../">
       Introduction
     </a>
 </li>
@@ -238,40 +242,40 @@
       </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../../user-guide/detection/dynp/">
+<a class="md-nav__link" href="../../detection/dynp/">
       Dynamic programming
     </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../../user-guide/detection/pelt/">
+<a class="md-nav__link" href="../../detection/pelt/">
       Pelt
     </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../../user-guide/detection/kernelcpd/">
+<a class="md-nav__link" href="../../detection/kernelcpd/">
       Kernel change detection
     </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../../user-guide/detection/binseg/">
+<a class="md-nav__link" href="../../detection/binseg/">
       Binary segmentation
     </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../../user-guide/detection/bottomup/">
+<a class="md-nav__link" href="../../detection/bottomup/">
       Bottom-up segmentation
     </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../../user-guide/detection/window/">
+<a class="md-nav__link" href="../../detection/window/">
       Window sliding segmentation
     </a>
 </li>
 </ul>
 </nav>
 </li>
-<li class="md-nav__item md-nav__item--nested">
-<input class="md-nav__toggle md-toggle" data-md-toggle="nav-3-3" id="nav-3-3" type="checkbox"/>
+<li class="md-nav__item md-nav__item--active md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" data-md-toggle="nav-3-3" id="nav-3-3" type="checkbox"/>
 <label class="md-nav__link" for="nav-3-3">
       Cost functions
       <span class="md-nav__icon md-icon"></span>
@@ -283,52 +287,80 @@
       </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../../user-guide/costs/costl1/">
+<a class="md-nav__link" href="../costl1/">
       CostL1
     </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../../user-guide/costs/costl2/">
+<a class="md-nav__link" href="../costl2/">
       CostL2
     </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../../user-guide/costs/costnormal/">
+<a class="md-nav__link" href="../costnormal/">
       CostNormal
     </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../../user-guide/costs/costrbf/">
+<a class="md-nav__link" href="../costrbf/">
       CostRbf
     </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../../user-guide/costs/costcosine/">
+<a class="md-nav__link" href="../costcosine/">
       CostCosine
     </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../../user-guide/costs/costlinear/">
+<a class="md-nav__link" href="../costlinear/">
       CostLinear
     </a>
 </li>
+<li class="md-nav__item md-nav__item--active">
+<input class="md-nav__toggle md-toggle" data-md-toggle="toc" id="__toc" type="checkbox"/>
+<label class="md-nav__link md-nav__link--active" for="__toc">
+        CostCLinear
+        <span class="md-nav__icon md-icon"></span>
+</label>
+<a class="md-nav__link md-nav__link--active" href="./">
+      CostCLinear
+    </a>
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../../user-guide/costs/costrank/">
+<a class="md-nav__link" href="#description">
+    Description
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#usage">
+    Usage
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../costrank/">
       CostRank
     </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../../user-guide/costs/costml/">
+<a class="md-nav__link" href="../costml/">
       CostMl
     </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../../user-guide/costs/costautoregressive/">
+<a class="md-nav__link" href="../costautoregressive/">
       CostAR
     </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../../user-guide/costs/costcustom/">
+<a class="md-nav__link" href="../costcustom/">
       Custom cost
     </a>
 </li>
@@ -348,22 +380,22 @@
       </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../../user-guide/datasets/pw_constant/">
+<a class="md-nav__link" href="../../datasets/pw_constant/">
       Piecewise constant
     </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../../user-guide/datasets/pw_linear/">
+<a class="md-nav__link" href="../../datasets/pw_linear/">
       Piecewise linear
     </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../../user-guide/datasets/pw_normal/">
+<a class="md-nav__link" href="../../datasets/pw_normal/">
       Piecewise Gaussian
     </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../../user-guide/datasets/pw_wavy/">
+<a class="md-nav__link" href="../../datasets/pw_wavy/">
       Piecewise sinusoidal
     </a>
 </li>
@@ -383,17 +415,17 @@
       </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../../user-guide/metrics/precisionrecall/">
+<a class="md-nav__link" href="../../metrics/precisionrecall/">
       Precision and recall
     </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../../user-guide/metrics/hausdorff/">
+<a class="md-nav__link" href="../../metrics/hausdorff/">
       Hausdorff metric
     </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../../user-guide/metrics/randindex/">
+<a class="md-nav__link" href="../../metrics/randindex/">
       Rand index
     </a>
 </li>
@@ -413,7 +445,7 @@
       </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../../user-guide/show/display/">
+<a class="md-nav__link" href="../../show/display/">
       Display
     </a>
 </li>
@@ -506,12 +538,12 @@
       </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../">
+<a class="md-nav__link" href="../../../code-reference/">
       Introduction
     </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../base-reference/">
+<a class="md-nav__link" href="../../../code-reference/base-reference/">
       Base classes
     </a>
 </li>
@@ -528,32 +560,32 @@
       </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../dynp-reference/">
+<a class="md-nav__link" href="../../../code-reference/detection/dynp-reference/">
       Dynp
     </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../kernelcpd-reference/">
+<a class="md-nav__link" href="../../../code-reference/detection/kernelcpd-reference/">
       KernelCPD
     </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../pelt-reference/">
+<a class="md-nav__link" href="../../../code-reference/detection/pelt-reference/">
       Pelt
     </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../binseg-reference/">
+<a class="md-nav__link" href="../../../code-reference/detection/binseg-reference/">
       Binseg
     </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../bottomup-reference/">
+<a class="md-nav__link" href="../../../code-reference/detection/bottomup-reference/">
       BottomUp
     </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../window-reference/">
+<a class="md-nav__link" href="../../../code-reference/detection/window-reference/">
       Window
     </a>
 </li>
@@ -573,47 +605,52 @@
       </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../costs/costl1-reference/">
+<a class="md-nav__link" href="../../../code-reference/costs/costl1-reference/">
       CostL1
     </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../costs/costl2-reference/">
+<a class="md-nav__link" href="../../../code-reference/costs/costl2-reference/">
       CostL2
     </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../costs/costnormal-reference/">
+<a class="md-nav__link" href="../../../code-reference/costs/costnormal-reference/">
       CostNormal
     </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../costs/costrbf-reference/">
+<a class="md-nav__link" href="../../../code-reference/costs/costrbf-reference/">
       CostRbf
     </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../costs/costcosine-reference/">
+<a class="md-nav__link" href="../../../code-reference/costs/costcosine-reference/">
       CostCosine
     </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../costs/costlinear-reference/">
+<a class="md-nav__link" href="../../../code-reference/costs/costlinear-reference/">
       CostLinear
     </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../costs/costrank-reference/">
+<a class="md-nav__link" href="../../../code-reference/costs/costclinear-reference/">
+      CostCLinear
+    </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../code-reference/costs/costrank-reference/">
       CostRank
     </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../costs/costml-reference/">
+<a class="md-nav__link" href="../../../code-reference/costs/costml-reference/">
       CostMl
     </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../costs/costautoregressive-reference/">
+<a class="md-nav__link" href="../../../code-reference/costs/costautoregressive-reference/">
       CostAR
     </a>
 </li>
@@ -633,22 +670,22 @@
       </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../datasets/pw_constant-reference/">
+<a class="md-nav__link" href="../../../code-reference/datasets/pw_constant-reference/">
       Piecewise constant
     </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../datasets/pw_linear-reference/">
+<a class="md-nav__link" href="../../../code-reference/datasets/pw_linear-reference/">
       Piecewise linear
     </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../datasets/pw_normal-reference/">
+<a class="md-nav__link" href="../../../code-reference/datasets/pw_normal-reference/">
       Piecewise normal
     </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../datasets/pw_wavy-reference/">
+<a class="md-nav__link" href="../../../code-reference/datasets/pw_wavy-reference/">
       Piecewise wavy
     </a>
 </li>
@@ -668,17 +705,17 @@
       </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../metrics/precisionrecall/">
+<a class="md-nav__link" href="../../../code-reference/metrics/precisionrecall/">
       Precision and recall
     </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../metrics/hausdorff/">
+<a class="md-nav__link" href="../../../code-reference/metrics/hausdorff/">
       Hausdorff metric
     </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../metrics/randindex/">
+<a class="md-nav__link" href="../../../code-reference/metrics/randindex/">
       Rand index
     </a>
 </li>
@@ -698,7 +735,7 @@
       </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../show/display/">
+<a class="md-nav__link" href="../../../code-reference/show/display/">
       Display function
     </a>
 </li>
@@ -753,33 +790,14 @@
     </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="#ruptures.detection.ompk.OmpK">
-    OmpK
-  </a>
-<nav aria-label="OmpK" class="md-nav">
-<ul class="md-nav__list">
-<li class="md-nav__item">
-<a class="md-nav__link" href="#ruptures.detection.ompk.OmpK.__init__">
-    __init__()
+<a class="md-nav__link" href="#description">
+    Description
   </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#ruptures.detection.ompk.OmpK.fit">
-    fit()
+<a class="md-nav__link" href="#usage">
+    Usage
   </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#ruptures.detection.ompk.OmpK.fit_predict">
-    fit_predict()
-  </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#ruptures.detection.ompk.OmpK.predict">
-    predict()
-  </a>
-</li>
-</ul>
-</nav>
 </li>
 </ul>
 </nav>
@@ -788,265 +806,83 @@
 </div>
 <div class="md-content">
 <article class="md-content__inner md-typeset">
-<a class="md-content__button md-icon" href="https://github.com/deepcharles/ruptures/edit/master/docs/code-reference/detection/ompk-reference.md" title="Edit this page">
+<a class="md-content__button md-icon" href="https://github.com/deepcharles/ruptures/edit/master/docs/user-guide/costs/costclinear.md" title="Edit this page">
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"></path></svg>
 </a>
-<h1 id="kernel-orthogonal-matching-pursuit-for-changepoint-detection">Kernel orthogonal matching pursuit for changepoint detection<a class="headerlink" href="#kernel-orthogonal-matching-pursuit-for-changepoint-detection" title="Permanent link">#</a></h1>
-<div class="doc doc-object doc-class">
-<h2 class="doc doc-heading" id="ruptures.detection.ompk.OmpK">
-<code>ruptures.detection.ompk.OmpK</code>
-<a class="headerlink" href="#ruptures.detection.ompk.OmpK" title="Permanent link">#</a></h2>
-<div class="doc doc-contents first">
-<p>Contient l'algorithme de parcours des partitions.</p>
-<div class="doc doc-children">
-<div class="doc doc-object doc-method">
-<h3 class="doc doc-heading" id="ruptures.detection.ompk.OmpK.__init__">
-<code class="highlight language-python">
-__init__<span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">min_size</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">jump</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span> </code>
-<span class="doc doc-properties">
-<small class="doc doc-property doc-property-special"><code>special</code></small>
-</span>
-<a class="headerlink" href="#ruptures.detection.ompk.OmpK.__init__" title="Permanent link">#</a></h3>
-<div class="doc doc-contents">
-<p>One line description.</p>
-<p>Detailled description</p>
-<p><strong>Parameters:</strong></p>
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Type</th>
-<th>Description</th>
-<th>Default</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>min_size</code></td>
-<td><code>int</code></td>
-<td>
-<p>minimum segment length</p>
-</td>
-<td><code>2</code></td>
-</tr>
-<tr>
-<td><code>jump</code></td>
-<td><code>int</code></td>
-<td>
-<p>subsample (one every "jump" points)</p>
-</td>
-<td><code>5</code></td>
-</tr>
-</tbody>
-</table>
-<details class="quote">
-<summary>Source code in <code>ruptures/detection/ompk.py</code></summary>
-<div class="highlight">
-<pre><span></span><code><span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">min_size</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">jump</span><span class="o">=</span><span class="mi">5</span><span class="p">):</span>
-    <span class="sd">"""One line description.</span>
+<h1 id="continuous-linear-change-costclinear">Continuous linear change (<code>CostCLinear</code>)<a class="headerlink" href="#continuous-linear-change-costclinear" title="Permanent link">#</a></h1>
+<h2 id="description">Description<a class="headerlink" href="#description" title="Permanent link">#</a></h2>
+<p>For a given set of indexes (also called knots) <span class="arithmatex">\(t_k\)</span> (<span class="arithmatex">\(k=1,\dots,K\)</span>), a linear spline <span class="arithmatex">\(f\)</span> is such that:</p>
+<ol>
+<li><span class="arithmatex">\(f\)</span> is affine on each interval <span class="arithmatex">\(t_k..t_{k+1}\)</span>, i.e. <span class="arithmatex">\(f(t)=\alpha_k (t-t_k) + \beta_k\)</span> (<span class="arithmatex">\(\alpha_k, \beta_k \in \mathbb{R}^d\)</span>) for all <span class="arithmatex">\(t=t_k,t_k+1,\dots,t_{k+1}-1\)</span>;</li>
+<li><span class="arithmatex">\(f\)</span> is continuous.</li>
+</ol>
+<p>The cost function <a href="../../../code-reference/costs/costclinear-reference/#ruptures.costs.costclinear.CostCLinear"><code>CostCLinear</code></a> measures the error when approximating the signal with a linear spline.
+Formally, it is defined for <span class="arithmatex">\(0&lt;a&lt;b\leq T\)</span> by</p>
+<div class="arithmatex">\[
+c(y_{a..b}) := \sum_{t=a}^{b-1} \left\lVert y_t - y_{a-1} - \frac{t-a+1}{b-a}(y_{b-1}-y_{a-1}) \right\rVert^2
+\]</div>
+<p>and <span class="arithmatex">\(c(y_{0..b}):=c(y_{1..b})\)</span> (by convention).</p>
+<h2 id="usage">Usage<a class="headerlink" href="#usage" title="Permanent link">#</a></h2>
+<p>Start with the usual imports and create a signal with piecewise linear trends.</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pylab</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">ruptures</span> <span class="k">as</span> <span class="nn">rpt</span>
 
-<span class="sd">    Detailled description</span>
-
-<span class="sd">    Args:</span>
-<span class="sd">        min_size (int, optional): minimum segment length</span>
-<span class="sd">        jump (int, optional): subsample (one every "jump" points)</span>
-<span class="sd">    """</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">min_size</span> <span class="o">=</span> <span class="n">min_size</span>  <span class="c1"># not used</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">jump</span> <span class="o">=</span> <span class="n">jump</span>  <span class="c1"># not used</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">n_samples</span> <span class="o">=</span> <span class="kc">None</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">gram</span> <span class="o">=</span> <span class="kc">None</span>
-</code></pre>
-</div>
-</details>
-</div>
-</div>
-<div class="doc doc-object doc-method">
-<h3 class="doc doc-heading" id="ruptures.detection.ompk.OmpK.fit">
-<code class="highlight language-python">
-fit<span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">gram</span><span class="p">)</span> </code>
-<a class="headerlink" href="#ruptures.detection.ompk.OmpK.fit" title="Permanent link">#</a></h3>
-<div class="doc doc-contents">
-<p>Compute params to segment signal.</p>
-<p><strong>Parameters:</strong></p>
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Type</th>
-<th>Description</th>
-<th>Default</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>gram</code></td>
-<td><code>array</code></td>
-<td>
-<p>Gram matrix of signal to segment. Shape (n_samples, n_samples).</p>
-</td>
-<td><em>required</em></td>
-</tr>
-</tbody>
-</table>
-<p><strong>Returns:</strong></p>
-<table>
-<thead>
-<tr>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>OmpK</code></td>
-<td>
-<p>self</p>
-</td>
-</tr>
-</tbody>
-</table>
-<details class="quote">
-<summary>Source code in <code>ruptures/detection/ompk.py</code></summary>
-<div class="highlight">
-<pre><span></span><code><span class="k">def</span> <span class="nf">fit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">gram</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">"OmpK"</span><span class="p">:</span>
-    <span class="sd">"""Compute params to segment signal.</span>
-
-<span class="sd">    Args:</span>
-<span class="sd">        gram (array): Gram matrix of signal to segment. Shape (n_samples, n_samples).</span>
-
-<span class="sd">    Returns:</span>
-<span class="sd">        self</span>
-<span class="sd">    """</span>
-    <span class="k">assert</span> <span class="n">gram</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="n">gram</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="s2">"Not a square matrix."</span>
-    <span class="c1"># update some params</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">gram</span> <span class="o">=</span> <span class="n">gram</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">n_samples</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">gram</span><span class="o">.</span><span class="n">shape</span>
-
-    <span class="k">return</span> <span class="bp">self</span>
-</code></pre>
-</div>
-</details>
-</div>
-</div>
-<div class="doc doc-object doc-method">
-<h3 class="doc doc-heading" id="ruptures.detection.ompk.OmpK.fit_predict">
-<code class="highlight language-python">
-fit_predict<span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">gram</span><span class="p">,</span> <span class="n">n_bkps</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">pen</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">epsilon</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span> </code>
-<a class="headerlink" href="#ruptures.detection.ompk.OmpK.fit_predict" title="Permanent link">#</a></h3>
-<div class="doc doc-contents">
-<p>Helper method to call fit and predict once.</p>
-<details class="quote">
-<summary>Source code in <code>ruptures/detection/ompk.py</code></summary>
-<div class="highlight">
-<pre><span></span><code><span class="k">def</span> <span class="nf">fit_predict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">gram</span><span class="p">,</span> <span class="n">n_bkps</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">pen</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">epsilon</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-    <span class="sd">"""Helper method to call fit and predict once."""</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">gram</span><span class="p">)</span>
-    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">n_bkps</span><span class="o">=</span><span class="n">n_bkps</span><span class="p">,</span> <span class="n">pen</span><span class="o">=</span><span class="n">pen</span><span class="p">,</span> <span class="n">epsilon</span><span class="o">=</span><span class="n">epsilon</span><span class="p">)</span>
-</code></pre>
-</div>
-</details>
-</div>
-</div>
-<div class="doc doc-object doc-method">
-<h3 class="doc doc-heading" id="ruptures.detection.ompk.OmpK.predict">
-<code class="highlight language-python">
-predict<span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">n_bkps</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">pen</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">epsilon</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span> </code>
-<a class="headerlink" href="#ruptures.detection.ompk.OmpK.predict" title="Permanent link">#</a></h3>
-<div class="doc doc-contents">
-<p>Return the optimal breakpoints.</p>
-<p>Must be called after the fit method. The breakpoints are associated with the signal passed
-to <a href="#ruptures.detection.ompk.OmpK.fit"><code>fit()</code></a>.
-The stopping rule depends on the parameter passed to the function.</p>
-<p><strong>Parameters:</strong></p>
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Type</th>
-<th>Description</th>
-<th>Default</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>n_bkps</code></td>
-<td><code>int</code></td>
-<td>
-<p>number of breakpoints to find before stopping.</p>
-</td>
-<td><code>None</code></td>
-</tr>
-<tr>
-<td><code>pen</code></td>
-<td><code>float</code></td>
-<td>
-<p>penalty value (&gt;0)</p>
-</td>
-<td><code>None</code></td>
-</tr>
-<tr>
-<td><code>epsilon</code></td>
-<td><code>float</code></td>
-<td>
-<p>reconstruction budget</p>
-</td>
-<td><code>None</code></td>
-</tr>
-</tbody>
-</table>
-<p><strong>Returns:</strong></p>
-<table>
-<thead>
-<tr>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>list</code></td>
-<td>
-<p>sorted list of breakpoints</p>
-</td>
-</tr>
-</tbody>
-</table>
-<details class="quote">
-<summary>Source code in <code>ruptures/detection/ompk.py</code></summary>
-<div class="highlight">
-<pre><span></span><code><span class="k">def</span> <span class="nf">predict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">n_bkps</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">pen</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">epsilon</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-    <span class="sd">"""Return the optimal breakpoints.</span>
-
-<span class="sd">    Must be called after the fit method. The breakpoints are associated with the signal passed</span>
-<span class="sd">    to [`fit()`][ruptures.detection.ompk.OmpK.fit].</span>
-<span class="sd">    The stopping rule depends on the parameter passed to the function.</span>
-
-<span class="sd">    Args:</span>
-<span class="sd">        n_bkps (int): number of breakpoints to find before stopping.</span>
-<span class="sd">        pen (float): penalty value (&gt;0)</span>
-<span class="sd">        epsilon (float): reconstruction budget</span>
-
-<span class="sd">    Returns:</span>
-<span class="sd">        list: sorted list of breakpoints</span>
-<span class="sd">    """</span>
-    <span class="n">msg</span> <span class="o">=</span> <span class="s2">"Give a parameter."</span>
-    <span class="k">assert</span> <span class="nb">any</span><span class="p">(</span><span class="n">param</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">for</span> <span class="n">param</span> <span class="ow">in</span> <span class="p">(</span><span class="n">n_bkps</span><span class="p">,</span> <span class="n">pen</span><span class="p">,</span> <span class="n">epsilon</span><span class="p">)),</span> <span class="n">msg</span>
-
-    <span class="n">bkps</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_seg</span><span class="p">(</span><span class="n">n_bkps</span><span class="o">=</span><span class="n">n_bkps</span><span class="p">,</span> <span class="n">pen</span><span class="o">=</span><span class="n">pen</span><span class="p">,</span> <span class="n">epsilon</span><span class="o">=</span><span class="n">epsilon</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">bkps</span>
-</code></pre>
-</div>
-</details>
-</div>
-</div>
-</div>
-</div>
-</div>
+<span class="c1"># creation of data</span>
+<span class="n">n_samples</span><span class="p">,</span> <span class="n">n_dims</span> <span class="o">=</span> <span class="mi">500</span><span class="p">,</span> <span class="mi">3</span>  <span class="c1"># number of samples, dimension</span>
+<span class="n">n_bkps</span><span class="p">,</span> <span class="n">sigma</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span>  <span class="c1"># number of change points, noise standard deviation</span>
+<span class="n">signal</span><span class="p">,</span> <span class="n">bkps</span> <span class="o">=</span> <span class="n">rpt</span><span class="o">.</span><span class="n">pw_constant</span><span class="p">(</span><span class="n">n_samples</span><span class="p">,</span> <span class="n">n_dims</span><span class="p">,</span> <span class="n">n_bkps</span><span class="p">,</span> <span class="n">noise_std</span><span class="o">=</span><span class="n">sigma</span><span class="p">)</span>
+<span class="n">signal</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cumsum</span><span class="p">(</span><span class="n">signal</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</code></pre></div>
+<p>Then create a <a href="../../../code-reference/costs/costclinear-reference/#ruptures.costs.costclinear.CostCLinear"><code>CostCLinear</code></a> instance and print the cost of the sub-signal <code>signal[50:150]</code>.</p>
+<div class="highlight"><pre><span></span><code><span class="n">c</span> <span class="o">=</span> <span class="n">rpt</span><span class="o">.</span><span class="n">costs</span><span class="o">.</span><span class="n">CostCLinear</span><span class="p">()</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">signal</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">c</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="mi">50</span><span class="p">,</span> <span class="mi">150</span><span class="p">))</span>
+</code></pre></div>
+<p>You can also compute the sum of costs for a given list of change points.</p>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">c</span><span class="o">.</span><span class="n">sum_of_costs</span><span class="p">(</span><span class="n">bkps</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">c</span><span class="o">.</span><span class="n">sum_of_costs</span><span class="p">([</span><span class="mi">10</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">200</span><span class="p">,</span> <span class="mi">250</span><span class="p">,</span> <span class="n">n</span><span class="p">]))</span>
+</code></pre></div>
+<p>In order to use this cost class in a change point detection algorithm (inheriting from <a href="../../../code-reference/base-reference/#ruptures.base.BaseEstimator"><code>BaseEstimator</code></a>), either pass a <a href="../../../code-reference/costs/costclinear-reference/#ruptures.costs.costclinear.CostCLinear"><code>CostCLinear</code></a> instance (through the argument <code>custom_cost</code>) or set <code>model="clinear"</code>.</p>
+<div class="highlight"><pre><span></span><code><span class="n">c</span> <span class="o">=</span> <span class="n">rpt</span><span class="o">.</span><span class="n">costs</span><span class="o">.</span><span class="n">CostCLinear</span><span class="p">()</span>
+<span class="n">algo</span> <span class="o">=</span> <span class="n">rpt</span><span class="o">.</span><span class="n">Dynp</span><span class="p">(</span><span class="n">custom_cost</span><span class="o">=</span><span class="n">c</span><span class="p">)</span>
+<span class="c1"># is equivalent to</span>
+<span class="n">algo</span> <span class="o">=</span> <span class="n">rpt</span><span class="o">.</span><span class="n">Dynp</span><span class="p">(</span><span class="n">model</span><span class="o">=</span><span class="s2">"clinear"</span><span class="p">)</span>
+</code></pre></div>
 </article>
 </div>
 </div>
 </main>
 <footer class="md-footer">
+<div class="md-footer-nav">
+<nav aria-label="Footer" class="md-footer-nav__inner md-grid">
+<a class="md-footer-nav__link md-footer-nav__link--prev" href="../costlinear/" rel="prev">
+<div class="md-footer-nav__button md-icon">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"></path></svg>
+</div>
+<div class="md-footer-nav__title">
+<div class="md-ellipsis">
+<span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                CostLinear
+              </div>
+</div>
+</a>
+<a class="md-footer-nav__link md-footer-nav__link--next" href="../costrank/" rel="next">
+<div class="md-footer-nav__title">
+<div class="md-ellipsis">
+<span class="md-footer-nav__direction">
+                  Next
+                </span>
+                CostRank
+              </div>
+</div>
+<div class="md-footer-nav__button md-icon">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"></path></svg>
+</div>
+</a>
+</nav>
+</div>
 <div class="md-footer-meta md-typeset">
 <div class="md-footer-meta__inner md-grid">
 <div class="md-footer-copyright">
@@ -1060,14 +896,14 @@ The stopping rule depends on the parameter passed to the function.</p>
 </div>
 </footer>
 </div>
-<script src="../../../assets/javascripts/vendor.0ac82a11.min.js"></script>
-<script src="../../../assets/javascripts/bundle.f81dfb4d.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}</script>
+<script src="../../../assets/javascripts/vendor.08c56446.min.js"></script>
+<script src="../../../assets/javascripts/bundle.6ced434e.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}</script>
 <script>
         app = initialize({
           base: "../../..",
           features: ['navigation.tabs', 'search.highlight'],
           search: Object.assign({
-            worker: "../../../assets/javascripts/worker/search.4ac00218.min.js"
+            worker: "../../../assets/javascripts/worker/search.8c7e0a7e.min.js"
           }, typeof search !== "undefined" && search)
         })
       </script>
