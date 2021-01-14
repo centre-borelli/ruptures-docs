@@ -10,7 +10,7 @@
       
       
       <link rel="shortcut icon" href="../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-6.2.3">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-6.2.4">
     
     
       
@@ -18,10 +18,10 @@
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.3b61ea93.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.15aa0b43.min.css">
       
         
-        <link rel="stylesheet" href="../assets/stylesheets/palette.39b8e14a.min.css">
+        <link rel="stylesheet" href="../assets/stylesheets/palette.75751829.min.css">
         
       
     
@@ -1700,36 +1700,9 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#install-the-requirements" class="md-nav__link">
-    Install the requirements
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#install-the-development-version" class="md-nav__link">
     Install the development version
   </a>
-  
-    <nav class="md-nav" aria-label="Install the development version">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#with-pip" class="md-nav__link">
-    With pip
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#with-conda" class="md-nav__link">
-    With conda
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
         
@@ -1870,36 +1843,9 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#install-the-requirements" class="md-nav__link">
-    Install the requirements
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#install-the-development-version" class="md-nav__link">
     Install the development version
   </a>
-  
-    <nav class="md-nav" aria-label="Install the development version">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#with-pip" class="md-nav__link">
-    With pip
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#with-conda" class="md-nav__link">
-    With conda
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
         
@@ -2001,32 +1947,30 @@
                 
                 <h1 id="contributing">Contributing<a class="headerlink" href="#contributing" title="Permanent link">#</a></h1>
 <h2 id="before-contributing">Before contributing<a class="headerlink" href="#before-contributing" title="Permanent link">#</a></h2>
-<p>In all following steps, it is highly recommended to use a virtual environment.</p>
-<h3 id="install-the-requirements">Install the requirements<a class="headerlink" href="#install-the-requirements" title="Permanent link">#</a></h3>
-<p>Several packages are needed to compile, format and test the code.
-They are listed in <code>requirements-dev.txt</code> and can be installed with the following command.</p>
+<p>In all following steps, it is highly recommended to use a virtual environment.
+Build and installation are performed using <code>pip</code> so be sure to have the latest version available.</p>
+<div class="highlight"><pre><span></span><code>python -m pip install --upgrade pip
+</code></pre></div>
 <h3 id="install-the-development-version">Install the development version<a class="headerlink" href="#install-the-development-version" title="Permanent link">#</a></h3>
 <p>It is important that you contribute to the latest version of the code.
 To that end, start by cloning the Github repository.</p>
 <div class="highlight"><pre><span></span><code>git clone https://github.com/deepcharles/ruptures
 cd ruptures
 </code></pre></div>
-<p>Then install the downloaded package.</p>
-<div class="highlight"><pre><span></span><code>python -m pip install --verbose --no-build-isolation --editable .
+<p>Then install the downloaded package with <code>pip</code>.</p>
+<div class="highlight"><pre><span></span><code>python -m pip install --editable .[dev]
 </code></pre></div>
-<h4 id="with-pip">With pip<a class="headerlink" href="#with-pip" title="Permanent link">#</a></h4>
-<div class="highlight"><pre><span></span><code>pip install -r requirements-dev.txt
-</code></pre></div>
-<h4 id="with-conda">With conda<a class="headerlink" href="#with-conda" title="Permanent link">#</a></h4>
-<div class="highlight"><pre><span></span><code>conda --file requirements-dev.txt
-</code></pre></div>
-<p>Then run the following command to install the <code>pre-commit</code> hooks.
-<div class="highlight"><pre><span></span><code>pre-commit install
-</code></pre></div></p>
+<p>Note that <code>python -m</code> can be omitted most of the times, but within virtualenvs, it can prevent certain errors.
+Also, in certain terminals (such as <code>zsh</code>), the square brackets must be escaped, e.g. replace <code>.[dev]</code> by <code>.\[dev\]</code>.</p>
+<p>In addition to <code>numpy</code>, <code>scipy</code> and <code>ruptures</code>, this command will install all packages needed to develop <code>ruptures</code>.
+The exact list of librairies can be found in the <a href="https://github.com/deepcharles/ruptures/blob/master/setup.cfg"><code>setup.cfg</code> file</a> (section <code>[options.extras_require]</code>).</p>
 <h3 id="pre-commit-hooks">Pre-commit hooks<a class="headerlink" href="#pre-commit-hooks" title="Permanent link">#</a></h3>
 <p>We use <code>pre-commit</code> to run Git hooks before submitting the code to review.
-These hook scripts perform simple tasks before each commit (code formatting mostly).</p>
-<p>Note that if you try to commit a non-compliant (i.e. badly formatted) file, <code>pre-commit</code> will modify this file and make the commit fail.
+These hook scripts perform simple tasks before each commit (code formatting mostly).
+To activate the hooks, simply run the following command in your terminal.</p>
+<div class="highlight"><pre><span></span><code>pre-commit install
+</code></pre></div>
+<p>If you try to commit a non-compliant (i.e. badly formatted) file, <code>pre-commit</code> will modify this file and make the commit fail.
 However you need to stage the new changes <strong>yourself</strong> as <code>pre-commit</code> will not do that for you (this is by design; see <a href="https://github.com/pre-commit/pre-commit/issues/806">here</a> or <a href="https://github.com/pre-commit/pre-commit/issues/747">here</a>).
 Fortunately, <code>pre-commit</code> outputs useful messages.</p>
 <p>The list of hooks (and their options) can be found in <a href="https://github.com/deepcharles/ruptures/blob/master/.pre-commit-config.yaml"><code>.pre-commit-config.yaml</code></a>.
@@ -2035,7 +1979,7 @@ If you want to manually run all pre-commit hooks on a repository, run <code>pre-
 <h2 id="contribute-to-the-code">Contribute to the code<a class="headerlink" href="#contribute-to-the-code" title="Permanent link">#</a></h2>
 <h3 id="write-tests">Write tests<a class="headerlink" href="#write-tests" title="Permanent link">#</a></h3>
 <p>The following command executes the test suite.</p>
-<div class="highlight"><pre><span></span><code>pytest
+<div class="highlight"><pre><span></span><code>python -m pytest
 </code></pre></div>
 <h3 id="write-docstrings">Write docstrings<a class="headerlink" href="#write-docstrings" title="Permanent link">#</a></h3>
 <h2 id="contribute-to-the-documentation">Contribute to the documentation<a class="headerlink" href="#contribute-to-the-documentation" title="Permanent link">#</a></h2>
@@ -2128,8 +2072,8 @@ When in doubt, you can refer to the <a href="https://www.python.org/dev/peps/pep
       
     </div>
     
-      <script src="../assets/javascripts/vendor.08c56446.min.js"></script>
-      <script src="../assets/javascripts/bundle.6ced434e.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}</script>
+      <script src="../assets/javascripts/vendor.93c04032.min.js"></script>
+      <script src="../assets/javascripts/bundle.83e5331e.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}</script>
       
       <script>
         app = initialize({

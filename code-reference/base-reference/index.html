@@ -1,912 +1,1928 @@
 
-<!DOCTYPE html>
-
-<html class="no-js" lang="en">
-<head>
-<meta charset="utf-8"/>
-<meta content="width=device-width,initial-scale=1" name="viewport"/>
-<link href="../../assets/images/favicon.png" rel="shortcut icon"/>
-<meta content="mkdocs-1.1.2, mkdocs-material-6.2.3" name="generator"/>
-<title>Base classes - ruptures</title>
-<link href="../../assets/stylesheets/main.3b61ea93.min.css" rel="stylesheet"/>
-<link href="../../assets/stylesheets/palette.39b8e14a.min.css" rel="stylesheet"/>
-<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
-<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&amp;display=fallback" rel="stylesheet"/>
-<style>body,input{font-family:"Roboto",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono",SFMono-Regular,Consolas,Menlo,monospace}</style>
-<link href="../../css/ansi-colours.css" rel="stylesheet"/>
-<link href="../../css/jupyter-cells.css" rel="stylesheet"/>
-<link href="../../css/pandas-dataframe.css" rel="stylesheet"/>
-</head>
-<body data-md-color-accent="none" data-md-color-primary="none" data-md-color-scheme="" dir="ltr">
-<input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
-<input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
-<label class="md-overlay" for="__drawer"></label>
-<div data-md-component="skip">
-<a class="md-skip" href="#base-classes-rupturesbase">
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      <link rel="shortcut icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-6.2.4">
+    
+    
+      
+        <title>Base classes - ruptures</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.15aa0b43.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.75751829.min.css">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono",SFMono-Regular,Consolas,Menlo,monospace}</style>
+      
+    
+    
+    
+      <link rel="stylesheet" href="../../css/ansi-colours.css">
+    
+      <link rel="stylesheet" href="../../css/jupyter-cells.css">
+    
+      <link rel="stylesheet" href="../../css/pandas-dataframe.css">
+    
+    
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="none" data-md-color-accent="none">
+      
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#base-classes-rupturesbase" class="md-skip">
           Skip to content
         </a>
-</div>
-<div data-md-component="announce">
-</div>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      
+
 <header class="md-header" data-md-component="header">
-<nav aria-label="Header" class="md-header-nav md-grid">
-<a aria-label="ruptures" class="md-header-nav__button md-logo" href="../.." title="ruptures">
-<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a3 3 0 003-3 3 3 0 00-3-3 3 3 0 00-3 3 3 3 0 003 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"></path></svg>
-</a>
-<label class="md-header-nav__button md-icon" for="__drawer">
-<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"></path></svg>
-</label>
-<div class="md-header-nav__title" data-md-component="header-title">
-<div class="md-header-nav__ellipsis">
-<div class="md-header-nav__topic">
-<span class="md-ellipsis">
+  <nav class="md-header-nav md-grid" aria-label="Header">
+    <a href="../.." title="ruptures" class="md-header-nav__button md-logo" aria-label="ruptures">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 003-3 3 3 0 00-3-3 3 3 0 00-3 3 3 3 0 003 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header-nav__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header-nav__title" data-md-component="header-title">
+      <div class="md-header-nav__ellipsis">
+        <div class="md-header-nav__topic">
+          <span class="md-ellipsis">
             ruptures
           </span>
-</div>
-<div class="md-header-nav__topic">
-<span class="md-ellipsis">
+        </div>
+        <div class="md-header-nav__topic">
+          <span class="md-ellipsis">
             
               Base classes
             
           </span>
-</div>
-</div>
-</div>
-<label class="md-header-nav__button md-icon" for="__search">
-<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"></path></svg>
-</label>
+        </div>
+      </div>
+    </div>
+    
+      <label class="md-header-nav__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
 <div class="md-search" data-md-component="search" role="dialog">
-<label class="md-search__overlay" for="__search"></label>
-<div class="md-search__inner" role="search">
-<form class="md-search__form" name="search">
-<input aria-label="Search" autocapitalize="off" autocomplete="off" autocorrect="off" class="md-search__input" data-md-component="search-query" data-md-state="active" name="query" placeholder="Search" required="" spellcheck="false" type="text"/>
-<label class="md-search__icon md-icon" for="__search">
-<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"></path></svg>
-<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"></path></svg>
-</label>
-<button aria-label="Clear" class="md-search__icon md-icon" data-md-component="search-reset" tabindex="-1" type="reset">
-<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"></path></svg>
-</button>
-</form>
-<div class="md-search__output">
-<div class="md-search__scrollwrap" data-md-scrollfix="">
-<div class="md-search-result" data-md-component="search-result">
-<div class="md-search-result__meta">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" data-md-component="search-reset" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
             Initializing search
           </div>
-<ol class="md-search-result__list"></ol>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
-</div>
-</div>
-</div>
-</div>
-<div class="md-header-nav__source">
-<a class="md-source" href="https://github.com/deepcharles/ruptures/" title="Go to repository">
-<div class="md-source__icon md-icon">
-<svg viewbox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><path d="M439.55 236.05L244 40.45a28.87 28.87 0 00-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 01-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 000 40.81l195.61 195.6a28.86 28.86 0 0040.8 0l194.69-194.69a28.86 28.86 0 000-40.81z"></path></svg>
-</div>
-<div class="md-source__repository">
+    
+    
+      <div class="md-header-nav__source">
+        
+<a href="https://github.com/deepcharles/ruptures/" title="Go to repository" class="md-source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05L244 40.45a28.87 28.87 0 00-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 01-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 000 40.81l195.61 195.6a28.86 28.86 0 0040.8 0l194.69-194.69a28.86 28.86 0 000-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
     deepcharles/ruptures
   </div>
 </a>
-</div>
-</nav>
+      </div>
+    
+  </nav>
 </header>
-<div class="md-container" data-md-component="container">
-<nav aria-label="Tabs" class="md-tabs" data-md-component="tabs">
-<div class="md-tabs__inner md-grid">
-<ul class="md-tabs__list">
-<li class="md-tabs__item">
-<a class="md-tabs__link" href="../..">
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
         Home
       </a>
-</li>
-<li class="md-tabs__item">
-<a class="md-tabs__link" href="../../what-is-cpd/">
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../what-is-cpd/" class="md-tabs__link">
         Getting started
       </a>
-</li>
-<li class="md-tabs__item">
-<a class="md-tabs__link" href="../../user-guide/">
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../user-guide/" class="md-tabs__link">
         User guide
       </a>
-</li>
-<li class="md-tabs__item">
-<a class="md-tabs__link" href="../../examples/introduction/">
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../examples/introduction/" class="md-tabs__link">
         Gallery of examples
       </a>
-</li>
-<li class="md-tabs__item">
-<a class="md-tabs__link md-tabs__link--active" href="../">
+    </li>
+  
+
+      
+        
+  
+  
+    
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../" class="md-tabs__link md-tabs__link--active">
         Code reference
       </a>
-</li>
-<li class="md-tabs__item">
-<a class="md-tabs__link" href="../../release-notes/">
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../release-notes/" class="md-tabs__link">
         About
       </a>
-</li>
-</ul>
-</div>
+    </li>
+  
+
+      
+    </ul>
+  </div>
 </nav>
-<main class="md-main" data-md-component="main">
-<div class="md-main__inner md-grid">
-<div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
-<div class="md-sidebar__scrollwrap">
-<div class="md-sidebar__inner">
-<nav aria-label="Navigation" class="md-nav md-nav--primary md-nav--lifted" data-md-level="0">
-<label class="md-nav__title" for="__drawer">
-<a aria-label="ruptures" class="md-nav__button md-logo" href="../.." title="ruptures">
-<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a3 3 0 003-3 3 3 0 00-3-3 3 3 0 00-3 3 3 3 0 003 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"></path></svg>
-</a>
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="ruptures" class="md-nav__button md-logo" aria-label="ruptures">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 003-3 3 3 0 00-3-3 3 3 0 00-3 3 3 3 0 003 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
     ruptures
   </label>
-<div class="md-nav__source">
-<a class="md-source" href="https://github.com/deepcharles/ruptures/" title="Go to repository">
-<div class="md-source__icon md-icon">
-<svg viewbox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><path d="M439.55 236.05L244 40.45a28.87 28.87 0 00-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 01-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 000 40.81l195.61 195.6a28.86 28.86 0 0040.8 0l194.69-194.69a28.86 28.86 0 000-40.81z"></path></svg>
-</div>
-<div class="md-source__repository">
+  
+    <div class="md-nav__source">
+      
+<a href="https://github.com/deepcharles/ruptures/" title="Go to repository" class="md-source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05L244 40.45a28.87 28.87 0 00-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 01-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 000 40.81l195.61 195.6a28.86 28.86 0 0040.8 0l194.69-194.69a28.86 28.86 0 000-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
     deepcharles/ruptures
   </div>
 </a>
-</div>
-<ul class="md-nav__list" data-md-scrollfix="">
-<li class="md-nav__item md-nav__item--nested">
-<input class="md-nav__toggle md-toggle" data-md-toggle="nav-1" id="nav-1" type="checkbox"/>
-<label class="md-nav__link" for="nav-1">
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-1" type="checkbox" id="nav-1" >
+    
+    <label class="md-nav__link" for="nav-1">
       Home
       <span class="md-nav__icon md-icon"></span>
-</label>
-<nav aria-label="Home" class="md-nav" data-md-level="1">
-<label class="md-nav__title" for="nav-1">
-<span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Home" data-md-level="1">
+      <label class="md-nav__title" for="nav-1">
+        <span class="md-nav__icon md-icon"></span>
         Home
       </label>
-<ul class="md-nav__list" data-md-scrollfix="">
-<li class="md-nav__item">
-<a class="md-nav__link" href="../..">
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../.." class="md-nav__link">
       Welcome to ruptures
     </a>
-</li>
-</ul>
-</nav>
-</li>
-<li class="md-nav__item md-nav__item--nested">
-<input class="md-nav__toggle md-toggle" data-md-toggle="nav-2" id="nav-2" type="checkbox"/>
-<label class="md-nav__link" for="nav-2">
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2" >
+    
+    <label class="md-nav__link" for="nav-2">
       Getting started
       <span class="md-nav__icon md-icon"></span>
-</label>
-<nav aria-label="Getting started" class="md-nav" data-md-level="1">
-<label class="md-nav__title" for="nav-2">
-<span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Getting started" data-md-level="1">
+      <label class="md-nav__title" for="nav-2">
+        <span class="md-nav__icon md-icon"></span>
         Getting started
       </label>
-<ul class="md-nav__list" data-md-scrollfix="">
-<li class="md-nav__item">
-<a class="md-nav__link" href="../../what-is-cpd/">
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../what-is-cpd/" class="md-nav__link">
       Change point detection?
     </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../../install/">
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../install/" class="md-nav__link">
       Installation
     </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../../getting-started/basic-usage/">
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../getting-started/basic-usage/" class="md-nav__link">
       Basic usage
     </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../../fit-and-predict/">
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../fit-and-predict/" class="md-nav__link">
       Fitting and predicting
     </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../../custom-cost-function/">
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../custom-cost-function/" class="md-nav__link">
       Custom cost function
     </a>
-</li>
-</ul>
-</nav>
-</li>
-<li class="md-nav__item md-nav__item--nested">
-<input class="md-nav__toggle md-toggle" data-md-toggle="nav-3" id="nav-3" type="checkbox"/>
-<label class="md-nav__link" for="nav-3">
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3" >
+    
+    <label class="md-nav__link" for="nav-3">
       User guide
       <span class="md-nav__icon md-icon"></span>
-</label>
-<nav aria-label="User guide" class="md-nav" data-md-level="1">
-<label class="md-nav__title" for="nav-3">
-<span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="User guide" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        <span class="md-nav__icon md-icon"></span>
         User guide
       </label>
-<ul class="md-nav__list" data-md-scrollfix="">
-<li class="md-nav__item">
-<a class="md-nav__link" href="../../user-guide/">
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../user-guide/" class="md-nav__link">
       Introduction
     </a>
-</li>
-<li class="md-nav__item md-nav__item--nested">
-<input class="md-nav__toggle md-toggle" data-md-toggle="nav-3-2" id="nav-3-2" type="checkbox"/>
-<label class="md-nav__link" for="nav-3-2">
+  </li>
+
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3-2" type="checkbox" id="nav-3-2" >
+    
+    <label class="md-nav__link" for="nav-3-2">
       Search methods
       <span class="md-nav__icon md-icon"></span>
-</label>
-<nav aria-label="Search methods" class="md-nav" data-md-level="2">
-<label class="md-nav__title" for="nav-3-2">
-<span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Search methods" data-md-level="2">
+      <label class="md-nav__title" for="nav-3-2">
+        <span class="md-nav__icon md-icon"></span>
         Search methods
       </label>
-<ul class="md-nav__list" data-md-scrollfix="">
-<li class="md-nav__item">
-<a class="md-nav__link" href="../../user-guide/detection/dynp/">
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../user-guide/detection/dynp/" class="md-nav__link">
       Dynamic programming
     </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../../user-guide/detection/pelt/">
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../user-guide/detection/pelt/" class="md-nav__link">
       Pelt
     </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../../user-guide/detection/kernelcpd/">
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../user-guide/detection/kernelcpd/" class="md-nav__link">
       Kernel change detection
     </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../../user-guide/detection/binseg/">
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../user-guide/detection/binseg/" class="md-nav__link">
       Binary segmentation
     </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../../user-guide/detection/bottomup/">
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../user-guide/detection/bottomup/" class="md-nav__link">
       Bottom-up segmentation
     </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../../user-guide/detection/window/">
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../user-guide/detection/window/" class="md-nav__link">
       Window sliding segmentation
     </a>
-</li>
-</ul>
-</nav>
-</li>
-<li class="md-nav__item md-nav__item--nested">
-<input class="md-nav__toggle md-toggle" data-md-toggle="nav-3-3" id="nav-3-3" type="checkbox"/>
-<label class="md-nav__link" for="nav-3-3">
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3-3" type="checkbox" id="nav-3-3" >
+    
+    <label class="md-nav__link" for="nav-3-3">
       Cost functions
       <span class="md-nav__icon md-icon"></span>
-</label>
-<nav aria-label="Cost functions" class="md-nav" data-md-level="2">
-<label class="md-nav__title" for="nav-3-3">
-<span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Cost functions" data-md-level="2">
+      <label class="md-nav__title" for="nav-3-3">
+        <span class="md-nav__icon md-icon"></span>
         Cost functions
       </label>
-<ul class="md-nav__list" data-md-scrollfix="">
-<li class="md-nav__item">
-<a class="md-nav__link" href="../../user-guide/costs/costl1/">
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../user-guide/costs/costl1/" class="md-nav__link">
       CostL1
     </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../../user-guide/costs/costl2/">
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../user-guide/costs/costl2/" class="md-nav__link">
       CostL2
     </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../../user-guide/costs/costnormal/">
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../user-guide/costs/costnormal/" class="md-nav__link">
       CostNormal
     </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../../user-guide/costs/costrbf/">
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../user-guide/costs/costrbf/" class="md-nav__link">
       CostRbf
     </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../../user-guide/costs/costcosine/">
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../user-guide/costs/costcosine/" class="md-nav__link">
       CostCosine
     </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../../user-guide/costs/costlinear/">
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../user-guide/costs/costlinear/" class="md-nav__link">
       CostLinear
     </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../../user-guide/costs/costclinear/">
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../user-guide/costs/costclinear/" class="md-nav__link">
       CostCLinear
     </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../../user-guide/costs/costrank/">
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../user-guide/costs/costrank/" class="md-nav__link">
       CostRank
     </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../../user-guide/costs/costml/">
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../user-guide/costs/costml/" class="md-nav__link">
       CostMl
     </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../../user-guide/costs/costautoregressive/">
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../user-guide/costs/costautoregressive/" class="md-nav__link">
       CostAR
     </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../../user-guide/costs/costcustom/">
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../user-guide/costs/costcustom/" class="md-nav__link">
       Custom cost
     </a>
-</li>
-</ul>
-</nav>
-</li>
-<li class="md-nav__item md-nav__item--nested">
-<input class="md-nav__toggle md-toggle" data-md-toggle="nav-3-4" id="nav-3-4" type="checkbox"/>
-<label class="md-nav__link" for="nav-3-4">
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3-4" type="checkbox" id="nav-3-4" >
+    
+    <label class="md-nav__link" for="nav-3-4">
       Generate signals
       <span class="md-nav__icon md-icon"></span>
-</label>
-<nav aria-label="Generate signals" class="md-nav" data-md-level="2">
-<label class="md-nav__title" for="nav-3-4">
-<span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Generate signals" data-md-level="2">
+      <label class="md-nav__title" for="nav-3-4">
+        <span class="md-nav__icon md-icon"></span>
         Generate signals
       </label>
-<ul class="md-nav__list" data-md-scrollfix="">
-<li class="md-nav__item">
-<a class="md-nav__link" href="../../user-guide/datasets/pw_constant/">
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../user-guide/datasets/pw_constant/" class="md-nav__link">
       Piecewise constant
     </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../../user-guide/datasets/pw_linear/">
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../user-guide/datasets/pw_linear/" class="md-nav__link">
       Piecewise linear
     </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../../user-guide/datasets/pw_normal/">
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../user-guide/datasets/pw_normal/" class="md-nav__link">
       Piecewise Gaussian
     </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../../user-guide/datasets/pw_wavy/">
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../user-guide/datasets/pw_wavy/" class="md-nav__link">
       Piecewise sinusoidal
     </a>
-</li>
-</ul>
-</nav>
-</li>
-<li class="md-nav__item md-nav__item--nested">
-<input class="md-nav__toggle md-toggle" data-md-toggle="nav-3-5" id="nav-3-5" type="checkbox"/>
-<label class="md-nav__link" for="nav-3-5">
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3-5" type="checkbox" id="nav-3-5" >
+    
+    <label class="md-nav__link" for="nav-3-5">
       Evaluation metrics
       <span class="md-nav__icon md-icon"></span>
-</label>
-<nav aria-label="Evaluation metrics" class="md-nav" data-md-level="2">
-<label class="md-nav__title" for="nav-3-5">
-<span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Evaluation metrics" data-md-level="2">
+      <label class="md-nav__title" for="nav-3-5">
+        <span class="md-nav__icon md-icon"></span>
         Evaluation metrics
       </label>
-<ul class="md-nav__list" data-md-scrollfix="">
-<li class="md-nav__item">
-<a class="md-nav__link" href="../../user-guide/metrics/precisionrecall/">
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../user-guide/metrics/precisionrecall/" class="md-nav__link">
       Precision and recall
     </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../../user-guide/metrics/hausdorff/">
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../user-guide/metrics/hausdorff/" class="md-nav__link">
       Hausdorff metric
     </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../../user-guide/metrics/randindex/">
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../user-guide/metrics/randindex/" class="md-nav__link">
       Rand index
     </a>
-</li>
-</ul>
-</nav>
-</li>
-<li class="md-nav__item md-nav__item--nested">
-<input class="md-nav__toggle md-toggle" data-md-toggle="nav-3-6" id="nav-3-6" type="checkbox"/>
-<label class="md-nav__link" for="nav-3-6">
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3-6" type="checkbox" id="nav-3-6" >
+    
+    <label class="md-nav__link" for="nav-3-6">
       Display
       <span class="md-nav__icon md-icon"></span>
-</label>
-<nav aria-label="Display" class="md-nav" data-md-level="2">
-<label class="md-nav__title" for="nav-3-6">
-<span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Display" data-md-level="2">
+      <label class="md-nav__title" for="nav-3-6">
+        <span class="md-nav__icon md-icon"></span>
         Display
       </label>
-<ul class="md-nav__list" data-md-scrollfix="">
-<li class="md-nav__item">
-<a class="md-nav__link" href="../../user-guide/show/display/">
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../user-guide/show/display/" class="md-nav__link">
       Display
     </a>
-</li>
-</ul>
-</nav>
-</li>
-</ul>
-</nav>
-</li>
-<li class="md-nav__item md-nav__item--nested">
-<input class="md-nav__toggle md-toggle" data-md-toggle="nav-4" id="nav-4" type="checkbox"/>
-<label class="md-nav__link" for="nav-4">
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4" >
+    
+    <label class="md-nav__link" for="nav-4">
       Gallery of examples
       <span class="md-nav__icon md-icon"></span>
-</label>
-<nav aria-label="Gallery of examples" class="md-nav" data-md-level="1">
-<label class="md-nav__title" for="nav-4">
-<span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Gallery of examples" data-md-level="1">
+      <label class="md-nav__title" for="nav-4">
+        <span class="md-nav__icon md-icon"></span>
         Gallery of examples
       </label>
-<ul class="md-nav__list" data-md-scrollfix="">
-<li class="md-nav__item">
-<a class="md-nav__link" href="../../examples/introduction/">
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../examples/introduction/" class="md-nav__link">
       Introduction
     </a>
-</li>
-<li class="md-nav__item md-nav__item--nested">
-<input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-2" id="nav-4-2" type="checkbox"/>
-<label class="md-nav__link" for="nav-4-2">
+  </li>
+
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-2" type="checkbox" id="nav-4-2" >
+    
+    <label class="md-nav__link" for="nav-4-2">
       Simple usages
       <span class="md-nav__icon md-icon"></span>
-</label>
-<nav aria-label="Simple usages" class="md-nav" data-md-level="2">
-<label class="md-nav__title" for="nav-4-2">
-<span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Simple usages" data-md-level="2">
+      <label class="md-nav__title" for="nav-4-2">
+        <span class="md-nav__icon md-icon"></span>
         Simple usages
       </label>
-<ul class="md-nav__list" data-md-scrollfix="">
-<li class="md-nav__item">
-<a class="md-nav__link" href="../../examples/simple-usages-introduction/">
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../examples/simple-usages-introduction/" class="md-nav__link">
       Introduction
     </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../../getting-started/basic-usage/">
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../getting-started/basic-usage/" class="md-nav__link">
       Basic usage
     </a>
-</li>
-</ul>
-</nav>
-</li>
-<li class="md-nav__item md-nav__item--nested">
-<input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-3" id="nav-4-3" type="checkbox"/>
-<label class="md-nav__link" for="nav-4-3">
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-3" type="checkbox" id="nav-4-3" >
+    
+    <label class="md-nav__link" for="nav-4-3">
       Advanced usages
       <span class="md-nav__icon md-icon"></span>
-</label>
-<nav aria-label="Advanced usages" class="md-nav" data-md-level="2">
-<label class="md-nav__title" for="nav-4-3">
-<span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Advanced usages" data-md-level="2">
+      <label class="md-nav__title" for="nav-4-3">
+        <span class="md-nav__icon md-icon"></span>
         Advanced usages
       </label>
-<ul class="md-nav__list" data-md-scrollfix="">
-<li class="md-nav__item">
-<a class="md-nav__link" href="../../examples/advanced-usages-introduction/">
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../examples/advanced-usages-introduction/" class="md-nav__link">
       Introduction
     </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../../examples/kernel-cpd-performance-comparison/">
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../examples/kernel-cpd-performance-comparison/" class="md-nav__link">
       Kernel change point detection: a performance comparison
     </a>
-</li>
-</ul>
-</nav>
-</li>
-</ul>
-</nav>
-</li>
-<li class="md-nav__item md-nav__item--active md-nav__item--nested">
-<input checked="" class="md-nav__toggle md-toggle" data-md-toggle="nav-5" id="nav-5" type="checkbox"/>
-<label class="md-nav__link" for="nav-5">
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  
+
+
+  
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5" checked>
+    
+    <label class="md-nav__link" for="nav-5">
       Code reference
       <span class="md-nav__icon md-icon"></span>
-</label>
-<nav aria-label="Code reference" class="md-nav" data-md-level="1">
-<label class="md-nav__title" for="nav-5">
-<span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Code reference" data-md-level="1">
+      <label class="md-nav__title" for="nav-5">
+        <span class="md-nav__icon md-icon"></span>
         Code reference
       </label>
-<ul class="md-nav__list" data-md-scrollfix="">
-<li class="md-nav__item">
-<a class="md-nav__link" href="../">
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../" class="md-nav__link">
       Introduction
     </a>
-</li>
-<li class="md-nav__item md-nav__item--active">
-<input class="md-nav__toggle md-toggle" data-md-toggle="toc" id="__toc" type="checkbox"/>
-<label class="md-nav__link md-nav__link--active" for="__toc">
+  </li>
+
+        
+          
+          
+          
+
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
         Base classes
         <span class="md-nav__icon md-icon"></span>
-</label>
-<a class="md-nav__link md-nav__link--active" href="./">
+      </label>
+    
+    <a href="./" class="md-nav__link md-nav__link--active">
       Base classes
     </a>
-<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
-<label class="md-nav__title" for="__toc">
-<span class="md-nav__icon md-icon"></span>
+    
+      
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
       Table of contents
     </label>
-<ul class="md-nav__list" data-md-scrollfix="">
-<li class="md-nav__item">
-<a class="md-nav__link" href="#ruptures.base">
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#ruptures.base" class="md-nav__link">
     ruptures.base
   </a>
+  
 </li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#ruptures.base.BaseCost">
+      
+        <li class="md-nav__item">
+  <a href="#ruptures.base.BaseCost" class="md-nav__link">
     BaseCost
   </a>
-<nav aria-label="BaseCost" class="md-nav">
-<ul class="md-nav__list">
-<li class="md-nav__item">
-<a class="md-nav__link" href="#ruptures.base.BaseCost.error">
+  
+    <nav class="md-nav" aria-label="BaseCost">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ruptures.base.BaseCost.error" class="md-nav__link">
     error()
   </a>
+  
 </li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#ruptures.base.BaseCost.fit">
+        
+          <li class="md-nav__item">
+  <a href="#ruptures.base.BaseCost.fit" class="md-nav__link">
     fit()
   </a>
+  
 </li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#ruptures.base.BaseCost.sum_of_costs">
+        
+          <li class="md-nav__item">
+  <a href="#ruptures.base.BaseCost.sum_of_costs" class="md-nav__link">
     sum_of_costs()
   </a>
+  
 </li>
-</ul>
-</nav>
+        
+      </ul>
+    </nav>
+  
 </li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#ruptures.base.BaseEstimator">
+      
+        <li class="md-nav__item">
+  <a href="#ruptures.base.BaseEstimator" class="md-nav__link">
     BaseEstimator
   </a>
-<nav aria-label="BaseEstimator" class="md-nav">
-<ul class="md-nav__list">
-<li class="md-nav__item">
-<a class="md-nav__link" href="#ruptures.base.BaseEstimator.fit">
+  
+    <nav class="md-nav" aria-label="BaseEstimator">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ruptures.base.BaseEstimator.fit" class="md-nav__link">
     fit()
   </a>
+  
 </li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#ruptures.base.BaseEstimator.fit_predict">
+        
+          <li class="md-nav__item">
+  <a href="#ruptures.base.BaseEstimator.fit_predict" class="md-nav__link">
     fit_predict()
   </a>
+  
 </li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#ruptures.base.BaseEstimator.predict">
+        
+          <li class="md-nav__item">
+  <a href="#ruptures.base.BaseEstimator.predict" class="md-nav__link">
     predict()
   </a>
+  
 </li>
-</ul>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
 </nav>
-</li>
-</ul>
-</nav>
-</li>
-<li class="md-nav__item md-nav__item--nested">
-<input class="md-nav__toggle md-toggle" data-md-toggle="nav-5-3" id="nav-5-3" type="checkbox"/>
-<label class="md-nav__link" for="nav-5-3">
+    
+  </li>
+
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5-3" type="checkbox" id="nav-5-3" >
+    
+    <label class="md-nav__link" for="nav-5-3">
       Search methods
       <span class="md-nav__icon md-icon"></span>
-</label>
-<nav aria-label="Search methods" class="md-nav" data-md-level="2">
-<label class="md-nav__title" for="nav-5-3">
-<span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Search methods" data-md-level="2">
+      <label class="md-nav__title" for="nav-5-3">
+        <span class="md-nav__icon md-icon"></span>
         Search methods
       </label>
-<ul class="md-nav__list" data-md-scrollfix="">
-<li class="md-nav__item">
-<a class="md-nav__link" href="../detection/dynp-reference/">
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../detection/dynp-reference/" class="md-nav__link">
       Dynp
     </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../detection/kernelcpd-reference/">
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../detection/kernelcpd-reference/" class="md-nav__link">
       KernelCPD
     </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../detection/pelt-reference/">
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../detection/pelt-reference/" class="md-nav__link">
       Pelt
     </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../detection/binseg-reference/">
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../detection/binseg-reference/" class="md-nav__link">
       Binseg
     </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../detection/bottomup-reference/">
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../detection/bottomup-reference/" class="md-nav__link">
       BottomUp
     </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../detection/window-reference/">
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../detection/window-reference/" class="md-nav__link">
       Window
     </a>
-</li>
-</ul>
-</nav>
-</li>
-<li class="md-nav__item md-nav__item--nested">
-<input class="md-nav__toggle md-toggle" data-md-toggle="nav-5-4" id="nav-5-4" type="checkbox"/>
-<label class="md-nav__link" for="nav-5-4">
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5-4" type="checkbox" id="nav-5-4" >
+    
+    <label class="md-nav__link" for="nav-5-4">
       Cost functions
       <span class="md-nav__icon md-icon"></span>
-</label>
-<nav aria-label="Cost functions" class="md-nav" data-md-level="2">
-<label class="md-nav__title" for="nav-5-4">
-<span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Cost functions" data-md-level="2">
+      <label class="md-nav__title" for="nav-5-4">
+        <span class="md-nav__icon md-icon"></span>
         Cost functions
       </label>
-<ul class="md-nav__list" data-md-scrollfix="">
-<li class="md-nav__item">
-<a class="md-nav__link" href="../costs/costl1-reference/">
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../costs/costl1-reference/" class="md-nav__link">
       CostL1
     </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../costs/costl2-reference/">
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../costs/costl2-reference/" class="md-nav__link">
       CostL2
     </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../costs/costnormal-reference/">
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../costs/costnormal-reference/" class="md-nav__link">
       CostNormal
     </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../costs/costrbf-reference/">
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../costs/costrbf-reference/" class="md-nav__link">
       CostRbf
     </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../costs/costcosine-reference/">
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../costs/costcosine-reference/" class="md-nav__link">
       CostCosine
     </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../costs/costlinear-reference/">
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../costs/costlinear-reference/" class="md-nav__link">
       CostLinear
     </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../costs/costclinear-reference/">
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../costs/costclinear-reference/" class="md-nav__link">
       CostCLinear
     </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../costs/costrank-reference/">
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../costs/costrank-reference/" class="md-nav__link">
       CostRank
     </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../costs/costml-reference/">
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../costs/costml-reference/" class="md-nav__link">
       CostMl
     </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../costs/costautoregressive-reference/">
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../costs/costautoregressive-reference/" class="md-nav__link">
       CostAR
     </a>
-</li>
-</ul>
-</nav>
-</li>
-<li class="md-nav__item md-nav__item--nested">
-<input class="md-nav__toggle md-toggle" data-md-toggle="nav-5-5" id="nav-5-5" type="checkbox"/>
-<label class="md-nav__link" for="nav-5-5">
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5-5" type="checkbox" id="nav-5-5" >
+    
+    <label class="md-nav__link" for="nav-5-5">
       Data sets
       <span class="md-nav__icon md-icon"></span>
-</label>
-<nav aria-label="Data sets" class="md-nav" data-md-level="2">
-<label class="md-nav__title" for="nav-5-5">
-<span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Data sets" data-md-level="2">
+      <label class="md-nav__title" for="nav-5-5">
+        <span class="md-nav__icon md-icon"></span>
         Data sets
       </label>
-<ul class="md-nav__list" data-md-scrollfix="">
-<li class="md-nav__item">
-<a class="md-nav__link" href="../datasets/pw_constant-reference/">
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../datasets/pw_constant-reference/" class="md-nav__link">
       Piecewise constant
     </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../datasets/pw_linear-reference/">
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../datasets/pw_linear-reference/" class="md-nav__link">
       Piecewise linear
     </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../datasets/pw_normal-reference/">
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../datasets/pw_normal-reference/" class="md-nav__link">
       Piecewise normal
     </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../datasets/pw_wavy-reference/">
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../datasets/pw_wavy-reference/" class="md-nav__link">
       Piecewise wavy
     </a>
-</li>
-</ul>
-</nav>
-</li>
-<li class="md-nav__item md-nav__item--nested">
-<input class="md-nav__toggle md-toggle" data-md-toggle="nav-5-6" id="nav-5-6" type="checkbox"/>
-<label class="md-nav__link" for="nav-5-6">
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5-6" type="checkbox" id="nav-5-6" >
+    
+    <label class="md-nav__link" for="nav-5-6">
       Metrics
       <span class="md-nav__icon md-icon"></span>
-</label>
-<nav aria-label="Metrics" class="md-nav" data-md-level="2">
-<label class="md-nav__title" for="nav-5-6">
-<span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Metrics" data-md-level="2">
+      <label class="md-nav__title" for="nav-5-6">
+        <span class="md-nav__icon md-icon"></span>
         Metrics
       </label>
-<ul class="md-nav__list" data-md-scrollfix="">
-<li class="md-nav__item">
-<a class="md-nav__link" href="../metrics/precisionrecall/">
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../metrics/precisionrecall/" class="md-nav__link">
       Precision and recall
     </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../metrics/hausdorff/">
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../metrics/hausdorff/" class="md-nav__link">
       Hausdorff metric
     </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../metrics/randindex/">
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../metrics/randindex/" class="md-nav__link">
       Rand index
     </a>
-</li>
-</ul>
-</nav>
-</li>
-<li class="md-nav__item md-nav__item--nested">
-<input class="md-nav__toggle md-toggle" data-md-toggle="nav-5-7" id="nav-5-7" type="checkbox"/>
-<label class="md-nav__link" for="nav-5-7">
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5-7" type="checkbox" id="nav-5-7" >
+    
+    <label class="md-nav__link" for="nav-5-7">
       Display
       <span class="md-nav__icon md-icon"></span>
-</label>
-<nav aria-label="Display" class="md-nav" data-md-level="2">
-<label class="md-nav__title" for="nav-5-7">
-<span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Display" data-md-level="2">
+      <label class="md-nav__title" for="nav-5-7">
+        <span class="md-nav__icon md-icon"></span>
         Display
       </label>
-<ul class="md-nav__list" data-md-scrollfix="">
-<li class="md-nav__item">
-<a class="md-nav__link" href="../show/display/">
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../show/display/" class="md-nav__link">
       Display function
     </a>
-</li>
-</ul>
-</nav>
-</li>
-</ul>
-</nav>
-</li>
-<li class="md-nav__item md-nav__item--nested">
-<input class="md-nav__toggle md-toggle" data-md-toggle="nav-6" id="nav-6" type="checkbox"/>
-<label class="md-nav__link" for="nav-6">
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6" >
+    
+    <label class="md-nav__link" for="nav-6">
       About
       <span class="md-nav__icon md-icon"></span>
-</label>
-<nav aria-label="About" class="md-nav" data-md-level="1">
-<label class="md-nav__title" for="nav-6">
-<span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="About" data-md-level="1">
+      <label class="md-nav__title" for="nav-6">
+        <span class="md-nav__icon md-icon"></span>
         About
       </label>
-<ul class="md-nav__list" data-md-scrollfix="">
-<li class="md-nav__item">
-<a class="md-nav__link" href="../../release-notes/">
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../release-notes/" class="md-nav__link">
       Release notes
     </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../../contributing/">
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../contributing/" class="md-nav__link">
       Contributing
     </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../../license/">
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../license/" class="md-nav__link">
       License
     </a>
-</li>
-</ul>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+  </ul>
 </nav>
-</li>
-</ul>
-</nav>
-</div>
-</div>
-</div>
-<div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
-<div class="md-sidebar__scrollwrap">
-<div class="md-sidebar__inner">
-<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
-<label class="md-nav__title" for="__toc">
-<span class="md-nav__icon md-icon"></span>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
       Table of contents
     </label>
-<ul class="md-nav__list" data-md-scrollfix="">
-<li class="md-nav__item">
-<a class="md-nav__link" href="#ruptures.base">
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#ruptures.base" class="md-nav__link">
     ruptures.base
   </a>
+  
 </li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#ruptures.base.BaseCost">
+      
+        <li class="md-nav__item">
+  <a href="#ruptures.base.BaseCost" class="md-nav__link">
     BaseCost
   </a>
-<nav aria-label="BaseCost" class="md-nav">
-<ul class="md-nav__list">
-<li class="md-nav__item">
-<a class="md-nav__link" href="#ruptures.base.BaseCost.error">
+  
+    <nav class="md-nav" aria-label="BaseCost">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ruptures.base.BaseCost.error" class="md-nav__link">
     error()
   </a>
+  
 </li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#ruptures.base.BaseCost.fit">
+        
+          <li class="md-nav__item">
+  <a href="#ruptures.base.BaseCost.fit" class="md-nav__link">
     fit()
   </a>
+  
 </li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#ruptures.base.BaseCost.sum_of_costs">
+        
+          <li class="md-nav__item">
+  <a href="#ruptures.base.BaseCost.sum_of_costs" class="md-nav__link">
     sum_of_costs()
   </a>
+  
 </li>
-</ul>
-</nav>
+        
+      </ul>
+    </nav>
+  
 </li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#ruptures.base.BaseEstimator">
+      
+        <li class="md-nav__item">
+  <a href="#ruptures.base.BaseEstimator" class="md-nav__link">
     BaseEstimator
   </a>
-<nav aria-label="BaseEstimator" class="md-nav">
-<ul class="md-nav__list">
-<li class="md-nav__item">
-<a class="md-nav__link" href="#ruptures.base.BaseEstimator.fit">
+  
+    <nav class="md-nav" aria-label="BaseEstimator">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ruptures.base.BaseEstimator.fit" class="md-nav__link">
     fit()
   </a>
+  
 </li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#ruptures.base.BaseEstimator.fit_predict">
+        
+          <li class="md-nav__item">
+  <a href="#ruptures.base.BaseEstimator.fit_predict" class="md-nav__link">
     fit_predict()
   </a>
+  
 </li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#ruptures.base.BaseEstimator.predict">
+        
+          <li class="md-nav__item">
+  <a href="#ruptures.base.BaseEstimator.predict" class="md-nav__link">
     predict()
   </a>
+  
 </li>
-</ul>
-</nav>
+        
+      </ul>
+    </nav>
+  
 </li>
-</ul>
+      
+    </ul>
+  
 </nav>
-</div>
-</div>
-</div>
-<div class="md-content">
-<article class="md-content__inner md-typeset">
-<a class="md-content__button md-icon" href="https://github.com/deepcharles/ruptures/edit/master/docs/code-reference/base-reference.md" title="Edit this page">
-<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"></path></svg>
-</a>
-<h1 id="base-classes-rupturesbase">Base classes (ruptures.base)<a class="headerlink" href="#base-classes-rupturesbase" title="Permanent link">#</a></h1>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/deepcharles/ruptures/edit/master/docs/code-reference/base-reference.md" title="Edit this page" class="md-content__button md-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
+                  </a>
+                
+                
+                <h1 id="base-classes-rupturesbase">Base classes (ruptures.base)<a class="headerlink" href="#base-classes-rupturesbase" title="Permanent link">#</a></h1>
 <div class="doc doc-object doc-module">
-<h2 class="hidden-toc" href="#ruptures.base" id="ruptures.base" style="visibility: hidden; position: absolute;">
-<a class="headerlink" href="#ruptures.base" title="Permanent link">#</a></h2>
+<h2 class="hidden-toc" id="ruptures.base" style="visibility: hidden; position: absolute;">
+        <a class="headerlink" href="#ruptures.base" title="Permanent link">#</a></h2>
 <div class="doc doc-contents first">
 <p>All estimators and cost functions are subclasses of <a href="#ruptures.base.BaseEstimator"><code>BaseEstimator</code></a> and <a href="#ruptures.base.BaseCost"><code>BaseCost</code></a> respectively.</p>
 <div class="doc doc-children">
 <div class="doc doc-object doc-class">
 <h2 class="doc doc-heading" id="ruptures.base.BaseCost">
-<code>BaseCost</code>
-<a class="headerlink" href="#ruptures.base.BaseCost" title="Permanent link">#</a></h2>
-<div class="doc doc-contents">
+
+        <code>BaseCost</code>
+
+
+
+      <a class="headerlink" href="#ruptures.base.BaseCost" title="Permanent link">#</a></h2>
+<div class="doc doc-contents ">
 <p>Base class for all segment cost classes.</p>
 <div class="admonition notes">
 <p class="admonition-title">Notes</p>
@@ -917,14 +1933,16 @@ arguments (no <code>*args</code> or <code>**kwargs</code>).</p>
 <div class="doc doc-children">
 <div class="doc doc-object doc-method">
 <h3 class="doc doc-heading" id="ruptures.base.BaseCost.error">
-<code class="highlight language-python">
-error<span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">start</span><span class="p">,</span> <span class="n">end</span><span class="p">)</span> </code>
-<a class="headerlink" href="#ruptures.base.BaseCost.error" title="Permanent link">#</a></h3>
-<div class="doc doc-contents">
+
+<code class="highlight language-python"><span class="n">error</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">start</span><span class="p">,</span> <span class="n">end</span><span class="p">)</span></code>
+
+
+      <a class="headerlink" href="#ruptures.base.BaseCost.error" title="Permanent link">#</a></h3>
+<div class="doc doc-contents ">
 <p>Returns the cost on segment [start:end].</p>
 <details class="quote">
-<summary>Source code in <code>ruptures/base.py</code></summary>
-<div class="highlight">
+          <summary>Source code in <code>ruptures/base.py</code></summary>
+          <div class="highlight">
 <pre><span></span><code><span class="nd">@abc</span><span class="o">.</span><span class="n">abstractmethod</span>
 <span class="k">def</span> <span class="nf">error</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">start</span><span class="p">,</span> <span class="n">end</span><span class="p">):</span>
     <span class="sd">"""Returns the cost on segment [start:end]."""</span>
@@ -936,15 +1954,17 @@ error<span class="p">(</span><span class="bp">self</span><span class="p">,</span
 </div>
 <div class="doc doc-object doc-method">
 <h3 class="doc doc-heading" id="ruptures.base.BaseCost.fit">
-<code class="highlight language-python">
-fit<span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> </code>
-<a class="headerlink" href="#ruptures.base.BaseCost.fit" title="Permanent link">#</a></h3>
-<div class="doc doc-contents">
+
+<code class="highlight language-python"><span class="n">fit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></code>
+
+
+      <a class="headerlink" href="#ruptures.base.BaseCost.fit" title="Permanent link">#</a></h3>
+<div class="doc doc-contents ">
 <p>Set the parameters of the cost function, for instance the Gram
 matrix, etc.</p>
 <details class="quote">
-<summary>Source code in <code>ruptures/base.py</code></summary>
-<div class="highlight">
+          <summary>Source code in <code>ruptures/base.py</code></summary>
+          <div class="highlight">
 <pre><span></span><code><span class="nd">@abc</span><span class="o">.</span><span class="n">abstractmethod</span>
 <span class="k">def</span> <span class="nf">fit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
     <span class="sd">"""Set the parameters of the cost function, for instance the Gram</span>
@@ -957,10 +1977,12 @@ matrix, etc.</p>
 </div>
 <div class="doc doc-object doc-method">
 <h3 class="doc doc-heading" id="ruptures.base.BaseCost.sum_of_costs">
-<code class="highlight language-python">
-sum_of_costs<span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">bkps</span><span class="p">)</span> </code>
-<a class="headerlink" href="#ruptures.base.BaseCost.sum_of_costs" title="Permanent link">#</a></h3>
-<div class="doc doc-contents">
+
+<code class="highlight language-python"><span class="n">sum_of_costs</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">bkps</span><span class="p">)</span></code>
+
+
+      <a class="headerlink" href="#ruptures.base.BaseCost.sum_of_costs" title="Permanent link">#</a></h3>
+<div class="doc doc-contents ">
 <p>Returns the sum of segments cost for the given segmentation.</p>
 <p><strong>Parameters:</strong></p>
 <table>
@@ -1001,8 +2023,8 @@ sum_of_costs<span class="p">(</span><span class="bp">self</span><span class="p">
 </tbody>
 </table>
 <details class="quote">
-<summary>Source code in <code>ruptures/base.py</code></summary>
-<div class="highlight">
+          <summary>Source code in <code>ruptures/base.py</code></summary>
+          <div class="highlight">
 <pre><span></span><code><span class="k">def</span> <span class="nf">sum_of_costs</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">bkps</span><span class="p">):</span>
     <span class="sd">"""Returns the sum of segments cost for the given segmentation.</span>
 
@@ -1024,9 +2046,13 @@ sum_of_costs<span class="p">(</span><span class="bp">self</span><span class="p">
 </div>
 <div class="doc doc-object doc-class">
 <h2 class="doc doc-heading" id="ruptures.base.BaseEstimator">
-<code>BaseEstimator</code>
-<a class="headerlink" href="#ruptures.base.BaseEstimator" title="Permanent link">#</a></h2>
-<div class="doc doc-contents">
+
+        <code>BaseEstimator</code>
+
+
+
+      <a class="headerlink" href="#ruptures.base.BaseEstimator" title="Permanent link">#</a></h2>
+<div class="doc doc-contents ">
 <p>Base class for all change point detection estimators.</p>
 <div class="admonition notes">
 <p class="admonition-title">Notes</p>
@@ -1037,14 +2063,16 @@ arguments (no <code>*args</code> or <code>**kwargs</code>).</p>
 <div class="doc doc-children">
 <div class="doc doc-object doc-method">
 <h3 class="doc doc-heading" id="ruptures.base.BaseEstimator.fit">
-<code class="highlight language-python">
-fit<span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> </code>
-<a class="headerlink" href="#ruptures.base.BaseEstimator.fit" title="Permanent link">#</a></h3>
-<div class="doc doc-contents">
+
+<code class="highlight language-python"><span class="n">fit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></code>
+
+
+      <a class="headerlink" href="#ruptures.base.BaseEstimator.fit" title="Permanent link">#</a></h3>
+<div class="doc doc-contents ">
 <p>To call the segmentation algorithm.</p>
 <details class="quote">
-<summary>Source code in <code>ruptures/base.py</code></summary>
-<div class="highlight">
+          <summary>Source code in <code>ruptures/base.py</code></summary>
+          <div class="highlight">
 <pre><span></span><code><span class="nd">@abc</span><span class="o">.</span><span class="n">abstractmethod</span>
 <span class="k">def</span> <span class="nf">fit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
     <span class="sd">"""To call the segmentation algorithm."""</span>
@@ -1056,14 +2084,16 @@ fit<span class="p">(</span><span class="bp">self</span><span class="p">,</span> 
 </div>
 <div class="doc doc-object doc-method">
 <h3 class="doc doc-heading" id="ruptures.base.BaseEstimator.fit_predict">
-<code class="highlight language-python">
-fit_predict<span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> </code>
-<a class="headerlink" href="#ruptures.base.BaseEstimator.fit_predict" title="Permanent link">#</a></h3>
-<div class="doc doc-contents">
+
+<code class="highlight language-python"><span class="n">fit_predict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></code>
+
+
+      <a class="headerlink" href="#ruptures.base.BaseEstimator.fit_predict" title="Permanent link">#</a></h3>
+<div class="doc doc-contents ">
 <p>To call the segmentation algorithm.</p>
 <details class="quote">
-<summary>Source code in <code>ruptures/base.py</code></summary>
-<div class="highlight">
+          <summary>Source code in <code>ruptures/base.py</code></summary>
+          <div class="highlight">
 <pre><span></span><code><span class="nd">@abc</span><span class="o">.</span><span class="n">abstractmethod</span>
 <span class="k">def</span> <span class="nf">fit_predict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
     <span class="sd">"""To call the segmentation algorithm."""</span>
@@ -1075,14 +2105,16 @@ fit_predict<span class="p">(</span><span class="bp">self</span><span class="p">,
 </div>
 <div class="doc doc-object doc-method">
 <h3 class="doc doc-heading" id="ruptures.base.BaseEstimator.predict">
-<code class="highlight language-python">
-predict<span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> </code>
-<a class="headerlink" href="#ruptures.base.BaseEstimator.predict" title="Permanent link">#</a></h3>
-<div class="doc doc-contents">
+
+<code class="highlight language-python"><span class="n">predict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></code>
+
+
+      <a class="headerlink" href="#ruptures.base.BaseEstimator.predict" title="Permanent link">#</a></h3>
+<div class="doc doc-contents ">
 <p>To call the segmentation algorithm.</p>
 <details class="quote">
-<summary>Source code in <code>ruptures/base.py</code></summary>
-<div class="highlight">
+          <summary>Source code in <code>ruptures/base.py</code></summary>
+          <div class="highlight">
 <pre><span></span><code><span class="nd">@abc</span><span class="o">.</span><span class="n">abstractmethod</span>
 <span class="k">def</span> <span class="nf">predict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
     <span class="sd">"""To call the segmentation algorithm."""</span>
@@ -1098,57 +2130,76 @@ predict<span class="p">(</span><span class="bp">self</span><span class="p">,</sp
 </div>
 </div>
 </div>
-</article>
-</div>
-</div>
-</main>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
 <footer class="md-footer">
-<div class="md-footer-nav">
-<nav aria-label="Footer" class="md-footer-nav__inner md-grid">
-<a class="md-footer-nav__link md-footer-nav__link--prev" href="../" rel="prev">
-<div class="md-footer-nav__button md-icon">
-<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"></path></svg>
-</div>
-<div class="md-footer-nav__title">
-<div class="md-ellipsis">
-<span class="md-footer-nav__direction">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid" aria-label="Footer">
+        
+          <a href="../" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+            </div>
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
                   Previous
                 </span>
                 Introduction
               </div>
-</div>
-</a>
-<a class="md-footer-nav__link md-footer-nav__link--next" href="../detection/dynp-reference/" rel="next">
-<div class="md-footer-nav__title">
-<div class="md-ellipsis">
-<span class="md-footer-nav__direction">
+            </div>
+          </a>
+        
+        
+          <a href="../detection/dynp-reference/" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
                   Next
                 </span>
                 Dynp
               </div>
-</div>
-<div class="md-footer-nav__button md-icon">
-<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"></path></svg>
-</div>
-</a>
-</nav>
-</div>
-<div class="md-footer-meta md-typeset">
-<div class="md-footer-meta__inner md-grid">
-<div class="md-footer-copyright">
+            </div>
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
         
         Made with
-        <a href="https://squidfunk.github.io/mkdocs-material/" rel="noopener" target="_blank">
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
           Material for MkDocs
         </a>
-</div>
-</div>
-</div>
+      </div>
+      
+    </div>
+  </div>
 </footer>
-</div>
-<script src="../../assets/javascripts/vendor.08c56446.min.js"></script>
-<script src="../../assets/javascripts/bundle.6ced434e.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}</script>
-<script>
+      
+    </div>
+    
+      <script src="../../assets/javascripts/vendor.93c04032.min.js"></script>
+      <script src="../../assets/javascripts/bundle.83e5331e.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}</script>
+      
+      <script>
         app = initialize({
           base: "../..",
           features: ['navigation.tabs', 'search.highlight'],
@@ -1157,8 +2208,13 @@ predict<span class="p">(</span><span class="bp">self</span><span class="p">,</sp
           }, typeof search !== "undefined" && search)
         })
       </script>
-<script src="../../javascripts/config.js"></script>
-<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-</body>
+      
+        <script src="../../javascripts/config.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
 </html>
