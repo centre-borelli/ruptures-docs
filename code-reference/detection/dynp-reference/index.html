@@ -10,7 +10,7 @@
       
       
       <link rel="icon" href="../../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-7.1.3">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-7.2.3">
     
     
       
@@ -18,10 +18,10 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.e35208c4.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.f7f47774.min.css">
       
         
-        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ef6f36e2.min.css">
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.3f5d1f46.min.css">
         
       
     
@@ -46,6 +46,8 @@
     
     
       
+
+
     
     
   </head>
@@ -114,14 +116,18 @@
   <label class="md-search__overlay" for="__search"></label>
   <div class="md-search__inner" role="search">
     <form class="md-search__form" name="search">
-      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active" required>
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
       <label class="md-search__icon md-icon" for="__search">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
       </label>
-      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
-      </button>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        </button>
+      </nav>
+      
     </form>
     <div class="md-search__output">
       <div class="md-search__scrollwrap" data-md-scrollfix>
@@ -1227,6 +1233,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#ruptures.detection.dynp.Dynp.seg" class="md-nav__link">
+    seg()
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -1763,6 +1776,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#ruptures.detection.dynp.Dynp.seg" class="md-nav__link">
+    seg()
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -1890,7 +1910,6 @@ sum of errors is minimum.</p>
 <span class="sd">        jump (int, optional): subsample (one every *jump* points).</span>
 <span class="sd">        params (dict, optional): a dictionary of parameters for the cost instance.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">seg</span> <span class="o">=</span> <span class="n">lru_cache</span><span class="p">(</span><span class="n">maxsize</span><span class="o">=</span><span class="kc">None</span><span class="p">)(</span><span class="bp">self</span><span class="o">.</span><span class="n">_seg</span><span class="p">)</span>  <span class="c1"># dynamic programming</span>
     <span class="k">if</span> <span class="n">custom_cost</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">custom_cost</span><span class="p">,</span> <span class="n">BaseCost</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">cost</span> <span class="o">=</span> <span class="n">custom_cost</span>
     <span class="k">else</span><span class="p">:</span>
@@ -2170,6 +2189,131 @@ configuration</p></td>
 
 
 
+  <div class="doc doc-object doc-method">
+
+
+
+<h3 id="ruptures.detection.dynp.Dynp.seg" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">seg</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">start</span><span class="p">,</span> <span class="n">end</span><span class="p">,</span> <span class="n">n_bkps</span><span class="p">)</span></code>
+
+
+<a href="#ruptures.detection.dynp.Dynp.seg" class="headerlink" title="Permanent link">#</a></h3>
+
+    <div class="doc doc-contents ">
+
+      <p>Recurrence to find the optimal partition of signal[start:end].</p>
+<p>This method is to be memoized and then used.</p>
+
+<p><strong>Parameters:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>start</code></td>
+        <td><code>int</code></td>
+        <td><p>start of the segment (inclusive)</p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>end</code></td>
+        <td><code>int</code></td>
+        <td><p>end of the segment (exclusive)</p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>n_bkps</code></td>
+        <td><code>int</code></td>
+        <td><p>number of breakpoints</p></td>
+        <td><em>required</em></td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>Returns:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>dict</code></td>
+      <td><p>{(start, end): cost value, ...}</p></td>
+    </tr>
+  </tbody>
+</table>
+        <details class="quote">
+          <summary>Source code in <code>ruptures/detection/dynp.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="nd">@lru_cache</span><span class="p">(</span><span class="n">maxsize</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">seg</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">start</span><span class="p">,</span> <span class="n">end</span><span class="p">,</span> <span class="n">n_bkps</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Recurrence to find the optimal partition of signal[start:end].</span>
+
+<span class="sd">    This method is to be memoized and then used.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        start (int): start of the segment (inclusive)</span>
+<span class="sd">        end (int): end of the segment (exclusive)</span>
+<span class="sd">        n_bkps (int): number of breakpoints</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        dict: {(start, end): cost value, ...}</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">jump</span><span class="p">,</span> <span class="n">min_size</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">jump</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">min_size</span>
+
+    <span class="k">if</span> <span class="n">n_bkps</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">cost</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">cost</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="n">end</span><span class="p">)</span>
+        <span class="k">return</span> <span class="p">{(</span><span class="n">start</span><span class="p">,</span> <span class="n">end</span><span class="p">):</span> <span class="n">cost</span><span class="p">}</span>
+    <span class="k">elif</span> <span class="n">n_bkps</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="c1"># Let&#39;s fill the list of admissible last breakpoints</span>
+        <span class="n">multiple_of_jump</span> <span class="o">=</span> <span class="p">(</span><span class="n">k</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="n">end</span><span class="p">)</span> <span class="k">if</span> <span class="n">k</span> <span class="o">%</span> <span class="n">jump</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="n">admissible_bkps</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">bkp</span> <span class="ow">in</span> <span class="n">multiple_of_jump</span><span class="p">:</span>
+            <span class="n">n_samples</span> <span class="o">=</span> <span class="n">bkp</span> <span class="o">-</span> <span class="n">start</span>
+            <span class="c1"># first check if left subproblem is possible</span>
+            <span class="k">if</span> <span class="n">sanity_check</span><span class="p">(</span>
+                <span class="n">n_samples</span><span class="o">=</span><span class="n">n_samples</span><span class="p">,</span>
+                <span class="n">n_bkps</span><span class="o">=</span><span class="n">n_bkps</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span>
+                <span class="n">jump</span><span class="o">=</span><span class="n">jump</span><span class="p">,</span>
+                <span class="n">min_size</span><span class="o">=</span><span class="n">min_size</span><span class="p">,</span>
+            <span class="p">):</span>
+                <span class="c1"># second check if the right subproblem has enough points</span>
+                <span class="k">if</span> <span class="n">end</span> <span class="o">-</span> <span class="n">bkp</span> <span class="o">&gt;=</span> <span class="n">min_size</span><span class="p">:</span>
+                    <span class="n">admissible_bkps</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">bkp</span><span class="p">)</span>
+
+        <span class="k">assert</span> <span class="p">(</span>
+            <span class="nb">len</span><span class="p">(</span><span class="n">admissible_bkps</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span>
+        <span class="p">),</span> <span class="s2">&quot;No admissible last breakpoints found.</span><span class="se">\</span>
+<span class="s2">         start, end: (</span><span class="si">{}</span><span class="s2">,</span><span class="si">{}</span><span class="s2">), n_bkps: </span><span class="si">{}</span><span class="s2">.&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+            <span class="n">start</span><span class="p">,</span> <span class="n">end</span><span class="p">,</span> <span class="n">n_bkps</span>
+        <span class="p">)</span>
+
+        <span class="c1"># Compute the subproblems</span>
+        <span class="n">sub_problems</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">bkp</span> <span class="ow">in</span> <span class="n">admissible_bkps</span><span class="p">:</span>
+            <span class="n">left_partition</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">seg</span><span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="n">bkp</span><span class="p">,</span> <span class="n">n_bkps</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+            <span class="n">right_partition</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">seg</span><span class="p">(</span><span class="n">bkp</span><span class="p">,</span> <span class="n">end</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+            <span class="n">tmp_partition</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">left_partition</span><span class="p">)</span>
+            <span class="n">tmp_partition</span><span class="p">[(</span><span class="n">bkp</span><span class="p">,</span> <span class="n">end</span><span class="p">)]</span> <span class="o">=</span> <span class="n">right_partition</span><span class="p">[(</span><span class="n">bkp</span><span class="p">,</span> <span class="n">end</span><span class="p">)]</span>
+            <span class="n">sub_problems</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">tmp_partition</span><span class="p">)</span>
+
+        <span class="c1"># Find the optimal partition</span>
+        <span class="k">return</span> <span class="nb">min</span><span class="p">(</span><span class="n">sub_problems</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">d</span><span class="p">:</span> <span class="nb">sum</span><span class="p">(</span><span class="n">d</span><span class="o">.</span><span class="n">values</span><span class="p">()))</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
 
 
   </div>
@@ -2195,7 +2339,8 @@ configuration</p></td>
   
     <nav class="md-footer__inner md-grid" aria-label="Footer">
       
-        <a href="../../base-reference/" class="md-footer__link md-footer__link--prev" rel="prev">
+        
+        <a href="../../base-reference/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Base classes" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
           </div>
@@ -2210,7 +2355,8 @@ configuration</p></td>
         </a>
       
       
-        <a href="../kernelcpd-reference/" class="md-footer__link md-footer__link--next" rel="next">
+        
+        <a href="../kernelcpd-reference/" class="md-footer__link md-footer__link--next" aria-label="Next: KernelCPD" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
@@ -2245,10 +2391,10 @@ configuration</p></td>
     <div class="md-dialog" data-md-component="dialog">
       <div class="md-dialog__inner md-typeset"></div>
     </div>
-    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs", "search.highlight"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}, "search": "../../../assets/javascripts/workers/search.fe42c31b.min.js", "version": null}</script>
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs", "search.highlight"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../../assets/javascripts/workers/search.709b4209.min.js", "version": null}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.4ea5477f.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.29db7785.min.js"></script>
       
         <script src="../../../javascripts/config.js"></script>
       
