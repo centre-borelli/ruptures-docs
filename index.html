@@ -350,9 +350,94 @@
         
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Welcome to ruptures
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="." class="md-nav__link md-nav__link--active">
         Welcome to ruptures
       </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#basic-usage" class="md-nav__link">
+    Basic usage
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#general-information" class="md-nav__link">
+    General information
+  </a>
+  
+    <nav class="md-nav" aria-label="General information">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#contact" class="md-nav__link">
+    Contact
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#important-links" class="md-nav__link">
+    Important links
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dependencies-and-install" class="md-nav__link">
+    Dependencies and install
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#changelog" class="md-nav__link">
+    Changelog
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#thanks-to-all-our-contributors" class="md-nav__link">
+    Thanks to all our contributors
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#license" class="md-nav__link">
+    License
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -1661,6 +1746,76 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#basic-usage" class="md-nav__link">
+    Basic usage
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#general-information" class="md-nav__link">
+    General information
+  </a>
+  
+    <nav class="md-nav" aria-label="General information">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#contact" class="md-nav__link">
+    Contact
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#important-links" class="md-nav__link">
+    Important links
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dependencies-and-install" class="md-nav__link">
+    Dependencies and install
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#changelog" class="md-nav__link">
+    Changelog
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#thanks-to-all-our-contributors" class="md-nav__link">
+    Thanks to all our contributors
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#license" class="md-nav__link">
+    License
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -1676,30 +1831,90 @@
                   </a>
                 
                 
-                <h1 id="welcome-to-ruptures">Welcome to <code>ruptures</code><a class="headerlink" href="#welcome-to-ruptures" title="Permanent link">#</a></h1>
+                <h1 id="welcome-to-ruptures">Welcome to ruptures<a class="headerlink" href="#welcome-to-ruptures" title="Permanent link">#</a></h1>
 <p><a href="https://GitHub.com/deepcharles/ruptures/graphs/commit-activity"><img alt="Maintenance" src="https://img.shields.io/badge/Maintained%3F-yes-green.svg" /></a>
 <img alt="build" src="https://github.com/deepcharles/ruptures/workflows/build/badge.svg" />
 <img alt="python" src="https://img.shields.io/badge/python-3.6%20|%203.7%20|%203.8%20|%203.9-blue" />
 <a href="https://badge.fury.io/py/ruptures"><img alt="PyPI version" src="https://badge.fury.io/py/ruptures.svg" /></a>
+<a href="https://anaconda.org/conda-forge/ruptures"><img alt="Conda Version" src="https://img.shields.io/conda/vn/conda-forge/ruptures.svg" /></a>
 <img alt="docs" src="https://github.com/deepcharles/ruptures/workflows/docs/badge.svg" />
 <img alt="PyPI - License" src="https://img.shields.io/pypi/l/ruptures" />
 <a href="https://pepy.tech/project/ruptures"><img alt="Downloads" src="https://pepy.tech/badge/ruptures" /></a>
 <a href="https://github.com/psf/black"><img alt="Code style: black" src="https://img.shields.io/badge/code%20style-black-000000.svg"></a>
 <a href="https://mybinder.org/v2/gh/deepcharles/ruptures/master"><img alt="Binder" src="https://mybinder.org/badge_logo.svg" /></a>
 <a href="https://app.codecov.io/gh/deepcharles/ruptures/branch/master"><img alt="Codecov" src="https://codecov.io/gh/deepcharles/ruptures/branch/master/graphs/badge.svg" /></a></p>
-<p><code>ruptures</code> is designed to perform offline change point algorithms within the Python language. Also in this library, new methods are presented.</p>
-<div class="admonition important">
-<p class="admonition-title">How to cite</p>
-<p>If you use ruptures in a scientific publication, we would appreciate citations to the following paper:</p>
+<p><code>ruptures</code> is a Python library for off-line change point detection.
+This package provides methods for the analysis and segmentation of non-stationary signals.  Implemented algorithms include exact and approximate detection for various parametric and non-parametric models.
+<code>ruptures</code> focuses on ease of use by providing a well-documented and consistent interface.
+In addition, thanks to its modular structure, different algorithms and models can be connected and extended within this package.</p>
+<p><strong>How to cite.</strong> If you use <code>ruptures</code> in a scientific publication, we would appreciate citations to the following paper:</p>
 <ul>
-<li>Truong, C., Oudre, L., &amp; Vayatis, N. (2020). Selective review of offline change point detection methods. <em>Signal Processing</em>, 167. <a href="https://deepcharles.github.io/publication/sp-review-2020">[abstract]</a> <a href="https://doi.org/10.1016/j.sigpro.2019.107299">[doi]</a> <a href="http://deepcharles.github.io/files/sp-review-2020.pdf">[pdf]</a></li>
+<li>C. Truong, L. Oudre, N. Vayatis. Selective review of offline change point detection methods. <em>Signal Processing</em>, 167:107299, 2020. <a href="https://doi.org/10.1016/j.sigpro.2019.107299">[journal]</a> <a href="http://www.laurentoudre.fr/publis/TOG-SP-19.pdf">[pdf]</a></li>
 </ul>
-</div>
-<div class="admonition important">
-<p class="admonition-title">Contact</p>
-<p>Concerning this package, its use and bugs, use the <a href="https://github.com/deepcharles/ruptures/issues">issue page</a> of the <a href="https://github.com/deepcharles/ruptures">ruptures repository</a>.</p>
-<p>For other inquiries, you can contact me <a href="https://charles.doffy.net/contact/">here</a>.</p>
-</div>
+<h2 id="basic-usage">Basic usage<a class="headerlink" href="#basic-usage" title="Permanent link">#</a></h2>
+<p>(Please refer to the <a href="https://centre-borelli.github.io/ruptures-docs/" title="Link to documentation">documentation</a> for more advanced use.)</p>
+<p>The following snippet creates a noisy piecewise constant signal, performs a penalized kernel change point detection and displays the results (alternating colors mark true regimes and dashed lines mark estimated change points).</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">ruptures</span> <span class="k">as</span> <span class="nn">rpt</span>
+
+<span class="c1"># generate signal</span>
+<span class="n">n_samples</span><span class="p">,</span> <span class="n">dim</span><span class="p">,</span> <span class="n">sigma</span> <span class="o">=</span> <span class="mi">1000</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span>
+<span class="n">n_bkps</span> <span class="o">=</span> <span class="mi">4</span>  <span class="c1"># number of breakpoints</span>
+<span class="n">signal</span><span class="p">,</span> <span class="n">bkps</span> <span class="o">=</span> <span class="n">rpt</span><span class="o">.</span><span class="n">pw_constant</span><span class="p">(</span><span class="n">n_samples</span><span class="p">,</span> <span class="n">dim</span><span class="p">,</span> <span class="n">n_bkps</span><span class="p">,</span> <span class="n">noise_std</span><span class="o">=</span><span class="n">sigma</span><span class="p">)</span>
+
+<span class="c1"># detection</span>
+<span class="n">algo</span> <span class="o">=</span> <span class="n">rpt</span><span class="o">.</span><span class="n">Pelt</span><span class="p">(</span><span class="n">model</span><span class="o">=</span><span class="s2">&quot;rbf&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">signal</span><span class="p">)</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">algo</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">pen</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+
+<span class="c1"># display</span>
+<span class="n">rpt</span><span class="o">.</span><span class="n">display</span><span class="p">(</span><span class="n">signal</span><span class="p">,</span> <span class="n">bkps</span><span class="p">,</span> <span class="n">result</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div>
+<p><img alt="" src="images/example_readme.png" /></p>
+<h2 id="general-information">General information<a class="headerlink" href="#general-information" title="Permanent link">#</a></h2>
+<h4 id="contact">Contact<a class="headerlink" href="#contact" title="Permanent link">#</a></h4>
+<p>Concerning this package, its use and bugs, use the <a href="https://github.com/deepcharles/ruptures/issues">issue page</a> of the <a href="https://github.com/deepcharles/ruptures">ruptures repository</a>. For other inquiries, you can contact me <a href="https://charles.doffy.net/contact/">here</a>.</p>
+<h4 id="important-links">Important links<a class="headerlink" href="#important-links" title="Permanent link">#</a></h4>
+<ul>
+<li>Documentation: <a href="https://centre-borelli.github.io/ruptures-docs/" title="Link to documentation">link</a>.</li>
+<li>Pypi package index: <a href="https://pypi.python.org/pypi/ruptures">link</a></li>
+</ul>
+<h4 id="dependencies-and-install">Dependencies and install<a class="headerlink" href="#dependencies-and-install" title="Permanent link">#</a></h4>
+<p>Installation instructions can be found <a href="https://centre-borelli.github.io/ruptures-docs/install/">here</a>.</p>
+<h4 id="changelog">Changelog<a class="headerlink" href="#changelog" title="Permanent link">#</a></h4>
+<p>See the <a href="https://github.com/deepcharles/ruptures/blob/master/CHANGELOG.md">changelog</a> for a history of notable changes to <code>ruptures</code>.</p>
+<h2 id="thanks-to-all-our-contributors">Thanks to all our contributors<a class="headerlink" href="#thanks-to-all-our-contributors" title="Permanent link">#</a></h2>
+<p><a href="https://github.com/deepcharles/ruptures/graphs/contributors">
+  <img src="https://contributors-img.web.app/image?repo=deepcharles/ruptures" />
+</a></p>
+<h2 id="license">License<a class="headerlink" href="#license" title="Permanent link">#</a></h2>
+<p>This project is under BSD license.</p>
+<div class="highlight"><pre><span></span><code>BSD 2-Clause License
+
+Copyright (c) 2017-2021, ENS Paris-Saclay, CNRS
+All rights reserved.
+
+Redistribution and use in source and binary forms, with or without
+modification, are permitted provided that the following conditions are met:
+
+* Redistributions of source code must retain the above copyright notice, this
+  list of conditions and the following disclaimer.
+
+* Redistributions in binary form must reproduce the above copyright notice,
+  this list of conditions and the following disclaimer in the documentation
+  and/or other materials provided with the distribution.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS &quot;AS IS&quot;
+AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE
+FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
+CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
+OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+</code></pre></div>
                 
               
               
