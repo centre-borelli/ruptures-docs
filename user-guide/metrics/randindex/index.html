@@ -843,6 +843,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    References
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1014,6 +1021,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    References
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1033,20 +1047,22 @@
                 
                 <h1 id="rand-index-randindex">Rand index (<code>randindex</code>)<a class="headerlink" href="#rand-index-randindex" title="Permanent link">#</a></h1>
 <h2 id="description">Description<a class="headerlink" href="#description" title="Permanent link">#</a></h2>
-<p>The Rand index, computed by the <a href="../../../code-reference/metrics/randindex/#ruptures.metrics.randindex.randindex"><code>randindex</code></a> function, measures the similarity between two segmentations.
-Formally, for a signal <span class="arithmatex">\(\{y_t\}_t\)</span> and a segmentation <span class="arithmatex">\(\mathcal{S}\)</span>, denote by <span class="arithmatex">\(A\)</span> the associated membership matrix:</p>
+<p>The Rand index (<span class="arithmatex">\(RI\)</span>) measures the similarity between two segmentations and is
+equal to the proportion of aggreement between two partitions.
+Formally, for <span class="arithmatex">\(\mathcal{T}_1\)</span> and <span class="arithmatex">\(\mathcal{T}_2\)</span> two partitions of <span class="arithmatex">\(\{1, 2,\dots,T\}\)</span>,</p>
 <div class="arithmatex">\[
-\begin{aligned} \mathcal{A}_{ij} &amp;= 1 \text{ if both samples } y_i \text{ and } y_j \text{ are in the same segment according to } \mathcal{S} \\ &amp;= 0 \quad\text{otherwise} \end{aligned}
+RI := \frac{N_0 + N_1}{T(T+1)/2}
 \]</div>
-<p>Let <span class="arithmatex">\(\hat{\mathcal{S}}\)</span> be the estimated segmentation and <span class="arithmatex">\(\hat{A}\)</span>, the associated membership matrix.
-Then the Rand index is equal to</p>
-<div class="arithmatex">\[
-\frac{\sum_{i&lt;j} \mathbb{1}(A_{ij} = \hat{A}_{ij})}{T(T-1)/2}
-\]</div>
-<p>where <span class="arithmatex">\(T\)</span> is the number of samples.
-It has a value between 0 and 1: 0 indicates that the two segmentations do not agree on any pair of points and 1 indicates that the two segmentations are exactly the same.</p>
-<p><img alt="" src="../../../images/randindex.png" />
-<center><i>Schematic example: true segmentation in gray, estimated segmentation in dashed lines and their associated membership matrices. Rand index is equal to 1 minus the gray area.</i></center></p>
+<p>where</p>
+<ul>
+<li><span class="arithmatex">\(N_0\)</span> is the number of pairs of samples that belong to the same segment
+according to <span class="arithmatex">\(\mathcal{T}_1\)</span> and <span class="arithmatex">\(\mathcal{T}_2\)</span>,</li>
+<li><span class="arithmatex">\(N_1\)</span> is the number of pairs of samples that belong to different segments
+according to <span class="arithmatex">\(\mathcal{T}_1\)</span> and <span class="arithmatex">\(\mathcal{T}_2\)</span>.</li>
+</ul>
+<p><span class="arithmatex">\(RI\)</span> is between 0 (total disagreement) and 1 (total agreement).
+It is available in the <a href="../../../code-reference/metrics/randindex/#ruptures.metrics.randindex.randindex"><code>randindex</code></a>
+function which uses the efficient implementation of <a href="#Prates2021">[Prates2021]</a>.</p>
 <h2 id="usage">Usage<a class="headerlink" href="#usage" title="Permanent link">#</a></h2>
 <p>Start with the usual imports and create two segmentations to compare.</p>
 <div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">ruptures.metrics</span> <span class="kn">import</span> <span class="n">randindex</span>
@@ -1054,6 +1070,10 @@ It has a value between 0 and 1: 0 indicates that the two segmentations do not ag
 <span class="n">bkps1</span><span class="p">,</span> <span class="n">bkps2</span> <span class="o">=</span> <span class="p">[</span><span class="mi">100</span><span class="p">,</span> <span class="mi">200</span><span class="p">,</span> <span class="mi">500</span><span class="p">],</span> <span class="p">[</span><span class="mi">105</span><span class="p">,</span> <span class="mi">115</span><span class="p">,</span> <span class="mi">350</span><span class="p">,</span> <span class="mi">400</span><span class="p">,</span> <span class="mi">500</span><span class="p">]</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">randindex</span><span class="p">(</span><span class="n">bkps1</span><span class="p">,</span> <span class="n">bkps2</span><span class="p">))</span>
 </code></pre></div>
+<h2 id="references">References<a class="headerlink" href="#references" title="Permanent link">#</a></h2>
+<p><a id="Prates2021">[Prates2021]</a>
+Prates, L. (2021). A more efficient algorithm to compute the Rand Index for
+change-point problems. ArXiv:2112.03738.</p>
                 
               
               

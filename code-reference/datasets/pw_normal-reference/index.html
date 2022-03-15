@@ -1056,7 +1056,7 @@
 
 
 <h2 id="ruptures.datasets.pw_normal.pw_normal" class="doc doc-heading">
-<code class="highlight language-python"><span class="n">ruptures</span><span class="o">.</span><span class="n">datasets</span><span class="o">.</span><span class="n">pw_normal</span><span class="o">.</span><span class="n">pw_normal</span><span class="p">(</span><span class="n">n_samples</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> <span class="n">n_bkps</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span></code>
+<code class="highlight language-python"><span class="n">ruptures</span><span class="o">.</span><span class="n">datasets</span><span class="o">.</span><span class="n">pw_normal</span><span class="o">.</span><span class="n">pw_normal</span><span class="p">(</span><span class="n">n_samples</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> <span class="n">n_bkps</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
 
 
 <a href="#ruptures.datasets.pw_normal.pw_normal" class="headerlink" title="Permanent link">#</a></h2>
@@ -1088,6 +1088,12 @@
         <td><p>number of change points</p></td>
         <td><code>3</code></td>
       </tr>
+      <tr>
+        <td><code>seed</code></td>
+        <td><code>int</code></td>
+        <td><p>random seed</p></td>
+        <td><code>None</code></td>
+      </tr>
   </tbody>
 </table>
 <p><strong>Returns:</strong></p>
@@ -1107,25 +1113,27 @@
 </table>
         <details class="quote">
           <summary>Source code in <code>ruptures/datasets/pw_normal.py</code></summary>
-          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">pw_normal</span><span class="p">(</span><span class="n">n_samples</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> <span class="n">n_bkps</span><span class="o">=</span><span class="mi">3</span><span class="p">):</span>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">pw_normal</span><span class="p">(</span><span class="n">n_samples</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> <span class="n">n_bkps</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Return a 2D piecewise Gaussian signal and the associated changepoints.</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        n_samples (int, optional): signal length</span>
 <span class="sd">        n_bkps (int, optional): number of change points</span>
+<span class="sd">        seed (int): random seed</span>
 
 <span class="sd">    Returns:</span>
 <span class="sd">        tuple: signal of shape (n_samples, 2), list of breakpoints</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="c1"># breakpoints</span>
-    <span class="n">bkps</span> <span class="o">=</span> <span class="n">draw_bkps</span><span class="p">(</span><span class="n">n_samples</span><span class="p">,</span> <span class="n">n_bkps</span><span class="p">)</span>
+    <span class="n">bkps</span> <span class="o">=</span> <span class="n">draw_bkps</span><span class="p">(</span><span class="n">n_samples</span><span class="p">,</span> <span class="n">n_bkps</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="n">seed</span><span class="p">)</span>
     <span class="c1"># we create the signal</span>
     <span class="n">signal</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">n_samples</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
     <span class="n">cov1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mf">0.9</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.9</span><span class="p">,</span> <span class="mi">1</span><span class="p">]])</span>
     <span class="n">cov2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.9</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mf">0.9</span><span class="p">,</span> <span class="mi">1</span><span class="p">]])</span>
+    <span class="n">rng</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">default_rng</span><span class="p">(</span><span class="n">seed</span><span class="o">=</span><span class="n">seed</span><span class="p">)</span>
     <span class="k">for</span> <span class="n">sub</span><span class="p">,</span> <span class="n">cov</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">signal</span><span class="p">,</span> <span class="n">bkps</span><span class="p">),</span> <span class="n">cycle</span><span class="p">((</span><span class="n">cov1</span><span class="p">,</span> <span class="n">cov2</span><span class="p">))):</span>
         <span class="n">n_sub</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">sub</span><span class="o">.</span><span class="n">shape</span>
-        <span class="n">sub</span> <span class="o">+=</span> <span class="n">rd</span><span class="o">.</span><span class="n">multivariate_normal</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">cov</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">n_sub</span><span class="p">)</span>
+        <span class="n">sub</span> <span class="o">+=</span> <span class="n">rng</span><span class="o">.</span><span class="n">multivariate_normal</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">cov</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">n_sub</span><span class="p">)</span>
 
     <span class="k">return</span> <span class="n">signal</span><span class="p">,</span> <span class="n">bkps</span>
 </code></pre></div>

@@ -1056,7 +1056,7 @@
 
 
 <h2 id="ruptures.datasets.pw_wavy.pw_wavy" class="doc doc-heading">
-<code class="highlight language-python"><span class="n">ruptures</span><span class="o">.</span><span class="n">datasets</span><span class="o">.</span><span class="n">pw_wavy</span><span class="o">.</span><span class="n">pw_wavy</span><span class="p">(</span><span class="n">n_samples</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> <span class="n">n_bkps</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">noise_std</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
+<code class="highlight language-python"><span class="n">ruptures</span><span class="o">.</span><span class="n">datasets</span><span class="o">.</span><span class="n">pw_wavy</span><span class="o">.</span><span class="n">pw_wavy</span><span class="p">(</span><span class="n">n_samples</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> <span class="n">n_bkps</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">noise_std</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
 
 
 <a href="#ruptures.datasets.pw_wavy.pw_wavy" class="headerlink" title="Permanent link">#</a></h2>
@@ -1094,6 +1094,12 @@
         <td><p>noise std. If None, no noise is added</p></td>
         <td><code>None</code></td>
       </tr>
+      <tr>
+        <td><code>seed</code></td>
+        <td><code>int</code></td>
+        <td><p>random seed</p></td>
+        <td><code>None</code></td>
+      </tr>
   </tbody>
 </table>
 <p><strong>Returns:</strong></p>
@@ -1113,19 +1119,20 @@
 </table>
         <details class="quote">
           <summary>Source code in <code>ruptures/datasets/pw_wavy.py</code></summary>
-          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">pw_wavy</span><span class="p">(</span><span class="n">n_samples</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> <span class="n">n_bkps</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">noise_std</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">pw_wavy</span><span class="p">(</span><span class="n">n_samples</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> <span class="n">n_bkps</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">noise_std</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Return a 1D piecewise wavy signal and the associated changepoints.</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        n_samples (int, optional): signal length</span>
 <span class="sd">        n_bkps (int, optional): number of changepoints</span>
 <span class="sd">        noise_std (float, optional): noise std. If None, no noise is added</span>
+<span class="sd">        seed (int): random seed</span>
 
 <span class="sd">    Returns:</span>
 <span class="sd">        tuple: signal of shape (n_samples, 1), list of breakpoints</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="c1"># breakpoints</span>
-    <span class="n">bkps</span> <span class="o">=</span> <span class="n">draw_bkps</span><span class="p">(</span><span class="n">n_samples</span><span class="p">,</span> <span class="n">n_bkps</span><span class="p">)</span>
+    <span class="n">bkps</span> <span class="o">=</span> <span class="n">draw_bkps</span><span class="p">(</span><span class="n">n_samples</span><span class="p">,</span> <span class="n">n_bkps</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="n">seed</span><span class="p">)</span>
     <span class="c1"># we create the signal</span>
     <span class="n">f1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.075</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">])</span>
     <span class="n">f2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.125</span><span class="p">])</span>
@@ -1139,7 +1146,8 @@
     <span class="n">signal</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">tt</span> <span class="o">*</span> <span class="n">f</span><span class="p">)</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">freqs</span><span class="o">.</span><span class="n">T</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 
     <span class="k">if</span> <span class="n">noise_std</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="n">noise</span> <span class="o">=</span> <span class="n">normal</span><span class="p">(</span><span class="n">scale</span><span class="o">=</span><span class="n">noise_std</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">signal</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+        <span class="n">rng</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">default_rng</span><span class="p">(</span><span class="n">seed</span><span class="o">=</span><span class="n">seed</span><span class="p">)</span>
+        <span class="n">noise</span> <span class="o">=</span> <span class="n">rng</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">scale</span><span class="o">=</span><span class="n">noise_std</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">signal</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
         <span class="n">signal</span> <span class="o">+=</span> <span class="n">noise</span>
 
     <span class="k">return</span> <span class="n">signal</span><span class="p">,</span> <span class="n">bkps</span>

@@ -1148,24 +1148,24 @@
 <span class="sd">        tuple: signal of shape (n_samples, n_features), list of breakpoints</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="c1"># breakpoints</span>
-    <span class="n">bkps</span> <span class="o">=</span> <span class="n">draw_bkps</span><span class="p">(</span><span class="n">n_samples</span><span class="p">,</span> <span class="n">n_bkps</span><span class="p">)</span>
+    <span class="n">bkps</span> <span class="o">=</span> <span class="n">draw_bkps</span><span class="p">(</span><span class="n">n_samples</span><span class="p">,</span> <span class="n">n_bkps</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="n">seed</span><span class="p">)</span>
     <span class="c1"># we create the signal</span>
     <span class="n">signal</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">((</span><span class="n">n_samples</span><span class="p">,</span> <span class="n">n_features</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
     <span class="n">tt_</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">n_samples</span><span class="p">)</span>
     <span class="n">delta_min</span><span class="p">,</span> <span class="n">delta_max</span> <span class="o">=</span> <span class="n">delta</span>
     <span class="c1"># mean value</span>
     <span class="n">center</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">n_features</span><span class="p">)</span>
-    <span class="n">rd</span> <span class="o">=</span> <span class="n">RandomState</span><span class="p">(</span><span class="n">seed</span><span class="p">)</span>
+    <span class="n">rng</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">default_rng</span><span class="p">(</span><span class="n">seed</span><span class="o">=</span><span class="n">seed</span><span class="p">)</span>
     <span class="k">for</span> <span class="n">ind</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">tt_</span><span class="p">,</span> <span class="n">bkps</span><span class="p">):</span>
         <span class="k">if</span> <span class="n">ind</span><span class="o">.</span><span class="n">size</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
             <span class="c1"># jump value</span>
-            <span class="n">jump</span> <span class="o">=</span> <span class="n">rd</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="n">delta_min</span><span class="p">,</span> <span class="n">delta_max</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">n_features</span><span class="p">)</span>
-            <span class="n">spin</span> <span class="o">=</span> <span class="n">rd</span><span class="o">.</span><span class="n">choice</span><span class="p">([</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">n_features</span><span class="p">)</span>
+            <span class="n">jump</span> <span class="o">=</span> <span class="n">rng</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="n">delta_min</span><span class="p">,</span> <span class="n">delta_max</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">n_features</span><span class="p">)</span>
+            <span class="n">spin</span> <span class="o">=</span> <span class="n">rng</span><span class="o">.</span><span class="n">choice</span><span class="p">([</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">n_features</span><span class="p">)</span>
             <span class="n">center</span> <span class="o">+=</span> <span class="n">jump</span> <span class="o">*</span> <span class="n">spin</span>
             <span class="n">signal</span><span class="p">[</span><span class="n">ind</span><span class="p">]</span> <span class="o">=</span> <span class="n">center</span>
 
     <span class="k">if</span> <span class="n">noise_std</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="n">noise</span> <span class="o">=</span> <span class="n">rd</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="n">signal</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="o">*</span> <span class="n">noise_std</span>
+        <span class="n">noise</span> <span class="o">=</span> <span class="n">rng</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="n">signal</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="o">*</span> <span class="n">noise_std</span>
         <span class="n">signal</span> <span class="o">=</span> <span class="n">signal</span> <span class="o">+</span> <span class="n">noise</span>
 
     <span class="k">return</span> <span class="n">signal</span><span class="p">,</span> <span class="n">bkps</span>

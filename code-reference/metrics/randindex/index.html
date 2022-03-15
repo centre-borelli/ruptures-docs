@@ -1063,8 +1063,13 @@
 
     <div class="doc doc-contents first">
 
-      <p>Rand index for two partitions. The result is scaled to be within 0 and
-1.</p>
+      <p>Computes the Rand index (between 0 and 1) between two segmentations.</p>
+<p>The Rand index (RI) measures the similarity between two segmentations and
+is equal to the proportion of aggreement between two partitions.</p>
+<p>RI is between 0 (total disagreement) and 1 (total agreement).
+This function uses the efficient implementation of [1].</p>
+<p>[1] Prates, L. (2021). A more efficient algorithm to compute the Rand Index for
+change-point problems. ArXiv:2112.03738.</p>
 
 <p><strong>Parameters:</strong></p>
 <table>
@@ -1080,13 +1085,13 @@
       <tr>
         <td><code>bkps1</code></td>
         <td><code>list</code></td>
-        <td><p>list of the last index of each regime.</p></td>
+        <td><p>sorted list of the last index of each regime.</p></td>
         <td><em>required</em></td>
       </tr>
       <tr>
         <td><code>bkps2</code></td>
         <td><code>list</code></td>
-        <td><p>list of the last index of each regime.</p></td>
+        <td><p>sorted list of the last index of each regime.</p></td>
         <td><em>required</em></td>
       </tr>
   </tbody>
@@ -1109,17 +1114,50 @@
         <details class="quote">
           <summary>Source code in <code>ruptures/metrics/randindex.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">randindex</span><span class="p">(</span><span class="n">bkps1</span><span class="p">,</span> <span class="n">bkps2</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Rand index for two partitions. The result is scaled to be within 0 and</span>
-<span class="sd">    1.</span>
+    <span class="sd">&quot;&quot;&quot;Computes the Rand index (between 0 and 1) between two segmentations.</span>
+
+<span class="sd">    The Rand index (RI) measures the similarity between two segmentations and</span>
+<span class="sd">    is equal to the proportion of aggreement between two partitions.</span>
+
+<span class="sd">    RI is between 0 (total disagreement) and 1 (total agreement).</span>
+<span class="sd">    This function uses the efficient implementation of [1].</span>
+
+<span class="sd">    [1] Prates, L. (2021). A more efficient algorithm to compute the Rand Index for</span>
+<span class="sd">    change-point problems. ArXiv:2112.03738.</span>
 
 <span class="sd">    Args:</span>
-<span class="sd">        bkps1 (list): list of the last index of each regime.</span>
-<span class="sd">        bkps2 (list): list of the last index of each regime.</span>
+<span class="sd">        bkps1 (list): sorted list of the last index of each regime.</span>
+<span class="sd">        bkps2 (list): sorted list of the last index of each regime.</span>
 
 <span class="sd">    Returns:</span>
 <span class="sd">        float: Rand index</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">return</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">hamming</span><span class="p">(</span><span class="n">bkps1</span><span class="p">,</span> <span class="n">bkps2</span><span class="p">)</span>
+    <span class="n">sanity_check</span><span class="p">(</span><span class="n">bkps1</span><span class="p">,</span> <span class="n">bkps2</span><span class="p">)</span>
+    <span class="n">n_samples</span> <span class="o">=</span> <span class="n">bkps1</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">bkps1_with_0</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">bkps1</span>
+    <span class="n">bkps2_with_0</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">bkps2</span>
+    <span class="n">n_bkps1</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">bkps1</span><span class="p">)</span>
+    <span class="n">n_bkps2</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">bkps2</span><span class="p">)</span>
+
+    <span class="n">disagreement</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">beginj</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span>  <span class="c1"># avoids unnecessary computations</span>
+    <span class="k">for</span> <span class="n">index_bkps1</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_bkps1</span><span class="p">):</span>
+        <span class="n">start1</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="n">bkps1_with_0</span><span class="p">[</span><span class="n">index_bkps1</span><span class="p">]</span>
+        <span class="n">end1</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="n">bkps1_with_0</span><span class="p">[</span><span class="n">index_bkps1</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span>
+        <span class="k">for</span> <span class="n">index_bkps2</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">beginj</span><span class="p">,</span> <span class="n">n_bkps2</span><span class="p">):</span>
+            <span class="n">start2</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="n">bkps2_with_0</span><span class="p">[</span><span class="n">index_bkps2</span><span class="p">]</span>
+            <span class="n">end2</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="n">bkps2_with_0</span><span class="p">[</span><span class="n">index_bkps2</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span>
+            <span class="n">nij</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="nb">min</span><span class="p">(</span><span class="n">end1</span><span class="p">,</span> <span class="n">end2</span><span class="p">)</span> <span class="o">-</span> <span class="nb">max</span><span class="p">(</span><span class="n">start1</span><span class="p">,</span> <span class="n">start2</span><span class="p">),</span> <span class="mi">0</span><span class="p">)</span>
+            <span class="n">disagreement</span> <span class="o">+=</span> <span class="n">nij</span> <span class="o">*</span> <span class="nb">abs</span><span class="p">(</span><span class="n">end1</span> <span class="o">-</span> <span class="n">end2</span><span class="p">)</span>
+
+            <span class="c1"># we can skip the rest of the iteration, nij will be 0</span>
+            <span class="k">if</span> <span class="n">end1</span> <span class="o">&lt;</span> <span class="n">end2</span><span class="p">:</span>
+                <span class="k">break</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">beginj</span> <span class="o">=</span> <span class="n">index_bkps2</span> <span class="o">+</span> <span class="mi">1</span>
+
+    <span class="n">disagreement</span> <span class="o">/=</span> <span class="n">n_samples</span> <span class="o">*</span> <span class="p">(</span><span class="n">n_samples</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span>
+    <span class="k">return</span> <span class="mf">1.0</span> <span class="o">-</span> <span class="n">disagreement</span>
 </code></pre></div>
         </details>
     </div>
