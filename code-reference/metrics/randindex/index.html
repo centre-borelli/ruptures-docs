@@ -9,7 +9,7 @@
       
       
       <link rel="icon" href="../../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.2.9">
+      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.3.9">
     
     
       
@@ -17,11 +17,12 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.120efc48.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.1d29e8d0.min.css">
       
         
-        <link rel="stylesheet" href="../../../assets/stylesheets/palette.9647289d.min.css">
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.cbb835fc.min.css">
         
+      
       
     
     
@@ -1867,18 +1868,18 @@
 <h1 id="rand-index-randindex">Rand index (<code>randindex</code>)<a class="headerlink" href="#rand-index-randindex" title="Permanent link">#</a></h1>
 
 
-  <div class="doc doc-object doc-function">
+<div class="doc doc-object doc-function">
 
 
 
 <h2 id="ruptures.metrics.randindex.randindex" class="doc doc-heading">
 <code class="highlight language-python"><span class="n">ruptures</span><span class="o">.</span><span class="n">metrics</span><span class="o">.</span><span class="n">randindex</span><span class="o">.</span><span class="n">randindex</span><span class="p">(</span><span class="n">bkps1</span><span class="p">,</span> <span class="n">bkps2</span><span class="p">)</span></code>
 
-
 <a href="#ruptures.metrics.randindex.randindex" class="headerlink" title="Permanent link">#</a></h2>
 
-    <div class="doc doc-contents first">
 
+  <div class="doc doc-contents first">
+  
       <p>Computes the Rand index (between 0 and 1) between two segmentations.</p>
 <p>The Rand index (RI) measures the similarity between two segmentations and
 is equal to the proportion of aggreement between two partitions.</p>
@@ -1887,49 +1888,104 @@ This function uses the efficient implementation of [1].</p>
 <p>[1] Prates, L. (2021). A more efficient algorithm to compute the Rand Index for
 change-point problems. ArXiv:2112.03738.</p>
 
-<p><strong>Parameters:</strong></p>
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Type</th>
-      <th>Description</th>
-      <th>Default</th>
-    </tr>
-  </thead>
-  <tbody>
+  <p><strong>Parameters:</strong></p>
+  <table>
+    <thead>
       <tr>
-        <td><code>bkps1</code></td>
-        <td><code>list</code></td>
-        <td><p>sorted list of the last index of each regime.</p></td>
-        <td><em>required</em></td>
+        <th>Name</th>
+        <th>Type</th>
+        <th>Description</th>
+        <th>Default</th>
       </tr>
+    </thead>
+    <tbody>
+        <tr>
+          <td><code>bkps1</code></td>
+          <td>
+                <code>list</code>
+          </td>
+          <td><p>sorted list of the last index of each regime.</p></td>
+          <td>
+              <em>required</em>
+          </td>
+        </tr>
+        <tr>
+          <td><code>bkps2</code></td>
+          <td>
+                <code>list</code>
+          </td>
+          <td><p>sorted list of the last index of each regime.</p></td>
+          <td>
+              <em>required</em>
+          </td>
+        </tr>
+    </tbody>
+  </table>
+
+  <p><strong>Returns:</strong></p>
+  <table>
+    <thead>
       <tr>
-        <td><code>bkps2</code></td>
-        <td><code>list</code></td>
-        <td><p>sorted list of the last index of each regime.</p></td>
-        <td><em>required</em></td>
+<th>Name</th>        <th>Type</th>
+        <th>Description</th>
       </tr>
-  </tbody>
-</table>
-<p><strong>Returns:</strong></p>
-<table>
-  <thead>
-    <tr>
-      <th>Type</th>
-      <th>Description</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><code>float</code></td>
-      <td><p>Rand index</p></td>
-    </tr>
-  </tbody>
-</table>
-        <details class="quote">
-          <summary>Source code in <code>ruptures/metrics/randindex.py</code></summary>
-          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">randindex</span><span class="p">(</span><span class="n">bkps1</span><span class="p">,</span> <span class="n">bkps2</span><span class="p">):</span>
+    </thead>
+    <tbody>
+        <tr>
+<td><code>float</code></td>          <td>
+          </td>
+          <td><p>Rand index</p></td>
+        </tr>
+    </tbody>
+  </table>
+
+      <details class="quote">
+        <summary>Source code in <code>ruptures/metrics/randindex.py</code></summary>
+        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span>
+<span class="normal">41</span>
+<span class="normal">42</span>
+<span class="normal">43</span>
+<span class="normal">44</span>
+<span class="normal">45</span>
+<span class="normal">46</span>
+<span class="normal">47</span>
+<span class="normal">48</span>
+<span class="normal">49</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">randindex</span><span class="p">(</span><span class="n">bkps1</span><span class="p">,</span> <span class="n">bkps2</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Computes the Rand index (between 0 and 1) between two segmentations.</span>
 
 <span class="sd">    The Rand index (RI) measures the similarity between two segmentations and</span>
@@ -1974,14 +2030,15 @@ change-point problems. ArXiv:2112.03738.</p>
 
     <span class="n">disagreement</span> <span class="o">/=</span> <span class="n">n_samples</span> <span class="o">*</span> <span class="p">(</span><span class="n">n_samples</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span>
     <span class="k">return</span> <span class="mf">1.0</span> <span class="o">-</span> <span class="n">disagreement</span>
-</code></pre></div>
-        </details>
-    </div>
-
+</code></pre></div></td></tr></table></div>
+      </details>
   </div>
+
+</div>
 
               
             </article>
+            
           </div>
         </div>
         
@@ -1989,7 +2046,8 @@ change-point problems. ArXiv:2112.03738.</p>
       
         <footer class="md-footer">
   
-    <nav class="md-footer__inner md-grid" aria-label="Footer">
+    
+    <nav class="md-footer__inner md-grid" aria-label="Footer" >
       
         
         <a href="../hausdorff/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Hausdorff metric" rel="prev">
@@ -2044,10 +2102,10 @@ change-point problems. ArXiv:2112.03738.</p>
     <div class="md-dialog" data-md-component="dialog">
       <div class="md-dialog__inner md-typeset"></div>
     </div>
-    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs", "search.highlight"], "search": "../../../assets/javascripts/workers/search.2a1c317c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs", "search.highlight"], "search": "../../../assets/javascripts/workers/search.b97dbffb.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.6e54b5cd.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.6c7ad80a.min.js"></script>
       
         <script src="../../../javascripts/config.js"></script>
       
